@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid, Typography } from "@material-ui/core";
-import styles from "./../../styles/styles";
-import * as messages from "./../../messages/de.json";
-import supporterImage from "../../api/assets/roteskreuz.png";
+import styles from "styles/styles";
+import * as messages from "messages/de.json";
+import supporterImage from "assets/roteskreuz.png";
 
 const Supporters = () => {
   const classes = styles();

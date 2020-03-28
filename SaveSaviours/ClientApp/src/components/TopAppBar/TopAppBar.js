@@ -5,7 +5,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Link } from "@material-ui/core";
-import logo from "../../api/assets/rettet-retter-logo.png";
+import logo from "assets/rettet-retter-logo.png";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,10 +35,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   icon: {
-    position:'absolute',
-    right:20,
+    position: 'absolute',
+    right: 20,
     [`@media (max-width: ${theme.breakpoints.values.sm}px)`]: {
-    right:-10,
+      right: -10,
     }
   },
   appBar: {
@@ -71,7 +71,7 @@ export default function TopAppBar() {
           <div className={classes.wrapper}>
             {auth && (
               <span>
-                <IconButton 
+                <IconButton
                   className={classes.icon}
                   onClick={handleLogOut}
                   color="inherit"

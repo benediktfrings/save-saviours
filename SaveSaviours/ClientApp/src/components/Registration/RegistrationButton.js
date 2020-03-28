@@ -1,22 +1,22 @@
-import React from "react";
-import { Button } from "@material-ui/core";
-import styles from "../../styles/styles";
+import React from 'react'
+import { Button } from '@material-ui/core'
+import styles from 'styles/styles'
 
 const RegistrationButton = ({
   handleRegistration,
-  messageRegistrationButton
+  messageRegistrationButton,
 }) => {
-  const classes = styles();
+  const classes = styles()
   return (
     <Button
       variant="outlined"
       type="submit"
       className={classes.registrationButton}
-      onSubmit={event => handleRegistration(event)}
+      onSubmit={(event) => handleRegistration(event)}
     >
       {messageRegistrationButton}
     </Button>
-  );
-};
+  )
+}
 
-export default RegistrationButton;
+export default RegistrationButton

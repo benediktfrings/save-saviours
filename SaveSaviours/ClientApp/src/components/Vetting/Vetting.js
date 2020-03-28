@@ -30,25 +30,27 @@ const Vetting = () => {
       <Typography variant="h1" className={classes.landingHeader}>
         {messages['vettingpage.header']}
       </Typography>
-      <Table>
-        <TableHead dense>
-          <TableBody>
-            {unvettetInstitutions.map((institution) => (
-              <div key={institution.email}>
-                <TableCell className={classes.landingText}>
-                  <Checkbox />
-                </TableCell>
-                <TableCell>{institution.institutionName}</TableCell>
-                <TableCell>{institution.contactName}</TableCell>
-                <TableCell>{institution.email}</TableCell>
-                <TableCell>{institution.landline}</TableCell>
-                <TableCell>{institution.mobile}</TableCell>
-                <TableCell>{institution.zip}</TableCell>
-              </div>
-            ))}
-          </TableBody>
-        </TableHead>
-      </Table>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead dense>
+            <TableBody>
+              {unvettetInstitutions.map((institution) => (
+                <TableRow key={institution.email}>
+                  <TableCell className={classes.landingText}>
+                    <Checkbox />
+                  </TableCell>
+                  <TableCell>{institution.institutionName}</TableCell>
+                  <TableCell>{institution.contactName}</TableCell>
+                  <TableCell>{institution.email}</TableCell>
+                  <TableCell>{institution.landline}</TableCell>
+                  <TableCell>{institution.mobile}</TableCell>
+                  <TableCell>{institution.zip}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </TableHead>
+        </Table>
+      </TableContainer>
     </Paper>
   )
 }

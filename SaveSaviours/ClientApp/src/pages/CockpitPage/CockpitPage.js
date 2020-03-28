@@ -1,16 +1,16 @@
-import React from "react";
-import styles from "./../../styles/styles";
-import { Grid } from "@material-ui/core";
+import React from 'react'
+import { Grid } from '@material-ui/core'
+import styles from 'styles/styles'
 
 const CockpitPage = () => {
-  const classes = styles();
+  const classes = styles()
 
   return (
-    <Grid container={true}>
+    <Grid container>
       <div className={classes.offset} />
-      <Grid item={true}>Cockpit</Grid>
+      <Grid item>Cockpit</Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default CockpitPage;
+export default CockpitPage

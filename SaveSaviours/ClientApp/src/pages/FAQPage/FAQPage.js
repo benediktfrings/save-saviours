@@ -1,16 +1,16 @@
-import React from "react";
-import styles from "./../../styles/styles";
-import { Grid } from "@material-ui/core";
+import React from 'react'
+import { Grid } from '@material-ui/core'
+import styles from 'styles/styles'
 
 const FAQPage = () => {
-  const classes = styles();
+  const classes = styles()
 
   return (
-    <Grid container={true}>
+    <Grid container>
       <div className={classes.offset} />
-      <Grid item={true}>FAQs</Grid>
+      <Grid item>FAQs</Grid>
     </Grid>
-  );
-};
+  )
+}
 
-export default FAQPage;
+export default FAQPage

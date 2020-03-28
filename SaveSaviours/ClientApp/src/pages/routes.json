@@ -1,0 +1,15 @@
+{
+  "root": "/",
+  "signin": "/signin",
+  "institutions": "/institutions",
+  "about":"/about",
+  "faq":"/faq",
+  "impressum":"/impressum",
+  "datasecurity":"/datasecurity",
+  "helperslist": "/helperslist",
+  "cockpit": "/cockpit",
+  "confirmation":"/confirmation",
+  "registration":"/registration",
+  "vetting":"/vetting",
+  "helperprofile":"/helperprofile"
+}

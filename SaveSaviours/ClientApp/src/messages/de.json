@@ -1,0 +1,88 @@
+{
+  "landingpage.title": "Rettet Retter",
+  "landingpage.explainerHeader": "Corona! - aber Du weißt nicht, wie Du helfen kannst?",
+  "landingpage.explainerBody": "In den Kliniken wird im Ernstfall jede Hand gebraucht. Registriere dich jetzt und hilf im Notfall mit Krankenhaus Personal zu entlasten.",
+  "landingpage.helptextTitle": "Wie kann ich im Ernstfall helfen?",
+  "landingpage.helptextBody1": "Sollten die derzeitigen Maßnahmen nicht dazu führen, dass die Fallzahlen über der Kapazität der Gesundheitsversorgung in deiner Region liegen, wirst du eingebunden um die Fachkräfte und Ärzte zu entlasten.",
+  "landingpage.helptextBody2": "Hierbei handelt es sich vor allem um die folgenden Tätigkeiten:",
+  "landingpage.helptextTasks": [
+    "Botengänge",
+    "Betreuung von Kranken",
+    "Aushelfen bei der Essensverteilung",
+    "Hygienemaßnahmen",
+    "Bürotätigkeiten",
+    "Koordinationsaufgaben",
+    "etc."
+  ],
+  "landingpage.callToAction": "Registriere Dich jetzt!",
+  "landingpage.url": "https://rette-retter.de",
+  "landingpage.support": "Unterstützt durch:",
+
+  "registrationpage.callToAction": "Registriere Dich jetzt und helfe mit dem Kollaps entgegen zu wirken!",
+  "registrationpage.helper.name": "Name",
+  "registrationpage.helper.email": "E-Mail",
+  "registrationpage.helper.mobile": "Handynummer",
+  "registrationpage.helper.zip": "Postleitzahl",
+  "registrationpage.helper.subtitle": "Ich bringe folgende Erfahrung mit:",
+  "registrationpage.helper.landline": "Festnetz",
+  "registrationpage.helper.registrationButton": "Ja, ich helfe im Notfall mit!",
+  "registrationpage.helper.institutionRegistrationButton": "Ich repräsentiere eine medizinische Einrichtung",
+
+  "registrationpage.select": [
+    { "name": "laboratory", "text": "Medizinisches Labor" },
+    { "name": "care", "text": "Pflege" },
+    { "name": "ambulance", "text": "Ambulanz" },
+    { "name": "coordination", "text": "Leitung und Koordination von Gruppen" },
+    { "name": "car", "text": "Führerschein und Auto" },
+    { "name": "office", "text": "Büroadministration" },
+    { "name": "projectmanagement", "text": "Projekt Management" },
+    { "name": "logistics", "text": "Lager und Logistik" },
+    { "name": "service", "text": "Hotel und Service" },
+    {
+      "name": "none",
+      "text": "Keine Erfahrung im medizinischem Umfeld"
+    }
+  ],
+  "registrationpage.datasecurity": [
+    {
+      "name": "datasecurity",
+      "text": "Ich stimme den Datenschutz- und Nutzungsbedingungen zu"
+    }
+  ],
+
+  "registrationpage.institution.callToAction": "Registrieren Sie Ihre medizinische Institution und aktivieren Sie lokale Helfer, die Ihnen in dieser Krise helfen wollen.",
+  "registrationpage.institution.contactName": "Ansprechpartner",
+  "registrationpage.institution.institutionName": "Name der Einrichtung",
+  "registrationpage.institution.landline": "Telefonnummer mit Durchwahl",
+  "registrationpage.institution.mobile": "Handynummer",
+  "registrationpage.institution.email": "E-Mail",
+  "registrationpage.institution.zip": "Postleitzahl",
+  "registrationpage.institution.subtitle": "Wir suchen Helfer mit Erfahrung in:",
+  "registrationpage.institution.registrationButton": "Als medizinische Einrichtung registrieren",
+
+  "confirmationpage.headertextTitle": "Vielen Dank für Deine Registrierung!",
+  "confirmationpage.headertextBody": "Sollten die derzeitigen Maßnahmen nicht dazu führen, dass die Fallzahlen unter der Kapazität der Gesundheitsversorgung in deiner Region bleiben, wirst Du von medizinischen Institutionen in Deiner Nähe kontaktiert, um die Fachkräfte und Ärzte zu unterstützen und entlasten.",
+  "confirmationpage.actionButton": "Motiviere Deine Freunde, bei 'Rette Retter' mit zu machen",
+  "confirmationpage.friendstextBody": "Vielleicht kennst Du noch weitere Personen, die im Notfall mithelfen können...",
+  "confirmationpage.friendsFacebook": "Teilen",
+  "confirmationpage.friendsTwitter": "Tweeten",
+  "bottomappbar.links": [
+    { "name": "impressum", "label": "Impressum", "route": "/impressum" },
+    { "name": "datenschutz", "label": "Datenschutz", "route": "/datasecurity" },
+    { "name": "faq", "label": "FAQs", "route": "/faq" },
+    {
+      "name": "institutions",
+      "label": "Medizinische Einrichtungen: Hier klicken!",
+      "route": "/institutions"
+    }
+  ],
+
+  "signinpage.title": "User E-Mail",
+  "signinpage.name": "User E-Mail",
+  "signinpage.password": "Passwort",
+  "signinpage.button": "Anmelden",
+
+  "vettingpage.header": "Zu überprüfende Anmeldungen",
+  
+  "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe"  
+}

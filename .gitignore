@@ -1,0 +1,13 @@
+ClientApp/
+PublishProfiles/
+
+*~
+*.user
+*.icloud
+.DS_Store
+
+bin/
+obj/
+.vscode/
+node_modules/
+build/

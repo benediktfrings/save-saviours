@@ -13,6 +13,7 @@ const RegistrationButton = ({
       type="submit"
       className={classes.registrationButton}
       onSubmit={(event) => handleRegistration(event)}
+      onClick={(event) => handleRegistration(event)}
     >
       {messageRegistrationButton}
     </Button>

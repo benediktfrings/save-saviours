@@ -59,6 +59,7 @@
   "registrationpage.institution.zip": "Postleitzahl",
   "registrationpage.institution.subtitle": "Wir suchen Helfer mit Erfahrung in:",
   "registrationpage.institution.registrationButton": "Als medizinische Einrichtung registrieren",
+  "vettingpage.institution.vetted": "Verifiziert",
 
   "confirmationpage.headertextTitle": "Vielen Dank für Deine Registrierung!",
   "confirmationpage.headertextBody": "Sollten die derzeitigen Maßnahmen nicht dazu führen, dass die Fallzahlen unter der Kapazität der Gesundheitsversorgung in deiner Region bleiben, wirst Du von medizinischen Institutionen in Deiner Nähe kontaktiert, um die Fachkräfte und Ärzte zu unterstützen und entlasten.",
@@ -83,6 +84,8 @@
   "signinpage.button": "Anmelden",
 
   "vettingpage.header": "Zu überprüfende Anmeldungen",
-  
-  "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe"  
+  "vettingpage.vettingButton": "Verifizieren!",
+  "vettingpage.institution.timestamp": "Registrierung",
+
+  "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe"
 }

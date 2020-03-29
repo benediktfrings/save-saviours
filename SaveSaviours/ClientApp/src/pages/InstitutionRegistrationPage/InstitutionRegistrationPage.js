@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Divider } from '@material-ui/core'
 import styles from 'styles/styles'
 import { isValidEmail, isValidPhoneNumber, isValidZip } from 'services'
@@ -18,7 +18,7 @@ const InstitutionRegistrationPage = () => {
   const [landline, setLandline] = useState('')
   const [zip, setZip] = useState('')
   const [datasecurity, setDatasecurity] = useState(false)
-  const [checked, setChecked] = useState(['dummy'])
+  const [checked, setChecked] = useState([])
   const [tags, setTags] = useState([
     messages['registrationpage.select'][0].text,
     messages['registrationpage.select'][1].text,
@@ -38,9 +38,9 @@ const InstitutionRegistrationPage = () => {
     landline: false,
     zip: false,
   })
-  useEffect(() => {
-    console.log(checked)
-  })
+  // useEffect(() => {
+  //   console.log(checked)
+  // })
   const isValidForm = () => {
     setError({
       ...error, mobile: false, landline: false, zip: false,
@@ -72,8 +72,8 @@ const InstitutionRegistrationPage = () => {
     }
     if (isValidForm(payload)) {
       // send validated payload to backend
-      // window.location = '/confirmation'
       console.log(payload)
+      window.location = '/confirmation'
     }
   }
   return (

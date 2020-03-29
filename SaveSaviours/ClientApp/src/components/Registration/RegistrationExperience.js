@@ -73,19 +73,19 @@ const RegistrationExperience = ({
             {!inputValue
             && (
             <>
-              <Checkbox
+              {/* <Checkbox
                 icon={icon}
                 checkedIcon={checkedIcon}
                 style={{ marginRight: 8 }}
                 checked={selected}
-              />
+              /> */}
               {option}
             </>
             )}
             {inputValue
             && (
             <>
-              <span className={classes.registrationExperienceAddText}>Hinzufügen: </span>
+              <span className={classes.registrationExperienceAddText}>Hinzufügen:</span>
                 { option }
             </>
             )}

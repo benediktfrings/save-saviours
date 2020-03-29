@@ -134,11 +134,13 @@ export default () => {
       verticalAlign: 'middle',
     },
     registrationExperienceAddText: {
-      color: theme.palette.primary.main,
+      color: theme.palette.secondary.main,
+      fontWeight: 900,
+      marginRight: 10,
     },
     registrationExperienceListBox: {
-      backgroundColor: theme.palette.secondary.main,
-      opacity: 0.8,
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white,
     },
   })
   return useStyles()

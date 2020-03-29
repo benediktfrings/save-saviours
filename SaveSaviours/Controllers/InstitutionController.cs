@@ -12,7 +12,7 @@ namespace SaveSaviours.Controllers {
 
     [ApiController]
     [Route("api/institution")]
-    //[Authorize(Roles = Role.Names.INSTITUTION)]
+    [Authorize(Roles = Role.Names.INSTITUTION)]
     public class InstitutionController : ApiController {
         public InstitutionController(
             IOptions<AppSettings> options,
@@ -21,10 +21,10 @@ namespace SaveSaviours.Controllers {
             : base(options, context, userManager) { }
 
         [HttpGet, Route("tags")]
-        public async Task<ActionResult<TagListModel>> GetTags() {
-            return Ok(new TagListModel(new Dictionary<int, string> {
-                { 1, "Führerschein" },
-            }));
+        public async Task<ActionResult<IEnumerable<TagModel>>> GetTags() {
+            return Ok(new TagModel[] {
+                new TagModel(1, "Führerschein"),
+            });
         }
 
         [HttpGet, Route("volunteers")]

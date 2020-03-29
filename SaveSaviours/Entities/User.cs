@@ -26,5 +26,8 @@ namespace SaveSaviours.Entities {
         internal ICollection<UserRole> UserRoles { get; } = new List<UserRole>();
         public IEnumerable<Role> Roles => UserRoles.Select(r => r.Role);
 
+        public Volunteer? Volunteer { get; set; }
+        public Institution? Institution { get; set; }
+
     }
 }

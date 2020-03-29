@@ -1,11 +1,16 @@
 namespace SaveSaviours.Entities {
     using System;
+    using System.Collections.Generic;
 
-    public class Volunteer {
-        public Guid UserId { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string Location { get; set; }
+    public class Volunteer : UserExtension {
+        public string Name { get; set; } = String.Empty;
+        public string ZipCode { get; set; } = String.Empty;
+        public string PrimaryPhoneNumber { get; set; } = String.Empty;
+        public string? SecondaryPhoneNumber { get; set; }
+        public string Bio { get; set; } = String.Empty;
+        public bool IsActive { get; set; }
 
+        public ICollection<VolunteerTag> Experiences { get; set; } = null!;
+        public ICollection<VolunteerLink> LinkedInstitutions { get; set; } = null!;
     }
 }

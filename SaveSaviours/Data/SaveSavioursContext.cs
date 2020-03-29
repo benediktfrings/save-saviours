@@ -12,7 +12,9 @@ namespace SaveSaviours.Data {
         public SaveSavioursContext(DbContextOptions<SaveSavioursContext> cfg, IOptions<AppSettings> options)
             : base(cfg) => _settings = options.Value;
 
-        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<User> Users { get; private set; } = null!;
+        public DbSet<Volunteer> Volunteers { get; private set; } = null!;
+        public DbSet<Institution> Institutions { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
             optionsBuilder.UseSqlServer(_settings.Database);
@@ -31,13 +33,39 @@ namespace SaveSaviours.Data {
                 .Use(UtcDateTime)
                 .Entity<User>(e => {
                     e.HasKey(t => t.Id);
+
                     e.HasMany(t => t.UserRoles).WithOne(t => t.User);
+                    e.HasOne(t => t.Volunteer!).WithOne(t => t.User);
+                    e.HasOne(t => t.Institution!).WithOne(t => t.User);
                 })
                 .Entity<UserRole>(e => {
                     e.HasKey(t => new { t.UserId, t.Role });
                     e.Property(t => t.Role).HasConversion(r => r.Id, r => Role.Get(r));
                 })
                 .Ignore<Role>()
+                .Entity<Volunteer>(e => {
+                    e.HasKey(t => t.UserId);
+
+                    e.HasMany(t => t.Experiences).WithOne(t => t.Volunteer);
+                    e.HasMany(t => t.LinkedInstitutions).WithOne(t => t.Volunteer);
+                })
+                .Entity<VolunteerTag>(e => {
+                    e.HasKey(t => new { t.VolunteerId, t.TagValue });
+                })
+                .Entity<VolunteerLink>(e => {
+                    e.HasKey(t => new { t.VolunteerId, t.InstitutionId });
+                })
+                .Entity<Institution>(e => {
+                    e.HasKey(t => t.UserId);
+
+                    e.HasMany(t => t.LinkedVolunteers).WithOne(t => t.Institution);
+                })
+                .Entity<Tag>(e => {
+                    e.HasKey(t => t.Value);
+                    e.Property(t => t.Value).ValueGeneratedOnAdd();
+
+                    e.HasMany(t => t.TaggedVolunteers).WithOne(t => t.Tag);
+                })
                 ;
     }
 }

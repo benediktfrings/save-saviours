@@ -13,9 +13,7 @@ namespace SaveSaviours.Controllers {
     using Microsoft.IdentityModel.Tokens;
     using Models;
 
-    [ApiController]
-    [Route("api/user")]
-    //[Authorize]
+    [ApiController, Route("api/user"), Authorize]
     public class UserController : ApiController {
         private readonly SignInManager<User> _signInManager;
 

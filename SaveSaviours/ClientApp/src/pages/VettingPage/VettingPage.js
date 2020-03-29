@@ -73,7 +73,6 @@ const VettingPage = () => {
       <Grid>
         <RegistrationButton messageRegistrationButton={messages['vettingpage.vettingButton']} handleRegistration={handleButtonClick} />
       </Grid>
-
     </Grid>
 
   )

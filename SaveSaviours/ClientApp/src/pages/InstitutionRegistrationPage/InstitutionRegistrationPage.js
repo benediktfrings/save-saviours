@@ -17,7 +17,8 @@ const InstitutionRegistrationPage = () => {
   const [mobile, setMobile] = useState('')
   const [landline, setLandline] = useState('')
   const [zip, setZip] = useState('')
-  const [checked, setChecked] = useState([])
+  const [datasecurity, setDatasecurity] = useState(false)
+  const [checked, setChecked] = useState(['dummy'])
   const [tags, setTags] = useState([
     messages['registrationpage.select'][0].text,
     messages['registrationpage.select'][1].text,
@@ -37,12 +38,10 @@ const InstitutionRegistrationPage = () => {
     landline: false,
     zip: false,
   })
-  // useEffect(() => {
-  //   console.log(checked)
-  // })
-  const isValidForm = ({
-    email, mobile, landline, zip,
-  }) => {
+  useEffect(() => {
+    console.log(checked)
+  })
+  const isValidForm = () => {
     setError({
       ...error, mobile: false, landline: false, zip: false,
     })
@@ -73,7 +72,7 @@ const InstitutionRegistrationPage = () => {
     }
     if (isValidForm(payload)) {
       // send validated payload to backend
-      return (window.location = '/confirmation')
+      // window.location = '/confirmation'
       console.log(payload)
     }
   }
@@ -100,14 +99,12 @@ const InstitutionRegistrationPage = () => {
             error={error}
           />
           <RegistrationExperience
-            checked={checked}
             setChecked={setChecked}
             tags={tags}
-            setTags={setTags}
             messageSubtitle={messages['registrationpage.institution.subtitle']}
           />
           <Divider className={classes.registrationDivider} />
-          <RegistrationOptIn checked={checked} setChecked={setChecked} />
+          <RegistrationOptIn datasecurity={datasecurity} setDatasecurity={setDatasecurity} />
           <RegistrationButton
             handleRegistration={handleRegistration}
             messageRegistrationButton={

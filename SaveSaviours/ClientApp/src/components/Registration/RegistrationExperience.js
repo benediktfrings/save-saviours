@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   FormGroup,
   Checkbox,
@@ -16,7 +16,7 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />
 const filter = createFilterOptions()
 
 const RegistrationExperience = ({
-  checked, setChecked, tags, setTags, messageSubtitle,
+  setChecked, tags, messageSubtitle,
 }) => {
   const classes = styles()
 
@@ -31,14 +31,24 @@ const RegistrationExperience = ({
       </Typography>
       <Grid container />
       <Autocomplete
+        className={classes.registrationTextfield}
+        ListboxProps={{ className: classes.registrationExperienceListBox }}
         multiple
         freeSolo
         filterSelectedOptions
         id="tags"
         options={tags}
-        disableCloseOnSelect
         onChange={(event, newValue) => {
+          if (typeof newValue === 'string') {
+            // timeout to avoid instant validation of the dialog's form.
+            setTimeout(() => {
+              setChecked([...newValue])
+            })
+            return
+          }
+          setChecked([...newValue])
         }}
+        disableCloseOnSelect
         filterOptions={(options, params) => {
           const filtered = filter(options, params)
           if (params.inputValue !== '') {
@@ -48,7 +58,7 @@ const RegistrationExperience = ({
           }
           return filtered
         }}
-        getOptionLabel={(option, params) => {
+        getOptionLabel={(option) => {
           // e.g value selected with enter, right from the input
           if (typeof option === 'string') {
             return option
@@ -56,15 +66,11 @@ const RegistrationExperience = ({
           if (option.inputValue) {
             return option.inputValue
           }
-          return option.text
+          return option
         }}
         renderOption={(option, { selected, inputValue }) => (
           <>
-            <div onClick={() => {
-              setChecked([...checked, option])
-            }}
-            >
-              {!inputValue
+            {!inputValue
             && (
             <>
               <Checkbox
@@ -76,19 +82,23 @@ const RegistrationExperience = ({
               {option}
             </>
             )}
-              {inputValue
+            {inputValue
             && (
             <>
-                {'Hinzufügen: '}
+              <span className={classes.registrationExperienceAddText}>Hinzufügen: </span>
                 { option }
             </>
             )}
-            </div>
           </>
         )}
-        style={{ width: 500 }}
         renderInput={(params) => (
-          <TextField {...params} variant="outlined" label="Auswählen oder Hinzufügen" placeholder="Erfahrungen" />
+          <TextField
+            {...params}
+            className={classes.registrationTextfield}
+            variant="outlined"
+            label="Auswählen oder Hinzufügen"
+            placeholder="Erfahrungen"
+          />
         )}
       />
     </FormGroup>

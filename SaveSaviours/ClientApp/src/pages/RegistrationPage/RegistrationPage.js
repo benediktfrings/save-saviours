@@ -16,6 +16,7 @@ const RegistrationPage = () => {
   const [mobile, setMobile] = React.useState('')
   const [landline, setLandline] = React.useState('')
   const [zip, setZip] = React.useState('')
+  const [datasecurity, setDatasecurity] = useState(false)
   const [checked, setChecked] = React.useState([])
   const [tags, setTags] = useState([
     messages['registrationpage.select'][0].text,
@@ -36,9 +37,7 @@ const RegistrationPage = () => {
     landline: false,
     zip: false,
   })
-  const isValidForm = ({
-    email, mobile, landline, zip,
-  }) => {
+  const isValidForm = () => {
     setError({
       ...error, mobile: false, landline: false, zip: false,
     })
@@ -68,7 +67,7 @@ const RegistrationPage = () => {
     }
     if (isValidForm(payload)) {
       // send validated payload to backend
-      return (window.location = '/confirmation')
+      window.location = '/confirmation'
     }
   }
   return (
@@ -90,14 +89,12 @@ const RegistrationPage = () => {
             error={error}
           />
           <RegistrationExperience
-            checked={checked}
             setChecked={setChecked}
             tags={tags}
-            setTags={setTags}
             messageSubtitle={messages['registrationpage.helper.subtitle']}
           />
           <Divider className={classes.registrationDivider} />
-          <RegistrationOptIn checked={checked} setChecked={setChecked} />
+          <RegistrationOptIn datasecurity={datasecurity} setDatasecurity={setDatasecurity} />
           <RegistrationButton
             handleRegistration={handleRegistration}
             messageRegistrationButton={messages['registrationpage.helper.registrationButton']}

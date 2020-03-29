@@ -12,7 +12,7 @@ namespace SaveSaviours.Controllers {
 
     [ApiController]
     [Route("api/institution")]
-    [Authorize(Role.Names.INSTITUTION)]
+    //[Authorize(Roles = Role.Names.INSTITUTION)]
     public class InstitutionController : ApiController {
         public InstitutionController(
             IOptions<AppSettings> options,

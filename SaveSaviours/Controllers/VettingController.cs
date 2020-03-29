@@ -12,7 +12,7 @@ namespace SaveSaviours.Controllers {
 
     [ApiController]
     [Route("api/vetting")]
-    [Authorize(Role.Names.ADMINISTRATOR)]
+    //[Authorize(Roles = Role.Names.ADMINISTRATOR)]
     public class VettingController : ApiController {
         public VettingController(
             IOptions<AppSettings> options,

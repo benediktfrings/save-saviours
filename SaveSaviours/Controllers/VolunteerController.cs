@@ -11,7 +11,7 @@
 
     [ApiController]
     [Route("api/volunteer")]
-    [Authorize(Role.Names.VOLUNTEER)]
+    //[Authorize(Roles = Role.Names.VOLUNTEER)]
     public class VolunteerController : ApiController {
         public VolunteerController(
             IOptions<AppSettings> options,

@@ -59,7 +59,6 @@
   "registrationpage.institution.zip": "Postleitzahl",
   "registrationpage.institution.subtitle": "Wir suchen Helfer mit Erfahrung in:",
   "registrationpage.institution.registrationButton": "Als medizinische Einrichtung registrieren",
-  "vettingpage.institution.vetted": "Verifiziert",
 
   "confirmationpage.headertextTitle": "Vielen Dank für Deine Registrierung!",
   "confirmationpage.headertextBody": "Sollten die derzeitigen Maßnahmen nicht dazu führen, dass die Fallzahlen unter der Kapazität der Gesundheitsversorgung in deiner Region bleiben, wirst Du von medizinischen Institutionen in Deiner Nähe kontaktiert, um die Fachkräfte und Ärzte zu unterstützen und entlasten.",
@@ -67,6 +66,9 @@
   "confirmationpage.friendstextBody": "Vielleicht kennst Du noch weitere Personen, die im Notfall mithelfen können...",
   "confirmationpage.friendsFacebook": "Teilen",
   "confirmationpage.friendsTwitter": "Tweeten",
+  "confirmationpage.institutions.headertextTitle": "Vielen Dank für die Registrierung Ihrer Einrichtung!",
+  "confirmationpage.institutions.headertextBody": "Im nächsten Schritt werden wir Ihre Registrierung überprüfen und freischalten. Dies ist Notwendig, um die persönlichen Daten der Helfer zu schützen. Sobald die Prüfung erfolgt ist, bekommen Sie eine Nachricht per E-Mail. Dann können Sie im Bedarfsfall Helfer in Ihrer Nähe finden und kontaktieren, die Ihrer Einrichtung unterstützen.",
+
   "bottomappbar.links": [
     { "name": "impressum", "label": "Impressum", "route": "/impressum" },
     { "name": "datenschutz", "label": "Datenschutz", "route": "/datasecurity" },
@@ -86,6 +88,7 @@
   "vettingpage.header": "Zu überprüfende Anmeldungen",
   "vettingpage.vettingButton": "Verifizieren!",
   "vettingpage.institution.timestamp": "Registrierung",
+  "vettingpage.institution.vetted": "Verifiziert",
 
   "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe"
 }

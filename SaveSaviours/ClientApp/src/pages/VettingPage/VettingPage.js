@@ -18,8 +18,7 @@ const VettingPage = () => {
     {
       contactName: 'Peter Lustig',
       institutionName: 'DRK',
-      landline: '',
-      mobile: '017722222222',
+      setPhone: '017722222222',
       email: 'peter@drk.com',
       zip: '55555',
       timestamp: date,
@@ -27,8 +26,7 @@ const VettingPage = () => {
     {
       contactName: 'Norbert Müller',
       institutionName: 'Caritas',
-      landline: '',
-      mobile: '0173344333333',
+      phone: '0173344333333',
       email: 'norbert@caritas.com',
       zip: '66666',
       timestamp: date,

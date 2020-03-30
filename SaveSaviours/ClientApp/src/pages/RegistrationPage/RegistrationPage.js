@@ -13,8 +13,7 @@ const RegistrationPage = () => {
   const classes = styles()
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
-  const [mobile, setMobile] = React.useState('')
-  const [landline, setLandline] = React.useState('')
+  const [phone, setPhone] = React.useState('')
   const [zip, setZip] = React.useState('')
   const [datasecurity, setDatasecurity] = useState(false)
   const [checked, setChecked] = React.useState([])
@@ -33,20 +32,19 @@ const RegistrationPage = () => {
   const [error, setError] = React.useState({
     name: false,
     email: false,
-    mobile: false,
-    landline: false,
+    phone: false,
     zip: false,
   })
   const isValidForm = () => {
     setError({
-      ...error, mobile: false, landline: false, zip: false,
+      ...error, phone: false, zip: false,
     })
     if (!isValidEmail(email)) {
       setError({ ...error, email: true })
       return false
     }
-    if (!isValidPhoneNumber(mobile) && !isValidPhoneNumber(landline)) {
-      setError({ ...mobile, mobile: true, landline: true })
+    if (!isValidPhoneNumber(phone)) {
+      setError({ ...phone, phone: true })
       return false
     }
     if (!isValidZip(zip)) {
@@ -60,8 +58,7 @@ const RegistrationPage = () => {
     const payload = {
       name,
       email,
-      mobile,
-      landline,
+      phone,
       zip,
       experience: checked,
     }
@@ -80,10 +77,8 @@ const RegistrationPage = () => {
             setName={setName}
             email={email}
             setEmail={setEmail}
-            mobile={mobile}
-            setMobile={setMobile}
-            landline={landline}
-            setLandline={setLandline}
+            phone={phone}
+            setPhone={setPhone}
             zip={zip}
             setZip={setZip}
             error={error}

@@ -70,7 +70,7 @@ const InstitutionRegistrationPage = () => {
     if (isValidForm(payload)) {
       // send validated payload to backend
       console.log(payload)
-      window.location = '/confirmation'
+      window.location = '/institutionconfirmation'
     }
   }
   return (

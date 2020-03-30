@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -51,12 +51,10 @@ export default function TopAppBar() {
   const image = logo
   const color = 'transparent'
   const scrollStyle = `${classes.appBar}`
-  const [auth, setAuth] = useState(true)
-
-  // get auth information and set route from icon dependingly
 
   const handleLogOut = () => {
-
+      window.localStorage.clear()
+      window.location='/signin'
   }
   return (
     <AppBar
@@ -68,17 +66,15 @@ export default function TopAppBar() {
       <Toolbar>
         <div className={classes.wrapperWrapper}>
           <div className={classes.wrapper}>
-            {auth && (
-              <span>
+              <span onClick={()=>handleLogOut()}>
                 <IconButton
                   className={classes.icon}
-                  onClick={handleLogOut}
                   color="inherit"
                 >
                   <AccountCircle fontSize="large" />
                 </IconButton>
               </span>
-            )}
+            
             <Link href="/">
               <img src={image} alt="logo" className={classes.logo} />
             </Link>

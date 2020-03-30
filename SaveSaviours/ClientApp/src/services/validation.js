@@ -1,6 +1,6 @@
 import validator from 'validator'
 
-export const phoneValidationPattern = /^\d{11,16}$/
+export const phoneValidationPattern = /^\d{7,18}$/
 export const zipValidationPattern = /^\d{5,5}$/
 
 export const isValidEmail = (email) => {

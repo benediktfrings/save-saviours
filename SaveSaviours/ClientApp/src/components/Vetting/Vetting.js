@@ -32,8 +32,7 @@ const Vetting = ({ vetted, setVetted, unvettetInstitutions }) => {
               <TableCell>{messages['registrationpage.institution.institutionName']}</TableCell>
               <TableCell>{messages['registrationpage.institution.contactName']}</TableCell>
               <TableCell>{messages['registrationpage.institution.email']}</TableCell>
-              <TableCell>{messages['registrationpage.institution.landline']}</TableCell>
-              <TableCell>{messages['registrationpage.institution.mobile']}</TableCell>
+              <TableCell>{messages['registrationpage.institution.phone']}</TableCell>
               <TableCell>{messages['registrationpage.institution.zip']}</TableCell>
               <TableCell>{messages['vettingpage.institution.timestamp']}</TableCell>
               <TableCell>{messages['vettingpage.institution.vetted']}</TableCell>
@@ -47,8 +46,7 @@ const Vetting = ({ vetted, setVetted, unvettetInstitutions }) => {
                   <TableCell>{institution.institutionName}</TableCell>
                   <TableCell>{institution.contactName}</TableCell>
                   <TableCell>{institution.email}</TableCell>
-                  <TableCell>{institution.landline}</TableCell>
-                  <TableCell>{institution.mobile}</TableCell>
+                  <TableCell>{institution.phone}</TableCell>
                   <TableCell>{institution.zip}</TableCell>
                   <TableCell>{institution.timestamp}</TableCell>
                   <TableCell className={classes.landingText}>

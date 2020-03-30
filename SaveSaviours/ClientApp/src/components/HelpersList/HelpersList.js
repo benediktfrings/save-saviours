@@ -18,8 +18,7 @@ const HelpersList = () => {
   const helpers = [
     {
       name: 'Peter Lustig',
-      landline: '',
-      mobile: '017722222222',
+      phone: '017722222222',
       email: 'peter@lustig.com',
       zip: '55555',
     },
@@ -36,8 +35,7 @@ const HelpersList = () => {
               <div key={helpers.email}>
                 <TableCell>{helpers.name}</TableCell>
                 <TableCell>{helpers.email}</TableCell>
-                <TableCell>{helpers.landline}</TableCell>
-                <TableCell>{helpers.mobile}</TableCell>
+                <TableCell>{helpers.phone}</TableCell>
                 <TableCell>{helpers.zip}</TableCell>
               </div>
             ))}

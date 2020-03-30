@@ -9,7 +9,7 @@ import styles from 'styles/styles'
 import RegistrationButton from 'components/Registration/RegistrationButton'
 
 const VettingPage = () => {
-  const classes = styles()
+//  const classes = styles()
   const [vetted, setVetted] = useState({})
   // get list of indeterminate institution registrations from backend
   let date = new Date('28 March 2020 14:48 UTC')

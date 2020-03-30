@@ -1,6 +1,5 @@
-ClientApp/
 PublishProfiles/
-
+ClientApp/package-lock.json
 *~
 *.user
 *.icloud

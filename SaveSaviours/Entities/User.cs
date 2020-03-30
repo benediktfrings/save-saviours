@@ -23,6 +23,10 @@ namespace SaveSaviours.Entities {
         public DateTimeOffset? LockoutUntil { get; set; }
         public bool IsLockedOut => DateTimeOffset.UtcNow < LockoutUntil;
 
+        [Required]
+        public DateTime RegistrationDate { get; set; }
+        public DateTime? ValidationDate { get; set; }
+
         internal ICollection<UserRole> UserRoles { get; } = new List<UserRole>();
         public IEnumerable<Role> Roles => UserRoles.Select(r => r.Role);
 

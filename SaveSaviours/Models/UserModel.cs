@@ -1,12 +1,15 @@
 ﻿namespace SaveSaviours.Models {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using Data;
     using Entities;
 
     public class UserModel {
         public Guid Id { get; set; }
-        public string Email { get; set; }
+
+        [Required]
+        public string Email { get; set; } = String.Empty;
 
         public UserRolesModel Roles { get; private set; } = new UserRolesModel();
 

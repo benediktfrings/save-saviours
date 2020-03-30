@@ -38,11 +38,19 @@ namespace SaveSaviours.Data {
 
         async Task<User> IUserStore<User>.FindByIdAsync(string userId, CancellationToken cancellationToken) {
             var id = Guid.Parse(userId);
-            return await Context.Users.SingleOrDefaultAsync(u => u.Id == id, cancellationToken);
+            return await Context.Users
+                .Include(u => u.UserRoles)
+                .Include(u => u.Volunteer)
+                .Include(u => u.Institution)
+                .SingleOrDefaultAsync(u => u.Id == id, cancellationToken);
         }
 
         async Task<User> IUserStore<User>.FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken) {
-            var user = await Context.Users.SingleOrDefaultAsync(u => u.Email == normalizedUserName, cancellationToken);
+            var user = await Context.Users
+                .Include(u => u.UserRoles)
+                .Include(u => u.Volunteer)
+                .Include(u => u.Institution)
+                .SingleOrDefaultAsync(u => u.Email == normalizedUserName, cancellationToken);
             return user!;
         }
 
@@ -138,25 +146,6 @@ namespace SaveSaviours.Data {
             }
 
             user.UserRoles.Add(new UserRole { User = user, UserId = user.Id, Role = role });
-            switch (role.Id) {
-                //case Role.Names.PARTICIPANT: {
-                //    if (user.Participant == null)
-                //        throw new ArgumentException("user.Participant may not be null", nameof(user));
-                //    break;
-                //}
-                //case Role.Names.PARTNER: {
-                //    user.Partner = new Partner { User = user, UserId = user.Id };
-                //    break;
-                //}
-                //case Role.Names.PROMOTER: {
-                //    user.Promoter = new Promoter { User = user, UserId = user.Id };
-                //    break;
-                //}
-                //case Role.Names.PROVIDER: {
-                //    user.Provider = new Provider { User = user, UserId = user.Id };
-                //    break;
-                //}
-            }
             await Context.SaveChangesAsync(cancellationToken);
         }
 
@@ -166,7 +155,11 @@ namespace SaveSaviours.Data {
         }
 
         async Task<IList<User>> IUserRoleStore<User>.GetUsersInRoleAsync(string roleName, CancellationToken cancellationToken) {
-            IList<User> users = await Context.Users.Where(u => u.Roles.Any(r => r.Id == roleName)).ToListAsync(cancellationToken);
+            IList<User> users = await Context.Users
+                .Include(u => u.UserRoles)
+                .Include(u => u.Volunteer)
+                .Include(u => u.Institution)
+                .Where(u => u.Roles.Any(r => r.Id == roleName)).ToListAsync(cancellationToken);
             return users;
         }
 
@@ -182,24 +175,6 @@ namespace SaveSaviours.Data {
             }
 
             user.UserRoles.Remove(link);
-            //switch (roleName) {
-            //    case Role.Names.PARTICIPANT: {
-            //        user.Participant = null;
-            //        break;
-            //    }
-            //    case Role.Names.PARTNER: {
-            //        user.Partner = null;
-            //        break;
-            //    }
-            //    case Role.Names.PROMOTER: {
-            //        user.Promoter = null;
-            //        break;
-            //    }
-            //    case Role.Names.PROVIDER: {
-            //        user.Provider = null;
-            //        break;
-            //    }
-            //}
             await Context.SaveChangesAsync(cancellationToken);
         }
 

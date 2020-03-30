@@ -1,6 +1,7 @@
 ﻿namespace SaveSaviours {
     using System;
     using System.Collections.Generic;
+    using SaveSaviours.Entities;
     using SaveSaviours.Models;
 
     public class VolunteerProfileModel {
@@ -11,8 +12,8 @@
         public string? SecondaryPhoneNumber { get; set; }
         public bool IsActive { get; set; }
         public string Bio { get; set; } = String.Empty;
-        public string[] Tags { get; set; } = new string[0];
-        public IEnumerable<InstitutionModel> Institutions { get; set; }
+        public string[] Experiences { get; set; } = new string[0];
+        public IEnumerable<InstitutionModel> Institutions { get; set; } = new InstitutionModel[0];
     }
 
 }

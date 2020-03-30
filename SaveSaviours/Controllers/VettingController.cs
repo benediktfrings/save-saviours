@@ -1,12 +1,14 @@
 namespace SaveSaviours.Controllers {
     using System;
     using System.ComponentModel.DataAnnotations;
+    using System.Linq;
     using System.Threading.Tasks;
     using Data;
     using Entities;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Options;
     using Models;
 
@@ -22,16 +24,37 @@ namespace SaveSaviours.Controllers {
 
 
         [HttpGet]
-        public async Task<ActionResult<InstitutionModel>> ActionGetPending() =>
-            Ok();
+        public async Task<ActionResult<InstitutionModel[]>> ActionGetPending() {
+            var pending = await Context.Institutions
+                .Include(i => i.User)
+                .Where(i => !i.Vetted)
+                .ToArrayAsync();
+            return Ok(pending.Select(i => new InstitutionDetailsMdoel {
+                Id = i.UserId,
+                Name = i.Name,
+                ContactName = i.ContactName,
+                Email = i.User.Email,
+                PrimaryPhoneNumber = i.PrimaryPhoneNumber,
+                SecondaryPhoneNumber = i.SecondaryPhoneNumber,
+                ZipCode = i.ZipCode,
+            }));
+        }
+
 
         [HttpPost, Route("verify")]
-        public async Task<ActionResult> ActionPostAccept([Required, FromBody]Guid id) =>
-            Ok();
+        public async Task<ActionResult> ActionPostAccept([Required, FromBody]Guid id) {
+            var institution = await Context.Institutions.SingleAsync(i => i.UserId == id);
+            institution.Vetted = true;
+            return Ok();
+        }
+
 
         [HttpPost, Route("reject")]
-        public async Task<ActionResult> ActionPostReject([Required, FromBody]Guid id) =>
-            Ok();
-
+        public async Task<ActionResult> ActionPostReject([Required, FromBody]Guid id) {
+            var institution = await Context.Institutions.SingleAsync(i => i.UserId == id);
+            Context.Institutions.Remove(institution);
+            await Context.SaveChangesAsync();
+            return Ok();
+        }
     }
 }

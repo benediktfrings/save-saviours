@@ -1,8 +1,5 @@
 namespace SaveSaviours.Controllers {
-    using System;
     using System.ComponentModel.DataAnnotations;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
     using System.Threading.Tasks;
     using Data;
     using Entities;
@@ -10,7 +7,6 @@ namespace SaveSaviours.Controllers {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using Microsoft.IdentityModel.Tokens;
     using Models;
 
     [ApiController, Route("api/user"), Authorize]
@@ -40,17 +36,7 @@ namespace SaveSaviours.Controllers {
                 return StatusCode(500, $"wrongly configured signin; result is {result}");
             }
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(new SecurityTokenDescriptor {
-                SigningCredentials = new SigningCredentials(Settings.GetKey(), SecurityAlgorithms.HmacSha256Signature),
-                Subject = new ClaimsIdentity(new Claim[] {
-                    new Claim(ClaimTypes.Name, user.Email),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                }),
-                Expires = DateTime.UtcNow.AddDays(90),
-            });
-
-            return Ok(tokenHandler.WriteToken(token));
+            return Ok(Settings.GenerateToken(user));
         }
 
 
@@ -66,12 +52,18 @@ namespace SaveSaviours.Controllers {
 
 
         [HttpPost, Route("change-password")]
-        public async Task<ActionResult> ActionPostChangePassword() {
+        public async Task<ActionResult> ActionPostChangePassword(ChangePasswordModel model) {
+            var user = await GetUserAsync();
+            await UserManager.ChangePasswordAsync(user!, model.OldPassword, model.NewPassword);
             return Ok();
         }
 
+
         [HttpPost, Route("remove-profile")]
         public async Task<ActionResult> PostRemove() {
+            var user = await GetUserAsync();
+            Context.Users.Remove(user!);
+            await Context.SaveChangesAsync();
             return Ok();
         }
 

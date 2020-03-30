@@ -15,6 +15,7 @@ namespace SaveSaviours.Data {
         public DbSet<User> Users { get; private set; } = null!;
         public DbSet<Volunteer> Volunteers { get; private set; } = null!;
         public DbSet<Institution> Institutions { get; set; } = null!;
+        public DbSet<Tag> Tags { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
             optionsBuilder.UseSqlServer(_settings.Database);

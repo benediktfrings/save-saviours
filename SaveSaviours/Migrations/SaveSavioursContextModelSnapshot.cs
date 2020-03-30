@@ -3,12 +3,14 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SaveSaviours.Data;
 
 namespace SaveSaviours.Migrations {
     [DbContext(typeof(SaveSavioursContext))]
     partial class SaveSavioursContextModelSnapshot : ModelSnapshot {
         protected override void BuildModel(ModelBuilder modelBuilder) {
+#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
@@ -17,6 +19,28 @@ namespace SaveSaviours.Migrations {
             modelBuilder.Entity("SaveSaviours.Entities.Institution", b => {
                 b.Property<Guid>("UserId")
                     .HasColumnType("uniqueidentifier");
+
+                b.Property<string>("ContactName")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("PrimaryPhoneNumber")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("SecondaryPhoneNumber")
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<bool>("Vetted")
+                    .HasColumnType("bit");
+
+                b.Property<string>("ZipCode")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
 
                 b.HasKey("UserId");
 
@@ -35,7 +59,7 @@ namespace SaveSaviours.Migrations {
 
                 b.HasKey("Value");
 
-                b.ToTable("Tag");
+                b.ToTable("Tags");
             });
 
             modelBuilder.Entity("SaveSaviours.Entities.User", b => {
@@ -56,6 +80,12 @@ namespace SaveSaviours.Migrations {
                 b.Property<string>("PasswordHash")
                     .IsRequired()
                     .HasColumnType("nvarchar(max)");
+
+                b.Property<DateTime>("RegistrationDate")
+                    .HasColumnType("datetime2");
+
+                b.Property<DateTime?>("ValidationDate")
+                    .HasColumnType("datetime2");
 
                 b.HasKey("Id");
 
@@ -184,6 +214,7 @@ namespace SaveSaviours.Migrations {
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
+#pragma warning restore 612, 618
         }
     }
 }

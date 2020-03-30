@@ -1,18 +1,18 @@
-﻿namespace SaveSaviours.Migrations {
-    using System;
-    using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
+namespace SaveSaviours.Migrations {
     public partial class Initial : Migration {
         protected override void Up(MigrationBuilder migrationBuilder) {
             migrationBuilder.CreateTable(
-                name: "Tag",
+                name: "Tags",
                 columns: table => new {
                     Value = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Label = table.Column<string>(nullable: false)
                 },
                 constraints: table => {
-                    table.PrimaryKey("PK_Tag", x => x.Value);
+                    table.PrimaryKey("PK_Tags", x => x.Value);
                 });
 
             migrationBuilder.CreateTable(
@@ -22,7 +22,9 @@
                     Email = table.Column<string>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    LockoutUntil = table.Column<DateTimeOffset>(nullable: true)
+                    LockoutUntil = table.Column<DateTimeOffset>(nullable: true),
+                    RegistrationDate = table.Column<DateTime>(nullable: false),
+                    ValidationDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table => {
                     table.PrimaryKey("PK_Users", x => x.Id);
@@ -31,7 +33,13 @@
             migrationBuilder.CreateTable(
                 name: "Institutions",
                 columns: table => new {
-                    UserId = table.Column<Guid>(nullable: false)
+                    UserId = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    ContactName = table.Column<string>(nullable: false),
+                    ZipCode = table.Column<string>(nullable: false),
+                    PrimaryPhoneNumber = table.Column<string>(nullable: false),
+                    SecondaryPhoneNumber = table.Column<string>(nullable: true),
+                    Vetted = table.Column<bool>(nullable: false)
                 },
                 constraints: table => {
                     table.PrimaryKey("PK_Institutions", x => x.UserId);
@@ -111,9 +119,9 @@
                 constraints: table => {
                     table.PrimaryKey("PK_VolunteerTag", x => new { x.VolunteerId, x.TagValue });
                     table.ForeignKey(
-                        name: "FK_VolunteerTag_Tag_TagValue",
+                        name: "FK_VolunteerTag_Tags_TagValue",
                         column: x => x.TagValue,
-                        principalTable: "Tag",
+                        principalTable: "Tags",
                         principalColumn: "Value",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -149,7 +157,7 @@
                 name: "Institutions");
 
             migrationBuilder.DropTable(
-                name: "Tag");
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Volunteers");

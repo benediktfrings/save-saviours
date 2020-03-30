@@ -3,6 +3,7 @@ import { TextField, Button } from '@material-ui/core'
 import styles from 'styles/styles'
 import * as messages from 'messages/de.json'
 import { isValidEmail } from 'services'
+import Post from 'api/post'
 
 const Signin = ({ messageRegistrationButton }) => {
   const classes = styles()
@@ -19,13 +20,19 @@ const Signin = ({ messageRegistrationButton }) => {
   }
   const handleRegistration = (event) => {
     event.preventDefault()
+    console.log(name, password)
     const payload = {
-      name,
+      username: name,
       password,
     }
+    console.log(payload)
     if (isValidForm(payload)) {
       // send validated payload to backend
-      return (window.location = '/helperslist')
+      console.log(name, password)
+
+      Post('/user/authenticate', payload)
+      // (window.location = '/helperslist')
+      console.log(name, password)
     }
   }
   return (

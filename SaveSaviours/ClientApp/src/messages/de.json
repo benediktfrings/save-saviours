@@ -21,10 +21,9 @@
   "registrationpage.callToAction": "Registriere Dich jetzt und helfe mit dem Kollaps entgegen zu wirken!",
   "registrationpage.helper.name": "Name",
   "registrationpage.helper.email": "E-Mail",
-  "registrationpage.helper.mobile": "Handynummer",
+  "registrationpage.helper.phone": "Handynummer oder Festnetz",
   "registrationpage.helper.zip": "Postleitzahl",
   "registrationpage.helper.subtitle": "Ich bringe folgende Erfahrung mit:",
-  "registrationpage.helper.landline": "Festnetz",
   "registrationpage.helper.registrationButton": "Ja, ich helfe im Notfall mit!",
   "registrationpage.helper.institutionRegistrationButton": "Ich repräsentiere eine medizinische Einrichtung",
 
@@ -53,8 +52,7 @@
   "registrationpage.institution.callToAction": "Registrieren Sie Ihre medizinische Institution und aktivieren Sie lokale Helfer, die Ihnen in dieser Krise helfen wollen.",
   "registrationpage.institution.contactName": "Ansprechpartner",
   "registrationpage.institution.institutionName": "Name der Einrichtung",
-  "registrationpage.institution.landline": "Telefonnummer mit Durchwahl",
-  "registrationpage.institution.mobile": "Handynummer",
+  "registrationpage.institution.phone": "Festnetz mit Durchwahl oder Handynummer",
   "registrationpage.institution.email": "E-Mail",
   "registrationpage.institution.zip": "Postleitzahl",
   "registrationpage.institution.subtitle": "Wir suchen Helfer mit Erfahrung in:",
@@ -66,6 +64,9 @@
   "confirmationpage.friendstextBody": "Vielleicht kennst Du noch weitere Personen, die im Notfall mithelfen können...",
   "confirmationpage.friendsFacebook": "Teilen",
   "confirmationpage.friendsTwitter": "Tweeten",
+  "confirmationpage.institutions.headertextTitle": "Vielen Dank für die Registrierung Ihrer Einrichtung!",
+  "confirmationpage.institutions.headertextBody": "Im nächsten Schritt werden wir Ihre Registrierung überprüfen und freischalten. Dies ist Notwendig, um die persönlichen Daten der Helfer zu schützen. Sobald die Prüfung erfolgt ist, bekommen Sie eine Nachricht per E-Mail. Dann können Sie im Bedarfsfall Helfer in Ihrer Nähe finden und kontaktieren, die Ihrer Einrichtung unterstützen.",
+
   "bottomappbar.links": [
     { "name": "impressum", "label": "Impressum", "route": "/impressum" },
     { "name": "datenschutz", "label": "Datenschutz", "route": "/datasecurity" },
@@ -83,6 +84,9 @@
   "signinpage.button": "Anmelden",
 
   "vettingpage.header": "Zu überprüfende Anmeldungen",
-  
-  "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe"  
+  "vettingpage.vettingButton": "Verifizieren!",
+  "vettingpage.institution.timestamp": "Registrierung",
+  "vettingpage.institution.vetted": "Verifiziert",
+
+  "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe"
 }

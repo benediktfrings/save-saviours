@@ -1,9 +1,8 @@
 import React from 'react'
 import { Paper, Typography } from '@material-ui/core'
 import styles from 'styles/styles'
-import * as messages from 'messages/de.json'
 
-const Confirmation = () => {
+const Confirmation = ({ headertextTitle, headertextBody }) => {
   const classes = styles()
   return (
     <Paper square elevation={2} className={classes.landingPaper}>
@@ -12,10 +11,10 @@ const Confirmation = () => {
         component="h1"
         className={classes.registrationHeader}
       >
-        {messages['confirmationpage.headertextTitle']}
+        {headertextTitle}
       </Typography>
       <Typography className={classes.registrationHeader}>
-        {messages['confirmationpage.headertextBody']}
+        {headertextBody}
       </Typography>
     </Paper>
   )

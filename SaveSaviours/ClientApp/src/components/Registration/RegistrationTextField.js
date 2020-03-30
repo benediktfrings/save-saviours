@@ -9,10 +9,8 @@ const RegistrationTextField = ({
   email,
   setEmail,
   error,
-  mobile,
-  setMobile,
-  landline,
-  setLandline,
+  phone,
+  setPhone,
   zip,
   setZip,
 }) => {
@@ -42,20 +40,12 @@ const RegistrationTextField = ({
       <TextField
         className={classes.registrationTextfield}
         variant="outlined"
-        placeholder={messages['registrationpage.helper.mobile']}
-        label={messages['registrationpage.helper.mobile']}
-        onChange={(event) => setMobile(event.target.value)}
-        value={mobile}
-        error={error.mobile}
-      />
-      <TextField
-        className={classes.registrationTextfield}
-        variant="outlined"
-        placeholder={messages['registrationpage.helper.landline']}
-        label={messages['registrationpage.helper.landline']}
-        onChange={(event) => setLandline(event.target.value)}
-        value={landline}
-        error={error.landline}
+        placeholder={messages['registrationpage.helper.phone']}
+        label={messages['registrationpage.helper.phone']}
+        onChange={(event) => setPhone(event.target.value)}
+        value={phone}
+        required
+        error={error.phone}
       />
       <TextField
         className={classes.registrationTextfield}

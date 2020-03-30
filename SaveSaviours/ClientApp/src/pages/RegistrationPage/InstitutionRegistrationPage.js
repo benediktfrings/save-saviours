@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Divider } from '@material-ui/core'
 import styles from 'styles/styles'
 import { isValidEmail, isValidPhoneNumber, isValidZip } from 'services'
@@ -11,44 +11,44 @@ import * as messages from 'messages/de.json'
 
 const InstitutionRegistrationPage = () => {
   const classes = styles()
-  const [contactName, setContactName] = React.useState('')
-  const [institutionName, setInstitutionName] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [mobile, setMobile] = React.useState('')
-  const [landline, setLandline] = React.useState('')
-  const [zip, setZip] = React.useState('')
-  const [checked, setChecked] = React.useState({
-    none: false,
-    laboratory: false,
-    care: false,
-    ambulance: false,
-    coordination: false,
-    car: false,
-    office: false,
-    projectmanagement: false,
-    datasecurity: false,
-    service: false,
-    logistics: false,
-  })
-  const [error, setError] = React.useState({
+  const [contactName, setContactName] = useState('')
+  const [institutionName, setInstitutionName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [zip, setZip] = useState('')
+  const [datasecurity, setDatasecurity] = useState(false)
+  const [checked, setChecked] = useState([])
+  const [tags, setTags] = useState([
+    messages['registrationpage.select'][0].text,
+    messages['registrationpage.select'][1].text,
+    messages['registrationpage.select'][2].text,
+    messages['registrationpage.select'][3].text,
+    messages['registrationpage.select'][4].text,
+    messages['registrationpage.select'][5].text,
+    messages['registrationpage.select'][6].text,
+    messages['registrationpage.select'][7].text,
+    messages['registrationpage.select'][8].text,
+    messages['registrationpage.select'][9].text,
+  ])
+  const [error, setError] = useState({
     name: false,
     email: false,
-    mobile: false,
-    landline: false,
+    phone: false,
     zip: false,
   })
-  const isValidForm = ({
-    email, mobile, landline, zip,
-  }) => {
+  // useEffect(() => {
+  //   console.log(checked)
+  // })
+  const isValidForm = () => {
     setError({
-      ...error, mobile: false, landline: false, zip: false,
+      ...error, phone: false, zip: false,
     })
     if (!isValidEmail(email)) {
       setError({ ...error, email: true })
       return false
     }
-    if (!isValidPhoneNumber(mobile) && !isValidPhoneNumber(landline)) {
-      setError({ ...mobile, mobile: true, landline: true })
+    if (!isValidPhoneNumber(phone)) {
+      setError({ ...phone, phone: true })
       return false
     }
     if (!isValidZip(zip)) {
@@ -62,15 +62,15 @@ const InstitutionRegistrationPage = () => {
     const payload = {
       contactName,
       institutionName,
-      landline,
-      mobile,
+      phone,
       email,
       zip,
       experience: checked,
     }
     if (isValidForm(payload)) {
       // send validated payload to backend
-      return (window.location = '/confirmation')
+      console.log(payload)
+      window.location = '/institutionconfirmation'
     }
   }
   return (
@@ -87,21 +87,19 @@ const InstitutionRegistrationPage = () => {
             setInstitutionName={setInstitutionName}
             email={email}
             setEmail={setEmail}
-            mobile={mobile}
-            setMobile={setMobile}
-            landline={landline}
-            setLandline={setLandline}
+            phone={phone}
+            setPhone={setPhone}
             zip={zip}
             setZip={setZip}
             error={error}
           />
           <RegistrationExperience
-            checked={checked}
             setChecked={setChecked}
+            tags={tags}
             messageSubtitle={messages['registrationpage.institution.subtitle']}
           />
           <Divider className={classes.registrationDivider} />
-          <RegistrationOptIn checked={checked} setChecked={setChecked} />
+          <RegistrationOptIn datasecurity={datasecurity} setDatasecurity={setDatasecurity} />
           <RegistrationButton
             handleRegistration={handleRegistration}
             messageRegistrationButton={

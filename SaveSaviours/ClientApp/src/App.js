@@ -1,31 +1,32 @@
-import React from "react";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { Container } from "@material-ui/core";
+import React from 'react'
+import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { Container } from '@material-ui/core'
 
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import pages from "./pages/routes.json";
-import SigninPage from "./pages/SigninPage/SigninPage";
-import CockpitPage from "./pages/CockpitPage/CockpitPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import LandingPage from "./pages/LandingPage/LandingPage";
-import ConfirmationPage from "./pages/ConfirmationPage/ConfirmationPage";
-import FAQPage from "./pages/FAQPage/FAQPage";
-import AboutPage from "./pages/AboutPage/AboutPage";
-import ImpressumPage from "./pages/ImpressumPage/ImpressumPage";
-import DatasecurityPage from "./pages/DatasecurityPage/DatasecurityPage";
-import InstitutionRegistrationPage from "./pages/InstitutionRegistrationPage/InstitutionRegistrationPage";
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
+import pages from 'pages/routes.json'
+import SigninPage from 'pages/SigninPage/SigninPage'
+import CockpitPage from 'pages/CockpitPage/CockpitPage'
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage'
+import LandingPage from 'pages/LandingPage/LandingPage'
+import ConfirmationPage from 'pages/ConfirmationPage/ConfirmationPage'
+import FAQPage from 'pages/FAQPage/FAQPage'
+import AboutPage from 'pages/AboutPage/AboutPage'
+import ImpressumPage from 'pages/ImpressumPage/ImpressumPage'
+import DatasecurityPage from 'pages/DatasecurityPage/DatasecurityPage'
+import InstitutionRegistrationPage from 'pages/RegistrationPage/InstitutionRegistrationPage'
 
-import TopAppBar from "./components/TopAppBar/TopAppBar";
-import BottomAppBar from "./components/BottomAppBar/BottomAppBar";
-import styles from "./styles/styles";
-import theme from "./styles/theme";
-import HelperProfilePage from "./pages/HelperProfilePage/HelperProfilePage";
-import HelpersListPage from "./pages/HelpersListPage/HelpersListPage";
-import VettingPage from "./pages/VettingPage/VettingPage";
+import TopAppBar from 'components/TopAppBar/TopAppBar'
+import BottomAppBar from 'components/BottomAppBar/BottomAppBar'
+import styles from 'styles/styles'
+import theme from 'styles/theme'
+import HelperProfilePage from 'pages/HelperProfilePage/HelperProfilePage'
+import HelpersListPage from 'pages/HelpersListPage/HelpersListPage'
+import VettingPage from 'pages/VettingPage/VettingPage'
+import InstitutionConfirmationPage from 'pages/ConfirmationPage/InstitutionConfirmationPage'
 
 const App = () => {
-  const classes = styles();
+  const classes = styles()
   const routes = [
     { path: pages.root, component: LandingPage },
     { path: pages.signin, component: SigninPage },
@@ -39,8 +40,9 @@ const App = () => {
     { path: pages.institutions, component: InstitutionRegistrationPage },
     { path: pages.helperprofile, component: HelperProfilePage },
     { path: pages.helperslist, component: HelpersListPage },
-    { path: pages.vetting, component: VettingPage }
-  ];
+    { path: pages.vetting, component: VettingPage },
+    { path: pages.institutionconfirmation, component: InstitutionConfirmationPage },
+  ]
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -57,7 +59,7 @@ const App = () => {
         <BottomAppBar />
       </ThemeProvider>
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App

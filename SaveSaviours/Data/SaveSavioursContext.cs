@@ -16,6 +16,7 @@ namespace SaveSaviours.Data {
         public DbSet<Volunteer> Volunteers { get; private set; } = null!;
         public DbSet<Institution> Institutions { get; set; } = null!;
         public DbSet<Tag> Tags { get; set; } = null!;
+        public DbSet<ZipDistance> Distance { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
             optionsBuilder.UseSqlServer(_settings.Database);
@@ -66,6 +67,10 @@ namespace SaveSaviours.Data {
                     e.Property(t => t.Value).ValueGeneratedOnAdd();
 
                     e.HasMany(t => t.TaggedVolunteers).WithOne(t => t.Tag);
+                })
+                .Entity<ZipDistance>(e => {
+                    e.ToTable("Distance");
+                    e.HasKey(t => new { t.ZipCodeA, t.ZipCodeB });
                 })
                 ;
     }

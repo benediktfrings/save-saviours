@@ -1,4 +1,5 @@
 ﻿namespace SaveSaviours.Controllers {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -47,16 +48,15 @@
                 Experiences = experiences,
                 PrimaryPhoneNumber = model.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = model.SecondaryPhoneNumber,
-                ZipCode = model.ZipCode,
+                ZipCode = Int32.Parse(model.ZipCode),
                 IsActive = true,
             };
 
             await Context.SaveChangesAsync();
 
-            string token = Settings.GenerateToken(user, 2);
-            string parameters = $"access-token={token}";
-
-            return Ok(token);
+            string token = Settings.GenerateToken(user);
+            // better enforce pasword and send email with token for validation
+            return Ok(model.Password == null ? password : token);
         }
 
 
@@ -72,7 +72,7 @@
             user!.Volunteer!.Name = model.Name;
             user!.Volunteer!.PrimaryPhoneNumber = model.PrimaryPhoneNumber;
             user!.Volunteer!.SecondaryPhoneNumber = model.SecondaryPhoneNumber;
-            user!.Volunteer!.ZipCode = model.ZipCode;
+            user!.Volunteer!.ZipCode = Int32.Parse(model.ZipCode);
             user!.Volunteer!.IsActive = model.IsActive;
 
             var tags = await Context.Tags.ToDictionaryAsync(t => t.Label, t => t.Value);

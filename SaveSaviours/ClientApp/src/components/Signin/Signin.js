@@ -7,12 +7,13 @@ import Post from 'api/post'
 
 const Signin = ({ messageRegistrationButton }) => {
   const classes = styles()
-  const [name, setName] = React.useState('')
+  const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [error, setError] = React.useState('')
-  const isValidForm = ({ name, password }) => {
+
+  const isValidForm = () => {
     setError({ ...error, name: false, password: false })
-    if (!isValidEmail(name)) {
+    if (!isValidEmail(email)) {
       setError({ ...error, name: true })
       return false
     }
@@ -20,19 +21,15 @@ const Signin = ({ messageRegistrationButton }) => {
   }
   const handleRegistration = (event) => {
     event.preventDefault()
-    console.log(name, password)
+    console.log(email, password)
     const payload = {
-      username: name,
+      username: email,
       password,
     }
-    console.log(payload)
-    if (isValidForm(payload)) {
-      // send validated payload to backend
-      console.log(name, password)
 
+    if (isValidForm(payload)) {
       Post('/user/authenticate', payload)
       // (window.location = '/helperslist')
-      console.log(name, password)
     }
   }
   return (
@@ -40,17 +37,17 @@ const Signin = ({ messageRegistrationButton }) => {
       <TextField
         className={classes.registrationTextfield}
         variant="outlined"
-        placeholder={messages['registrationpage.helper.name']}
-        label={messages['registrationpage.helper.name']}
-        onChange={(event) => setName(event.target.value)}
-        value={name}
+        placeholder={messages['signinpage.name']}
+        label={messages['signinpage.name']}
+        onChange={(event) => setEmail(event.target.value)}
+        value={email}
         required
       />
       <TextField
         className={classes.registrationTextfield}
         variant="outlined"
-        placeholder={messages['registrationpage.helper.email']}
-        label={messages['registrationpage.helper.email']}
+        placeholder={messages['signinpage.password']}
+        label={messages['signinpage.password']}
         onChange={(event) => setPassword(event.target.value)}
         value={password}
         required

@@ -1,22 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Divider } from '@material-ui/core'
 import styles from 'styles/styles'
-import { isValidEmail, isValidPhoneNumber, isValidZip } from 'services'
+import { isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword } from 'services'
 import RegistrationTextField from 'components/Registration/RegistrationTextField'
 import RegistrationCallToAction from 'components/Registration/RegistrationCallToAction'
 import RegistrationExperience from 'components/Registration/RegistrationExperience'
 import RegistrationOptIn from 'components/Registration/RegistrationOptIn'
 import RegistrationButton from 'components/Registration/RegistrationButton'
 import * as messages from 'messages/de.json'
+import Post from 'api/post'
 
 const RegistrationPage = () => {
   const classes = styles()
+
   const [name, setName] = React.useState('')
   const [email, setEmail] = React.useState('')
   const [phone, setPhone] = React.useState('')
   const [zip, setZip] = React.useState('')
   const [datasecurity, setDatasecurity] = useState(false)
+  const [password, setPassword] = useState('')
   const [checked, setChecked] = React.useState([])
+
   const [tags, setTags] = useState([
     messages['registrationpage.select'][0].text,
     messages['registrationpage.select'][1].text,
@@ -34,6 +38,7 @@ const RegistrationPage = () => {
     email: false,
     phone: false,
     zip: false,
+    password:false,
   })
   const isValidForm = () => {
     setError({
@@ -51,22 +56,55 @@ const RegistrationPage = () => {
       setError({ ...error, zip: true })
       return false
     }
+    if (!isValidPassword(password)) {
+      setError({ ...error, password: true })
+      return false
+    }
     return true
   }
+  
   const handleRegistration = (event) => {
-    event.preventDefault()
-    const payload = {
-      name,
+          event.preventDefault()
+    let payload = {
       email,
-      phone,
-      zip,
+      name,
+      zipCode: zip,
+      primaryPhoneNumber: phone,
+      secondaryPhoneNumber: '',
+      bio:'',
       experience: checked,
+      password: password
     }
+    
     if (isValidForm(payload)) {
-      // send validated payload to backend
-      window.location = '/confirmation'
+      Post('/volunteer/register', payload).then((response)=>{
+       // response =200 ? window.location = '/confirmation' : console.log("something went wrong, no 200")
+       response =200 ? console.log(response) : console.log("something went wrong, no 200 "+response)
+      }).catch((e)=>{
+        console.log(e)
+      })}
     }
-  }
+  
+    //testing the request to api
+    // useEffect(()=>{
+    //   console.log('sent request')
+    //   Post('/volunteer/register', {
+      
+    //     "email": "emailwithout",
+    //     "name": "newname",
+    //     "zipCode": "string",
+    //     "primaryPhoneNumber": "string",
+    //     "secondaryPhoneNumber": "string",
+    //     "bio": "string",
+    //     "experiences": [
+    //       "string"
+    //     ],
+    //     "password": "string"
+      
+    // }).then((response)=> console.log(response))
+
+    // },[])
+  
   return (
     <Grid container>
       <Grid item className={classes.registrationGrid}>
@@ -81,6 +119,8 @@ const RegistrationPage = () => {
             setPhone={setPhone}
             zip={zip}
             setZip={setZip}
+            password={password}
+            setPassword={setPassword}
             error={error}
           />
           <RegistrationExperience

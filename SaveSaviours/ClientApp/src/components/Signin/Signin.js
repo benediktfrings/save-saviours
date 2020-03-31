@@ -21,7 +21,6 @@ const Signin = ({ messageRegistrationButton }) => {
   }
   const handleRegistration = (event) => {
     event.preventDefault()
-    console.log(email, password)
     const payload = {
       username: email,
       password,
@@ -29,9 +28,20 @@ const Signin = ({ messageRegistrationButton }) => {
 
     if (isValidForm(payload)) {
       Post('/user/authenticate', payload)
-      // (window.location = '/helperslist')
+        .then((response) => {
+          if (response.ok) {
+            return response.text()
+          } throw new Error('something went wrong durring signin from backend')
+        })
+        .then((response) => {
+          window.localStorage.setItem('access-token', response)
+          window.location = '/'
+        })
+        .catch((e) => console.log(e))
     }
   }
+
+
   return (
     <form onSubmit={(event) => handleRegistration(event)}>
       <TextField

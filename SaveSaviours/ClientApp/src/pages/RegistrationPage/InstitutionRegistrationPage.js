@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Divider } from '@material-ui/core'
 import styles from 'styles/styles'
-import { isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword } from 'services'
+import {
+  isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword,
+} from 'services'
 import RegistrationCallToAction from 'components/Registration/RegistrationCallToAction'
-import RegistrationExperience from 'components/Registration/RegistrationExperience'
 import RegistrationOptIn from 'components/Registration/RegistrationOptIn'
 import RegistrationButton from 'components/Registration/RegistrationButton'
 import InstitutionRegistrationTextField from 'components/Registration/InstitutionRegistrationTextField'
 import * as messages from 'messages/de.json'
+import Post from 'api/post'
+
 
 const InstitutionRegistrationPage = () => {
   const classes = styles()
@@ -20,26 +23,12 @@ const InstitutionRegistrationPage = () => {
   const [datasecurity, setDatasecurity] = useState(false)
   const [password, setPassword] = useState('')
 
-  const [checked, setChecked] = useState([])
-
-  const [tags, setTags] = useState([
-    messages['registrationpage.select'][0].text,
-    messages['registrationpage.select'][1].text,
-    messages['registrationpage.select'][2].text,
-    messages['registrationpage.select'][3].text,
-    messages['registrationpage.select'][4].text,
-    messages['registrationpage.select'][5].text,
-    messages['registrationpage.select'][6].text,
-    messages['registrationpage.select'][7].text,
-    messages['registrationpage.select'][8].text,
-    messages['registrationpage.select'][9].text,
-  ])
   const [error, setError] = useState({
     name: false,
     email: false,
     phone: false,
     zip: false,
-    password:false,
+    password: false,
   })
   const isValidForm = () => {
     setError({
@@ -67,16 +56,24 @@ const InstitutionRegistrationPage = () => {
     event.preventDefault()
     const payload = {
       contactName,
-      institutionName,
-      phone,
+      name: institutionName,
+      primaryPhoneNumber: phone,
+      secondaryPhoneNumber: '',
       email,
-      zip,
-      experience: checked,
+      zipCode: zip,
+      password,
     }
     if (isValidForm(payload)) {
-      // send validated payload to backend
-      console.log(payload)
-      window.location = '/institutionconfirmation'
+      Post('/institution/register', payload)
+        .then((response) => {
+          if (response.ok) {
+            return response.text()
+          } throw new Error('something went wrong durring registration from backend')
+        })
+        .then((response) => {
+          window.localStorage.setItem('access-token', response)
+          window.location = '/institutionconfirmation'
+        }).catch((e) => console.log(e))
     }
   }
   return (
@@ -100,11 +97,6 @@ const InstitutionRegistrationPage = () => {
             password={password}
             setPassword={setPassword}
             error={error}
-          />
-          <RegistrationExperience
-            setChecked={setChecked}
-            tags={tags}
-            messageSubtitle={messages['registrationpage.institution.subtitle']}
           />
           <Divider className={classes.registrationDivider} />
           <RegistrationOptIn datasecurity={datasecurity} setDatasecurity={setDatasecurity} />

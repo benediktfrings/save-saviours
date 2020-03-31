@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Divider } from '@material-ui/core'
 import styles from 'styles/styles'
-import { isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword } from 'services'
+import {
+  isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword,
+} from 'services'
 import RegistrationTextField from 'components/Registration/RegistrationTextField'
 import RegistrationCallToAction from 'components/Registration/RegistrationCallToAction'
 import RegistrationExperience from 'components/Registration/RegistrationExperience'
@@ -38,7 +40,7 @@ const RegistrationPage = () => {
     email: false,
     phone: false,
     zip: false,
-    password:false,
+    password: false,
   })
   const isValidForm = () => {
     setError({
@@ -62,49 +64,33 @@ const RegistrationPage = () => {
     }
     return true
   }
-  
+
   const handleRegistration = (event) => {
-          event.preventDefault()
-    let payload = {
+    event.preventDefault()
+    const payload = {
       email,
       name,
       zipCode: zip,
       primaryPhoneNumber: phone,
       secondaryPhoneNumber: '',
-      bio:'',
+      bio: '',
       experience: checked,
-      password: password
+      password,
     }
-    
     if (isValidForm(payload)) {
-      Post('/volunteer/register', payload).then((response)=>{
-       // response =200 ? window.location = '/confirmation' : console.log("something went wrong, no 200")
-       response =200 ? console.log(response) : console.log("something went wrong, no 200 "+response)
-      }).catch((e)=>{
-        console.log(e)
-      })}
+      Post('/volunteer/register', payload)
+        .then((response) => {
+          if (response.ok) {
+            return response.text()
+          } throw new Error('something went wrong durring registration from backend')
+        })
+        .then((response) => {
+          window.localStorage.setItem('access-token', response)
+          window.location = '/confirmation'
+        })
+        .catch((e) => console.log(e))
     }
-  
-    //testing the request to api
-    // useEffect(()=>{
-    //   console.log('sent request')
-    //   Post('/volunteer/register', {
-      
-    //     "email": "emailwithout",
-    //     "name": "newname",
-    //     "zipCode": "string",
-    //     "primaryPhoneNumber": "string",
-    //     "secondaryPhoneNumber": "string",
-    //     "bio": "string",
-    //     "experiences": [
-    //       "string"
-    //     ],
-    //     "password": "string"
-      
-    // }).then((response)=> console.log(response))
-
-    // },[])
-  
+  }
   return (
     <Grid container>
       <Grid item className={classes.registrationGrid}>

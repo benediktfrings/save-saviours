@@ -77,17 +77,9 @@ const RegistrationPage = () => {
     }
     
     if (isValidForm(payload)) {
-      payload = JSON.stringify(payload)
       Post('/volunteer/register', payload).then((response)=>{
        // response =200 ? window.location = '/confirmation' : console.log("something went wrong, no 200")
        response =200 ? console.log(response) : console.log("something went wrong, no 200 "+response)
-      }).catch((e)=>{
-        console.log(e)
-      })
-      //payload = JSON.stringify(payload)
-      Post('/volunteer/register', payload).then((response)=>{
-       // response =200 ? window.location = '/confirmation' : console.log("something went wrong, no 200")
-       response =200 ? console.log(response) : console.log("without JSON "+response)
       }).catch((e)=>{
         console.log(e)
       })

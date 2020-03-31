@@ -10,3 +10,4 @@ obj/
 .vscode/
 node_modules/
 build/
+SaveSaviours/ClientApp/.env.local

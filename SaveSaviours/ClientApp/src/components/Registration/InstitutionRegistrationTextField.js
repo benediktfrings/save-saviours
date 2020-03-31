@@ -50,17 +50,6 @@ const RegistrationTextField = ({
         required
         error={error.contactName}
       />
-
-      <TextField
-        className={classes.registrationTextfield}
-        variant="outlined"
-        placeholder={messages['registrationpage.institution.email']}
-        label={messages['registrationpage.institution.email']}
-        onChange={(event) => setEmail(event.target.value)}
-        value={email}
-        required
-        error={error.email}
-      />
       <TextField
         className={classes.registrationTextfield}
         variant="outlined"
@@ -80,6 +69,16 @@ const RegistrationTextField = ({
         value={zip}
         required
         error={error.zip}
+      />
+      <TextField
+        className={classes.registrationTextfield}
+        variant="outlined"
+        placeholder={messages['registrationpage.institution.email']}
+        label={messages['registrationpage.institution.email']}
+        onChange={(event) => setEmail(event.target.value)}
+        value={email}
+        required
+        error={error.email}
       />
       <TextField
         className={classes.registrationTextfield}

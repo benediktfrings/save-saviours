@@ -22,15 +22,14 @@ const Signin = ({ messageRegistrationButton }) => {
   const handleRegistration = (event) => {
     event.preventDefault()
     console.log(email, password)
-    let payload = {
-        username: email,
-        password:password,
+    const payload = {
+      username: email,
+      password,
     }
-    
+
     if (isValidForm(payload)) {
       Post('/user/authenticate', payload)
       // (window.location = '/helperslist')
-      console.log(JSON.stringify(payload))
     }
   }
   return (

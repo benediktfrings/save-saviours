@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Grid, Divider } from '@material-ui/core'
 import styles from 'styles/styles'
 import { isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword } from 'services'
@@ -64,7 +64,7 @@ const RegistrationPage = () => {
   }
   
   const handleRegistration = (event) => {
-    event.preventDefault()
+          event.preventDefault()
     let payload = {
       email,
       name,
@@ -82,9 +82,29 @@ const RegistrationPage = () => {
        response =200 ? console.log(response) : console.log("something went wrong, no 200 "+response)
       }).catch((e)=>{
         console.log(e)
-      })
+      })}
     }
-  }
+  
+    //testing the request to api
+    // useEffect(()=>{
+    //   console.log('sent request')
+    //   Post('/volunteer/register', {
+      
+    //     "email": "emailwithout",
+    //     "name": "newname",
+    //     "zipCode": "string",
+    //     "primaryPhoneNumber": "string",
+    //     "secondaryPhoneNumber": "string",
+    //     "bio": "string",
+    //     "experiences": [
+    //       "string"
+    //     ],
+    //     "password": "string"
+      
+    // }).then((response)=> console.log(response))
+
+    // },[])
+  
   return (
     <Grid container>
       <Grid item className={classes.registrationGrid}>

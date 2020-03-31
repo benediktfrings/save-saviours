@@ -23,6 +23,7 @@
   "registrationpage.helper.email": "E-Mail",
   "registrationpage.helper.phone": "Handynummer oder Festnetz",
   "registrationpage.helper.zip": "Postleitzahl",
+  "registrationpage.helper.password": "Passwort",
   "registrationpage.helper.subtitle": "Ich bringe folgende Erfahrung mit:",
   "registrationpage.helper.registrationButton": "Ja, ich helfe im Notfall mit!",
   "registrationpage.helper.institutionRegistrationButton": "Ich repräsentiere eine medizinische Einrichtung",

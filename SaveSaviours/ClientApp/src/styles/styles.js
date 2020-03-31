@@ -75,6 +75,10 @@ export default () => {
       width: '100%',
       textAlign: 'left',
     },
+    registrationAccountCircle:{
+      cursor:'pointer',
+      marginRight:10
+    },
     registrationTaskText: {
       marginTop: 20,
       paddingBottom: 20,

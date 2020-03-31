@@ -30,7 +30,7 @@ const Signin = ({ messageRegistrationButton }) => {
     if (isValidForm(payload)) {
       Post('/user/authenticate', payload)
       // (window.location = '/helperslist')
-      console.log(payload)
+      console.log(JSON.stringify(payload))
     }
   }
   return (

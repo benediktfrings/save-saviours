@@ -22,6 +22,8 @@ namespace SaveSaviours.Entities {
         public bool Vetted { get; set; }
 
 
+        public Zip Zip { get; set; } = null!;
+
         public ICollection<VolunteerLink> LinkedVolunteers { get; set; } = null!;
 
     }

@@ -22,6 +22,8 @@ namespace SaveSaviours.Entities {
         public bool IsActive { get; set; }
 
 
+        public Zip Zip { get; set; } = null!;
+
         public ICollection<VolunteerTag> Experiences { get; set; } = null!;
 
         public ICollection<VolunteerLink> LinkedInstitutions { get; set; } = null!;

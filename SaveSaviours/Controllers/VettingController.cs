@@ -24,7 +24,7 @@ namespace SaveSaviours.Controllers {
 
 
         [HttpGet]
-        public async Task<ActionResult<InstitutionModel[]>> ActionGetPending() {
+        public async Task<ActionResult<InstitutionDetailsMdoel[]>> ActionGetPending() {
             var pending = await Context.Institutions
                 .Include(i => i.User)
                 .Where(i => !i.Vetted)

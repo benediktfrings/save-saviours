@@ -65,7 +65,7 @@ namespace SaveSaviours {
                 cfg.Events = new JwtBearerEvents {
                     OnTokenValidated = async ctx => {
                         var manager = ctx.HttpContext.RequestServices.GetRequiredService<UserManager<User>>();
-                        var user = await manager.FindByNameAsync(ctx.Principal.Identity.Name);
+                        var user = await manager.FindByIdAsync(ctx.Principal.Identity.Name);
                         if (user == null) {
                             ctx.Fail("Unauthorized");
                             return;

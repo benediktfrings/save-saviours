@@ -34,6 +34,7 @@ namespace SaveSaviours.Controllers {
         public async Task<ActionResult<IEnumerable<VolunteerModel>>> GetVolunteers(string tags) {
             var user = await GetUserAsync();
             if (!user!.Institution!.Vetted) return Unauthorized("error.not-vetted");
+            int zip = user.Institution.ZipCode;
 
             int[] values = tags
                 .Split(',', StringSplitOptions.RemoveEmptyEntries)
@@ -41,6 +42,7 @@ namespace SaveSaviours.Controllers {
                 .ToArray();
             var volunteers = await Context.Volunteers
                 .Include(v => v.Experiences)
+                .Join(Context.ZipCodesInDistance(zip, 50), v => v.ZipCode, z => z.Code, (v, z) => v)
                 .Where(v => v.IsActive && v.Experiences.Any(e => values.Contains(e.TagValue)))
                 .ToArrayAsync();
             return Ok(volunteers.Select(volunteer => new VolunteerModel {

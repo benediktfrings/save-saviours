@@ -40,7 +40,8 @@ namespace SaveSaviours.Data {
             var id = Guid.Parse(userId);
             return await Context.Users
                 .Include(u => u.UserRoles)
-                .Include(u => u.Volunteer)
+                .Include(u => u.Volunteer).ThenInclude(v => v!.LinkedInstitutions).ThenInclude(i => i.Institution)
+                .Include(u => u.Volunteer).ThenInclude(v => v!.Experiences).ThenInclude(e => e.Tag)
                 .Include(u => u.Institution)
                 .SingleOrDefaultAsync(u => u.Id == id, cancellationToken);
         }
@@ -48,7 +49,8 @@ namespace SaveSaviours.Data {
         async Task<User> IUserStore<User>.FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken) {
             var user = await Context.Users
                 .Include(u => u.UserRoles)
-                .Include(u => u.Volunteer)
+                .Include(u => u.Volunteer).ThenInclude(v => v!.LinkedInstitutions).ThenInclude(i => i.Institution)
+                .Include(u => u.Volunteer).ThenInclude(v => v!.Experiences).ThenInclude(e => e.Tag)
                 .Include(u => u.Institution)
                 .SingleOrDefaultAsync(u => u.Email == normalizedUserName, cancellationToken);
             return user!;
@@ -157,7 +159,8 @@ namespace SaveSaviours.Data {
         async Task<IList<User>> IUserRoleStore<User>.GetUsersInRoleAsync(string roleName, CancellationToken cancellationToken) {
             IList<User> users = await Context.Users
                 .Include(u => u.UserRoles)
-                .Include(u => u.Volunteer)
+                .Include(u => u.Volunteer).ThenInclude(v => v!.LinkedInstitutions).ThenInclude(i => i.Institution)
+                .Include(u => u.Volunteer).ThenInclude(v => v!.Experiences).ThenInclude(e => e.Tag)
                 .Include(u => u.Institution)
                 .Where(u => u.Roles.Any(r => r.Id == roleName)).ToListAsync(cancellationToken);
             return users;

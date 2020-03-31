@@ -1,4 +1,4 @@
-﻿namespace SaveSaviours {
+﻿namespace SaveSaviours.Models {
     public class TagModel {
         public TagModel(int value, string label) {
             Value = value;

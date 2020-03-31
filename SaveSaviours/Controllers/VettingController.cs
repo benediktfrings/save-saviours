@@ -36,7 +36,7 @@ namespace SaveSaviours.Controllers {
                 Email = i.User.Email,
                 PrimaryPhoneNumber = i.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = i.SecondaryPhoneNumber,
-                ZipCode = i.ZipCode,
+                ZipCode = i.ZipCode.ToString("00000"),
             }));
         }
 

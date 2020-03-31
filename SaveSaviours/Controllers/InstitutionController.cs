@@ -32,13 +32,16 @@ namespace SaveSaviours.Controllers {
 
         [HttpGet, Route("volunteers/{tags}")]
         public async Task<ActionResult<IEnumerable<VolunteerModel>>> GetVolunteers(string tags) {
+            var user = await GetUserAsync();
+            if (!user!.Institution!.Vetted) return Unauthorized("error.not-vetted");
+
             int[] values = tags
                 .Split(',', StringSplitOptions.RemoveEmptyEntries)
                 .Select(Int32.Parse)
                 .ToArray();
             var volunteers = await Context.Volunteers
                 .Include(v => v.Experiences)
-                .Where(v => v.Experiences.Any(e => values.Contains(e.TagValue)))
+                .Where(v => v.IsActive && v.Experiences.Any(e => values.Contains(e.TagValue)))
                 .ToArrayAsync();
             return Ok(volunteers.Select(volunteer => new VolunteerModel {
                 Id = volunteer.UserId,
@@ -50,6 +53,9 @@ namespace SaveSaviours.Controllers {
 
         [HttpGet, Route("detail/{id:guid}")]
         public async Task<ActionResult<VolunteerDetailsModel>> GetVolunteerDetail(Guid id) {
+            var user = await GetUserAsync();
+            if (!user!.Institution!.Vetted) return Unauthorized("error.not-vetted");
+
             var volunteer = await Context.Volunteers
                 .Include(v => v.LinkedInstitutions)
                 .Include(v => v.Experiences)
@@ -70,7 +76,7 @@ namespace SaveSaviours.Controllers {
                 Email = volunteer.User.Email,
                 PrimaryPhoneNumber = volunteer.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = volunteer.SecondaryPhoneNumber,
-                ZipCode = volunteer.ZipCode,
+                ZipCode = volunteer.ZipCode.ToString("00000"),
             });
         }
 
@@ -86,13 +92,14 @@ namespace SaveSaviours.Controllers {
                 ContactName = model.ContactName,
                 PrimaryPhoneNumber = model.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = model.SecondaryPhoneNumber,
-                ZipCode = model.ZipCode,
+                ZipCode = Int32.Parse(model.ZipCode),
             };
 
             await Context.SaveChangesAsync();
 
-            string token = Settings.GenerateToken(user, 2);
-            string parameters = $"access-token={token}";
+            string token = Settings.GenerateToken(user);
+
+            //string parameters = $"access-token={token}";
             //await _messenger.SendAsync(user, "workshop.register", new {
             //    user.Participant.FirstName,
             //    user.Participant.LastName,
@@ -103,7 +110,22 @@ namespace SaveSaviours.Controllers {
             //    AcceptLink = Link($"{_settings.Pages.AcceptValidation}?{parameters}"),
             //});
 
-            return Ok(token);
+            // better enforce pasword and send email with token for validation
+            return Ok(model.Password == null ? password : token);
+        }
+
+
+        [HttpPost, Route("update")]
+        public async Task<ActionResult<UserModel>> PostUpdate(InstitutionProfileModel model) {
+            var user = await GetUserAsync();
+            user!.Institution!.Name = model.Name;
+            user!.Institution!.ContactName = model.ContactName;
+            user!.Institution!.PrimaryPhoneNumber = model.PrimaryPhoneNumber;
+            user!.Institution!.SecondaryPhoneNumber = model.SecondaryPhoneNumber;
+            user!.Institution!.ZipCode = Int32.Parse(model.ZipCode);
+
+            await Context.SaveChangesAsync();
+            return Ok();
         }
 
     }

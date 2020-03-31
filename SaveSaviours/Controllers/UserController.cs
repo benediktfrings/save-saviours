@@ -26,6 +26,9 @@ namespace SaveSaviours.Controllers {
         [HttpPost, Route("authenticate"), AllowAnonymous]
         public async Task<ActionResult<string>> Token([Required]CredentialsModel model) {
             var user = await UserManager.FindByNameAsync(model.Username);
+            if (user == null) {
+                return StatusCode(401, new { msg = "auth.error.user-or-pass-mismatch" });
+            }
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, true);
             if (!result.Succeeded) {

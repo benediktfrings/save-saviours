@@ -3,12 +3,14 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using SaveSaviours.Data;
 
 namespace SaveSaviours.Migrations {
     [DbContext(typeof(SaveSavioursContext))]
-    partial class SaveSavioursContextModelSnapshot : ModelSnapshot {
-        protected override void BuildModel(ModelBuilder modelBuilder) {
+    [Migration("20200331153107_GeoCode")]
+    partial class GeoCode {
+        protected override void BuildTargetModel(ModelBuilder modelBuilder) {
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)

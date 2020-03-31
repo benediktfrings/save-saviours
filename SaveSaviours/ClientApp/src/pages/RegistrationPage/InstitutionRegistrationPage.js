@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Grid, Divider } from '@material-ui/core'
 import styles from 'styles/styles'
-import { isValidEmail, isValidPhoneNumber, isValidZip } from 'services'
+import { isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword } from 'services'
 import RegistrationCallToAction from 'components/Registration/RegistrationCallToAction'
 import RegistrationExperience from 'components/Registration/RegistrationExperience'
 import RegistrationOptIn from 'components/Registration/RegistrationOptIn'
@@ -11,13 +11,17 @@ import * as messages from 'messages/de.json'
 
 const InstitutionRegistrationPage = () => {
   const classes = styles()
+
   const [contactName, setContactName] = useState('')
   const [institutionName, setInstitutionName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [zip, setZip] = useState('')
   const [datasecurity, setDatasecurity] = useState(false)
+  const [password, setPassword] = useState('')
+
   const [checked, setChecked] = useState([])
+
   const [tags, setTags] = useState([
     messages['registrationpage.select'][0].text,
     messages['registrationpage.select'][1].text,
@@ -35,10 +39,8 @@ const InstitutionRegistrationPage = () => {
     email: false,
     phone: false,
     zip: false,
+    password:false,
   })
-  // useEffect(() => {
-  //   console.log(checked)
-  // })
   const isValidForm = () => {
     setError({
       ...error, phone: false, zip: false,
@@ -53,6 +55,10 @@ const InstitutionRegistrationPage = () => {
     }
     if (!isValidZip(zip)) {
       setError({ ...error, zip: true })
+      return false
+    }
+    if (!isValidPassword(password)) {
+      setError({ ...error, password: true })
       return false
     }
     return true
@@ -91,6 +97,8 @@ const InstitutionRegistrationPage = () => {
             setPhone={setPhone}
             zip={zip}
             setZip={setZip}
+            password={password}
+            setPassword={setPassword}
             error={error}
           />
           <RegistrationExperience

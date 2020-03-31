@@ -21,6 +21,12 @@ export const isValidZip = (zip) => {
   }
   return false
 }
+export const isValidPassword = (password) => {
+  if (password !== '') {
+    return password.length > 5 ? true : false
+  }
+  return false
+}
 
 const isEmpty = (prop) => prop === null || prop === undefined || prop === ''
 

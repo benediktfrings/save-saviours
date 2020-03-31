@@ -1,3 +1,3 @@
 export {
-  isValidEmail, isValidPhoneNumber, isValidZip,
+  isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword
 } from './validation'

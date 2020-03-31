@@ -9,7 +9,7 @@ export default (path, method, data = undefined) => {
       'Content-Type': 'application/json',
       ...(auth ? { Authorization: `Bearer ${auth}` } : {}),
     },
-    mode: 'cors',
+   // mode: 'cors',
     body: data !== undefined ? JSON.stringify(data) : undefined,
   })
 }

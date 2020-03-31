@@ -3,7 +3,7 @@
 export default (path, method, data = undefined) => {
   const auth = window.localStorage.getItem('access-token')
 
-  return fetch(`https://savesaviours.azurewebsites.net/api${path}`, {
+  return fetch(path, {
     method,
     headers: {
       'Content-Type': 'application/json',

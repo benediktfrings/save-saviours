@@ -17,8 +17,8 @@ namespace SaveSaviours.Data {
         public DbSet<Institution> Institutions { get; set; } = null!;
         public DbSet<Tag> Tags { get; set; } = null!;
 
-        public IQueryable<Zip> ZipCodesInDistance(int code, float radius) =>
-            Set<Zip>().FromSqlRaw("SELECT * FROM ZipCodesInDistance({0}, {1})", code, radius);
+        public IQueryable<ZipDistance> ZipCodesInDistance(int code) =>
+            Set<ZipDistance>().FromSqlRaw("SELECT * FROM ZipCodesInDistance({0}, {1})", code, _settings.ZipDistance);
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
             optionsBuilder.UseSqlServer(_settings.Database);
@@ -75,6 +75,7 @@ namespace SaveSaviours.Data {
                 .Entity<Zip>(e => {
                     e.HasKey(t => t.Code);
                 })
+                .Entity<ZipDistance>().HasNoKey()
                 ;
     }
 }

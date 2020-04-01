@@ -35,20 +35,21 @@ namespace SaveSaviours.Controllers {
             var user = await GetUserAsync();
             if (!user!.Institution!.Vetted) return Unauthorized("error.not-vetted");
             int zip = user.Institution.ZipCode;
-
             int[] values = tags
                 .Split(',', StringSplitOptions.RemoveEmptyEntries)
                 .Select(Int32.Parse)
                 .ToArray();
-            var volunteers = await Context.Volunteers
+            var result = await Context.Volunteers
                 .Include(v => v.Experiences)
-                .Join(Context.ZipCodesInDistance(zip, 50), v => v.ZipCode, z => z.Code, (v, z) => v)
-                .Where(v => v.IsActive && v.Experiences.Any(e => values.Contains(e.TagValue)))
+                .Join(Context.ZipCodesInDistance(zip, 50), v => v.ZipCode, z => z.Code, (v, z) => new { v, z })
+                .Where(x => x.v.IsActive && x.v.Experiences.Any(e => values.Contains(e.TagValue)))
+                .OrderBy(x => x.z.Distance)
                 .ToArrayAsync();
-            return Ok(volunteers.Select(volunteer => new VolunteerModel {
-                Id = volunteer.UserId,
-                Bio = volunteer.Bio,
-                Tags = volunteer.Experiences.Select(e => e.TagValue),
+            return Ok(result.Select(x => new VolunteerModel {
+                Id = x.v.UserId,
+                Bio = x.v.Bio,
+                Distance = x.z.Distance,
+                Tags = x.v.Experiences.Select(e => e.TagValue),
             }));
         }
 

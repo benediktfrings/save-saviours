@@ -24,12 +24,12 @@ namespace SaveSaviours.Controllers {
 
 
         [HttpGet]
-        public async Task<ActionResult<InstitutionDetailsMdoel[]>> ActionGetPending() {
+        public async Task<ActionResult<InstitutionDetailsModel[]>> ActionGetPending() {
             var pending = await Context.Institutions
                 .Include(i => i.User)
                 .Where(i => !i.Vetted)
                 .ToArrayAsync();
-            return Ok(pending.Select(i => new InstitutionDetailsMdoel {
+            return Ok(pending.Select(i => new InstitutionDetailsModel {
                 Id = i.UserId,
                 Name = i.Name,
                 ContactName = i.ContactName,

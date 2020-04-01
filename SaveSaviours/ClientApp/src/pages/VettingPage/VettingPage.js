@@ -53,7 +53,6 @@ const VettingPage = () => {
 
   const handleButtonClick = (event) => {
     event.preventDefault()
-    // post 'vetted' object [{email<text> : verified<bool>}]  to the backend and get a new list with all indeterminate institutions
     const rejected = []
     const rejectedPayload = []
     const accepted = []

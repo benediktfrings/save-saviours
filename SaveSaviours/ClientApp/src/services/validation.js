@@ -23,7 +23,14 @@ export const isValidZip = (zip) => {
 }
 export const isValidPassword = (password) => {
   if (password !== '') {
-    return password.length > 5 ? true : false
+    const letters = []
+    const string = [...password]
+    string.map((letter) => {
+      if (letters.indexOf(letter) === -1) {
+        letters.push(letter)
+      }
+    })
+    return password.length > 5 && letters.length > 2
   }
   return false
 }

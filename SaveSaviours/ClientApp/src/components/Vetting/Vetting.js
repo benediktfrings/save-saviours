@@ -34,21 +34,21 @@ const Vetting = ({ vetted, setVetted, unvettetInstitutions }) => {
               <TableCell>{messages['registrationpage.institution.email']}</TableCell>
               <TableCell>{messages['registrationpage.institution.phone']}</TableCell>
               <TableCell>{messages['registrationpage.institution.zip']}</TableCell>
-              <TableCell>{messages['vettingpage.institution.timestamp']}</TableCell>
+              {/* <TableCell>{messages['vettingpage.institution.timestamp']}</TableCell> */}
               <TableCell>{messages['vettingpage.institution.vetted']}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {unvettetInstitutions.map((institution) => (
+            {unvettetInstitutions && unvettetInstitutions.map((institution) => (
               vetted[institution.email]
                 && (
                 <TableRow key={institution.email}>
-                  <TableCell>{institution.institutionName}</TableCell>
+                  <TableCell>{institution.name}</TableCell>
                   <TableCell>{institution.contactName}</TableCell>
                   <TableCell>{institution.email}</TableCell>
-                  <TableCell>{institution.phone}</TableCell>
-                  <TableCell>{institution.zip}</TableCell>
-                  <TableCell>{institution.timestamp}</TableCell>
+                  <TableCell>{institution.primaryPhoneNumber}</TableCell>
+                  <TableCell>{institution.zipCode}</TableCell>
+                  {/* <TableCell>{institution.timestamp}</TableCell> */}
                   <TableCell className={classes.landingText}>
                     <Checkbox
                       checked={vetted[institution.email].verified}

@@ -8,7 +8,7 @@ import Get from 'api/get'
 
 const LandingPage = () => {
   const classes = styles()
-  Get('/user/info')
+
   return (
     <Grid container>
       <Grid item>

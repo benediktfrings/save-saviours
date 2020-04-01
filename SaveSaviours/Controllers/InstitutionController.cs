@@ -41,7 +41,7 @@ namespace SaveSaviours.Controllers {
                 .ToArray();
             var result = await Context.Volunteers
                 .Include(v => v.Experiences)
-                .Join(Context.ZipCodesInDistance(zip, 50), v => v.ZipCode, z => z.Code, (v, z) => new { v, z })
+                .Join(Context.ZipCodesInDistance(zip), v => v.ZipCode, z => z.Code, (v, z) => new { v, z })
                 .Where(x => x.v.IsActive && x.v.Experiences.Any(e => values.Contains(e.TagValue)))
                 .OrderBy(x => x.z.Distance)
                 .ToArrayAsync();

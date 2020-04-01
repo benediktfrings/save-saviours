@@ -72,10 +72,22 @@ const VettingPage = () => {
       accepted.map((email) => {
         unvettetInstitutions.map((value) => (value.email === email ? acceptedPayload.push(value.id) : null))
       })
-      if (rejected) rejectedPayload.map((id) => Post('/vetting/reject', id))
-      if (accepted) acceptedPayload.map((id) => Post('/vetting/verify', id))
+      if (rejected || accepted) {
+        if (rejected) {
+          return Promise.all(rejectedPayload.map((id) => Post('/vetting/reject', id)))
+            .then(() => {
+              if (accepted) {
+                Promise.all(acceptedPayload.map((id) => Post('/vetting/verify', id)))
+                  .then(() => fetchVetting())
+              }
+            })
+        }
+        if (accepted) {
+          return Promise.all(acceptedPayload.map((id) => Post('/vetting/verify', id)))
+            .then(() => fetchVetting())
+        }
+      }
     }
-    return fetchVetting()
   }
   return (
     <Grid container justify="center">

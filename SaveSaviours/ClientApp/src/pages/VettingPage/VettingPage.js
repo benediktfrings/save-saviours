@@ -54,8 +54,10 @@ const VettingPage = () => {
   const handleButtonClick = (event) => {
     event.preventDefault()
     // post 'vetted' object [{email<text> : verified<bool>}]  to the backend and get a new list with all indeterminate institutions
-    let rejected = []
-    let accepted = []
+    const rejected = []
+    const rejectedPayload = []
+    const accepted = []
+    const acceptedPayload = []
     if (vetted !== false) {
       Object.entries(vetted).map(([email, { verified, indeterminate }]) => {
         if (indeterminate === false && verified === false) {
@@ -65,15 +67,16 @@ const VettingPage = () => {
           accepted.push(email)
         }
       })
-      accepted.map((email) => {
-        accepted = unvettetInstitutions.map((value) => (value.email === email ? value.id : null))
-      })
       rejected.map((email) => {
-        rejected = unvettetInstitutions.map((value) => (value.email === email ? value.id : null))
+        unvettetInstitutions.map((value) => (value.email === email ? rejectedPayload.push(value.id) : null))
       })
-      if (rejected) rejected.map((id) => Post('/vetting/reject', id))
-      if (accepted) accepted.map((id) => Post('/vetting/verify', id))
+      accepted.map((email) => {
+        unvettetInstitutions.map((value) => (value.email === email ? acceptedPayload.push(value.id) : null))
+      })
+      if (rejected) rejectedPayload.map((id) => Post('/vetting/reject', id))
+      if (accepted) acceptedPayload.map((id) => Post('/vetting/verify', id))
     }
+    return fetchVetting()
   }
   return (
     <Grid container justify="center">
@@ -81,7 +84,7 @@ const VettingPage = () => {
         ? (
           <>
             <Grid item>
-              {unvettetInstitutions
+              {unvettetInstitutions && vetted
                 && (
                 <Vetting
                   vetted={vetted}

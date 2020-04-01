@@ -4,6 +4,7 @@ import styles from 'styles/styles'
 import * as messages from 'messages/de.json'
 import { isValidEmail } from 'services'
 import Post from 'api/post'
+import Get from 'api/get'
 
 const Signin = ({ messageRegistrationButton }) => {
   const classes = styles()
@@ -21,21 +22,26 @@ const Signin = ({ messageRegistrationButton }) => {
   }
   const handleRegistration = (event) => {
     event.preventDefault()
-    const payload = {
+    const formData = {
       username: email,
       password,
     }
 
-    if (isValidForm(payload)) {
-      Post('/user/authenticate', payload)
+    if (isValidForm(formData)) {
+      Post('/user/authenticate', formData)
         .then((response) => {
           if (response.ok) {
             return response.text()
           } throw new Error('something went wrong durring signin from backend')
         })
-        .then((response) => {
-          window.localStorage.setItem('access-token', response)
-          window.location = '/'
+        .then((payload) => {
+          window.localStorage.setItem('access-token', payload)
+          Get('/user/info')
+            .then((info) => {
+              if (info.roles.administrator) window.location = '/vetting'
+              if (info.roles.volunteer) window.location = '/'
+              if (info.roles.institution) window.location = '/helperslist'
+            })
         })
         .catch((e) => console.log(e))
     }

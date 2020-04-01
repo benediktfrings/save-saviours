@@ -8,15 +8,6 @@ import Get from 'api/get'
 
 const LandingPage = () => {
   const classes = styles()
-  // Get('/user/info')
-  //   .then((response) => {
-  //     if (response.ok) {
-  //       return response.json()
-  //     } throw new Error('something went wrong durring registration from backend')
-  //   })
-  //   .then((response) => JSON.parse(response))
-  //   .then((response) => console.log(response))
-  //   .catch((e) => console.log(e))
 
   return (
     <Grid container>

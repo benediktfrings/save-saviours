@@ -14,69 +14,21 @@ const HelpersListPage = () => {
   const [auth, setAuth] = useState(false)
   const [vetted, setVetted] = useState(false)
   const [tagVolunteers, setTagVolunteers] = useState(false)
-  const [blurredTagVolunteers, setBlurredTagVolunteers] = useState(false)
   const [tags, setTags] = useState(false)
   const [selectValue, setSelectValue] = useState(false)
 
-  const getTagVolunteers = (tagIds) => {
-    Get(`/institution/volunteers/${tagIds}`)
-      .then((response) => {
-        const volunteers = response.map((volunteer) => ({
-          ...volunteer,
-          name: messages['helperslistpage.blurName'],
-          email: messages['helperslistpage.blurEmail'],
-          primaryPhoneNumber: messages['helperslistpage.blurPhone'],
-          blur: {
-            WebkitFilter: 'blur(3.7px)',
-            padding: 10,
-          },
-        }))
-        setTagVolunteers(volunteers)
-        setBlurredTagVolunteers(volunteers)
-      })
-      .catch((e) => new Error(e))
-  }
-  const cardClickHandler = (volunteerId) => {
-    Get(`/institution/detail/${volunteerId}`)
-      .then((response) => {
-        const volunteers = tagVolunteers.map((volunteer) => (volunteer.id === volunteerId ? {
-          ...volunteer, name: response.name, email: response.email, primaryPhoneNumber: response.primaryPhoneNumber, blur: { padding: 10 },
-        } : volunteer))
-        if (selectValue) {
-          let eventTag
-          tags.forEach((tag) => {
-            if (tag.label === selectValue) {
-              eventTag = tag.value
-              return null
-            }
-            return null
-          })
-          const filteredVolunteers = []
-          volunteers.map((volunteer) => volunteer.tags.map((tag) => { if (tag === eventTag) filteredVolunteers.push(volunteer) }))
-          setTagVolunteers(filteredVolunteers)
-        } else setTagVolunteers(volunteers)
-      })
-      .catch((e) => new Error(e))
-  }
   const selectClickHandler = (event) => {
-    let eventTag
-    tags.map((tag) => (tag.label === event.target.value ? eventTag = tag.value : null))
-    const filteredVolunteers = []
-    blurredTagVolunteers.forEach((volunteer) => volunteer.tags.map((tag) => { if (tag === eventTag) filteredVolunteers.push(volunteer) }))
-    setTagVolunteers(filteredVolunteers)
     setSelectValue(event.target.value)
   }
-  useEffect(() => {
-    if (window.localStorage.getItem('access-token')) {
-      Get('/user/info')
-        .then((response) => {
-          if (response.roles.institution || response.roles.administrator) setAuth(true)
-          if (response.roles.institution.vetted) setVetted(true)
-          else window.location = '/signin'
-        })
-        .catch((e) => console.log(e))
-    } else window.location = '/signin'
-  }, [])
+  const cardClickHandler = (volunteerId) => Get(`/institution/detail/${volunteerId}`)
+    .then((response) => {
+      const volunteers = tagVolunteers.map((volunteer) => (volunteer.id === volunteerId ? {
+        ...volunteer, name: response.name, email: response.email, primaryPhoneNumber: response.primaryPhoneNumber, blur: { padding: 10 },
+      } : volunteer))
+      setTagVolunteers(volunteers)
+    })
+    .catch((e) => new Error(e))
+
   useEffect(() => {
     Get('/institution/tags')
       .then((response) => {
@@ -92,20 +44,52 @@ const HelpersListPage = () => {
         setTags(sorted)
         return sorted
       })
-      .then((response) => {
-        let tagIds = ''
-        response.map(({ value }) => {
-          tagIds = `${tagIds},${value}`
-        })
-        getTagVolunteers(tagIds)
-      })
       .catch((e) => new Error(e))
   }, [])
+
+  useEffect(() => {
+    let eventTagId
+    if (tags) {
+      tags.forEach((tag) => {
+        if (tag.label === selectValue) eventTagId = tag.value
+      })
+    }
+    Get(`/institution/volunteers/${eventTagId}`)
+      .then((response) => {
+        const volunteers = response.map((volunteer) => ({
+          ...volunteer,
+          name: messages['helperslistpage.blurName'],
+          email: messages['helperslistpage.blurEmail'],
+          primaryPhoneNumber: messages['helperslistpage.blurPhone'],
+          blur: {
+            WebkitFilter: 'blur(3.7px)',
+            padding: 10,
+          },
+        }))
+        return volunteers
+      }).then((volunteers) => {
+        setTagVolunteers(volunteers)
+      })
+      .catch((e) => new Error(e))
+  }, [selectValue])
+
+  useEffect(() => {
+    if (window.localStorage.getItem('access-token')) {
+      Get('/user/info')
+        .then((response) => {
+          if (response.roles.institution || response.roles.administrator) setAuth(true)
+          if (response.roles.institution.vetted) setVetted(true)
+          else window.location = '/signin'
+        })
+        .catch((e) => new Error(e))
+    } else window.location = '/signin'
+  }, [])
+
 
   return (
     <Grid container justify="center" className={classes.helperListContainer}>
       {auth
-         && vetted && tagVolunteers && tags && (
+         && vetted && tags && (
            <Grid item>
              <HelpersList tagVolunteers={tagVolunteers} tags={tags} cardClickHandler={cardClickHandler} selectClickHandler={selectClickHandler} selectValue={selectValue} />
            </Grid>

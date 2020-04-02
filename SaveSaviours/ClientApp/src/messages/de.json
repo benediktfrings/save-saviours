@@ -89,5 +89,12 @@
   "vettingpage.institution.timestamp": "Registrierung",
   "vettingpage.institution.vetted": "Verifiziert",
 
-  "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe"
+  "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe",
+  "helperslistpage.notVetted": "Wir sind derzeit noch im Prozess Ihren Account durch einen Menschen zu überprüfen und freizuschalten - bitte haben Sie noch ein wenig Geduld, dies sollte in den nächsten Stunden erfolgen.",
+  "helperslistpage.blurName": "Max Mustermann",
+  "helperslistpage.blurEmail": "Max@Mustermann.de",
+  "helperslistpage.blurPhone": "0151-444 333 22",
+  "helperslistpage.distance": "Entfernung",
+  "helperslistpage.experience": "Erfahrung",
+  "helperslistpage.experienceCallToAction": "Bitte gesuchte Erfahrung wählen..."
 }

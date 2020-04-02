@@ -75,9 +75,9 @@ export default () => {
       width: '100%',
       textAlign: 'left',
     },
-    registrationAccountCircle:{
-      cursor:'pointer',
-      marginRight:10
+    registrationAccountCircle: {
+      cursor: 'pointer',
+      marginRight: 10,
     },
     registrationTaskText: {
       marginTop: 20,
@@ -145,6 +145,36 @@ export default () => {
     registrationExperienceListBox: {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.common.white,
+    },
+    helperListPaper: {
+      padding: 20,
+      margin: 20,
+      marginBottom: 30,
+    },
+    helperListContainer: {
+      padding: 20,
+      margin: 20,
+      marginBottom: 30,
+    },
+    helperListBlur: {
+      '-webkit-filter': 'blur(3.7px)',
+      padding: 10,
+    },
+    helperListCardItem: {
+      padding: 10,
+    },
+    helperListSelect: {
+      padding: 10,
+      backgroundColor: '#fff',
+      width: '100%',
+      marginBottom: 20,
+
+    },
+    helperListCard: {
+      backgroundColor: '#fff',
+    },
+    helperListCardGrid: {
+      width: '40%',
     },
   })
   return useStyles()

@@ -1,47 +1,88 @@
-import React, { useState } from 'react'
-import { Paper, Typography, Checkbox } from '@material-ui/core'
+import React, { useState, useEffect } from 'react'
+import {
+  Paper, Typography, TextField, MenuItem, Grid,
+} from '@material-ui/core'
 import * as messages from 'messages/de.json'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableHead from '@material-ui/core/TableHead'
-import TablePagination from '@material-ui/core/TablePagination'
-import TableRow from '@material-ui/core/TableRow'
-import TableSortLabel from '@material-ui/core/TableSortLabel'
 import styles from 'styles/styles'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
 
-const HelpersList = () => {
+const HelpersList = ({
+  tags, tagVolunteers, cardClickHandler, volunteerInfo, blurClass, selectClickHandler, selectValue,
+}) => {
   const classes = styles()
-  const [vetted, setVetted] = useState()
-  // get list of helpers with zip codes close to the institution from backend
-  const helpers = [
-    {
-      name: 'Peter Lustig',
-      phone: '017722222222',
-      email: 'peter@lustig.com',
-      zip: '55555',
-    },
-  ]
+
+  // get list of volunteers with zip codes close to the institution from backend
+
   return (
     <Paper square elevation={2} className={classes.landingPaper}>
       <Typography variant="h1" className={classes.landingHeader}>
         {messages['helperslistpage.header']}
       </Typography>
-      <Table>
-        <TableHead dense>
-          <TableBody>
-            {helpers.map((helpers) => (
-              <div key={helpers.email}>
-                <TableCell>{helpers.name}</TableCell>
-                <TableCell>{helpers.email}</TableCell>
-                <TableCell>{helpers.phone}</TableCell>
-                <TableCell>{helpers.zip}</TableCell>
-              </div>
-            ))}
-          </TableBody>
-        </TableHead>
-      </Table>
+      <TextField
+        className={classes.helperListSelect}
+        select
+        value={selectValue}
+        variant="filled"
+        label={messages['helperslistpage.experience']}
+        onClick={(event) => selectClickHandler(event)}
+      >
+        {tags && tags.map((tag) => (
+          <MenuItem key={tag.id} value={tag.label}>
+            {tag.label}
+          </MenuItem>
+        ))}
+      </TextField>
+      <Grid container spacing={2}>
+
+
+        {tagVolunteers && tagVolunteers.map((tagVolunteer) => (
+          <Grid item xs={12}>
+            <Card key={tagVolunteer.id} onClick={() => cardClickHandler(tagVolunteer.id)} className={classes.helperListCard}>
+              <CardContent>
+                <Grid container justify="center" spacing={10}>
+                  <Grid item className={classes.helperListCardGrid} xs={12} md={6}>
+                    <Typography>
+                      {messages['registrationpage.helper.name']}
+                      {' '}
+                      <span style={tagVolunteer.blur}>{tagVolunteer.name}</span>
+                    </Typography>
+                    <Typography>
+                      {messages['registrationpage.helper.email']}
+                      <span style={tagVolunteer.blur}>{tagVolunteer.email}</span>
+                    </Typography>
+                    <Typography>
+                      {messages['registrationpage.helper.phone']}
+                      <span style={tagVolunteer.blur}>{tagVolunteer.primaryPhoneNumber}</span>
+                    </Typography>
+                    <Typography variant="h6" component="h2">
+                      {messages['helperslistpage.distance']}
+                      <span className={classes.helperListCardItem}>
+                        {parseInt(tagVolunteer.distance)}
+                        {' '}
+                        km
+                      </span>
+                    </Typography>
+                  </Grid>
+                  <Grid item className={classes.helperListCardGrid} xs={12} md={6}>
+                    <Typography variant="h6" component="h2">
+                      {messages['helperslistpage.experience']}
+                    </Typography>
+                    {tagVolunteer.tags.map((tagId) => tags.map(({ value, label }) => {
+                      if (value === tagId) return <Typography key={value}>{label}</Typography>
+                    }))}
+                  </Grid>
+
+                </Grid>
+
+              </CardContent>
+              <CardActions />
+            </Card>
+          </Grid>
+
+        ))}
+      </Grid>
     </Paper>
   )
 }

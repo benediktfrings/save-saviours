@@ -74,7 +74,7 @@ const RegistrationPage = () => {
       primaryPhoneNumber: phone,
       secondaryPhoneNumber: '',
       bio: '',
-      experience: checked,
+      experiences: checked,
       password,
     }
     if (isValidForm(payload)) {

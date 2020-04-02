@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import HelpersList from 'components/HelpersList/HelpersList'
 import Get from 'api/get'
-import Post from 'api/post'
 import {
   Grid,
-  Paper,
 } from '@material-ui/core'
 import * as messages from 'messages/de.json'
 import styles from 'styles/styles'
@@ -18,7 +16,6 @@ const HelpersListPage = () => {
   const [tagVolunteers, setTagVolunteers] = useState(false)
   const [blurredTagVolunteers, setBlurredTagVolunteers] = useState(false)
   const [tags, setTags] = useState(false)
-  const [volunteerInfo, setVolunteerInfo] = useState(false)
   const [selectValue, setSelectValue] = useState(false)
 
   const getTagVolunteers = (tagIds) => {
@@ -47,7 +44,13 @@ const HelpersListPage = () => {
         } : volunteer))
         if (selectValue) {
           let eventTag
-          tags.map((tag) => (tag.label === selectValue ? eventTag = tag.value : null))
+          tags.forEach((tag) => {
+            if (tag.label === selectValue) {
+              eventTag = tag.value
+              return null
+            }
+            return null
+          })
           const filteredVolunteers = []
           volunteers.map((volunteer) => volunteer.tags.map((tag) => { if (tag === eventTag) filteredVolunteers.push(volunteer) }))
           setTagVolunteers(filteredVolunteers)
@@ -59,7 +62,7 @@ const HelpersListPage = () => {
     let eventTag
     tags.map((tag) => (tag.label === event.target.value ? eventTag = tag.value : null))
     const filteredVolunteers = []
-    blurredTagVolunteers.map((volunteer) => volunteer.tags.map((tag) => { if (tag === eventTag) filteredVolunteers.push(volunteer) }))
+    blurredTagVolunteers.forEach((volunteer) => volunteer.tags.map((tag) => { if (tag === eventTag) filteredVolunteers.push(volunteer) }))
     setTagVolunteers(filteredVolunteers)
     setSelectValue(event.target.value)
   }
@@ -101,20 +104,18 @@ const HelpersListPage = () => {
 
   return (
     <Grid container justify="center" className={classes.helperListContainer}>
-      <Paper>
-        {auth
-         && vetted && (
-         <Grid item>
-           <HelpersList tagVolunteers={tagVolunteers} tags={tags} cardClickHandler={cardClickHandler} volunteerInfo={volunteerInfo} selectClickHandler={selectClickHandler} selectValue={selectValue} />
-         </Grid>
-        )}
-        {auth
+      {auth
+         && vetted && tagVolunteers && tags && (
+           <Grid item>
+             <HelpersList tagVolunteers={tagVolunteers} tags={tags} cardClickHandler={cardClickHandler} selectClickHandler={selectClickHandler} selectValue={selectValue} />
+           </Grid>
+      )}
+      {auth
          && !vetted && (
          <Grid item className={classes.helperListPaper}>
            {messages['helperslistpage.notVetted']}
          </Grid>
-        )}
-      </Paper>
+      )}
 
     </Grid>
 

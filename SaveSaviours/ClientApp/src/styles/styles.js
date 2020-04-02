@@ -147,14 +147,34 @@ export default () => {
       color: theme.palette.common.white,
     },
     helperListPaper: {
-      padding: 20,
-      margin: 20,
+      margin: 10,
       marginBottom: 30,
+      backgroundColor: theme.palette.secondary.main,
+      color: theme.palette.common.white,
+      paddingTop: 50,
+      paddingBottom: 50,
+      paddingLeft: 30,
+      paddingRight: 30,
+
+      '@media (max-width: 600px)': {
+        paddingTop: 15,
+        paddingLeft: 15,
+        paddingRight: 10,
+        paddingBottom: 10,
+        marginBottom: 20,
+        marginLeft: 0,
+        marginRigh: 0,
+      },
     },
     helperListContainer: {
       padding: 20,
       margin: 20,
       marginBottom: 30,
+      width: 'initial',
+    },
+    helperListCardContainer: {
+      padding: 0,
+      margin: 0,
     },
     helperListBlur: {
       '-webkit-filter': 'blur(3.7px)',

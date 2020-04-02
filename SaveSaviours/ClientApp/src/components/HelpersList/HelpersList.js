@@ -9,14 +9,14 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 
 const HelpersList = ({
-  tags, tagVolunteers, cardClickHandler, volunteerInfo, blurClass, selectClickHandler, selectValue,
+  tags, tagVolunteers, cardClickHandler, selectClickHandler, selectValue,
 }) => {
   const classes = styles()
 
   // get list of volunteers with zip codes close to the institution from backend
 
   return (
-    <Paper square elevation={2} className={classes.landingPaper}>
+    <Paper square elevation={2} className={classes.helperListPaper}>
       <Typography variant="h1" className={classes.landingHeader}>
         {messages['helperslistpage.header']}
       </Typography>
@@ -34,14 +34,14 @@ const HelpersList = ({
           </MenuItem>
         ))}
       </TextField>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} className={classes.helperListCardContainer}>
 
 
         {tagVolunteers && tagVolunteers.map((tagVolunteer) => (
           <Grid item xs={12}>
             <Card key={tagVolunteer.id} onClick={() => cardClickHandler(tagVolunteer.id)} className={classes.helperListCard}>
               <CardContent>
-                <Grid container justify="center" spacing={10}>
+                <Grid container justify="center" spacing={10} className={classes.helperListCardContainer}>
                   <Grid item className={classes.helperListCardGrid} xs={12} md={6}>
                     <Typography>
                       {messages['registrationpage.helper.name']}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import {
   Paper, Typography, TextField, MenuItem, Grid, Box,
 } from '@material-ui/core'
@@ -7,7 +7,6 @@ import styles from 'styles/styles'
 import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import theme from 'styles/theme'
 
 const HelpersList = ({
   tags, tagVolunteers, cardClickHandler, selectClickHandler, selectValue,
@@ -47,23 +46,29 @@ const HelpersList = ({
             <CardContent>
               <Grid container justify="center" spacing={2} className={classes.helperListCardContainer}>
                 <Grid item className={classes.helperListCardGrid} xs={12} md={6}>
-                  <Typography variant="h6" component="h2">
+                  <Typography variant="h6" component="h2" display="inline">
                     {messages['helperslistpage.contactData']}
                   </Typography>
-                  <Typography>
-                    {messages['registrationpage.helper.name']}
+                  <Box>
+                    <Typography className={classes.helperListCardHeader} display="inline">
+                      {messages['registrationpage.helper.name']}
+                    </Typography>
                     {' '}
-                    <span style={tagVolunteer.blur}>{tagVolunteer.name}</span>
-                  </Typography>
-                  <Typography>
-                    {messages['registrationpage.helper.email']}
-                    <span style={tagVolunteer.blur}>{tagVolunteer.email}</span>
-                  </Typography>
-                  <Typography>
-                    {messages['registrationpage.helper.phone']}
-                    <span style={tagVolunteer.blur}>{tagVolunteer.primaryPhoneNumber}</span>
-                  </Typography>
-                  <Typography variant="h6" component="h2">
+                    <Typography style={tagVolunteer.blur} display="inline">{tagVolunteer.name}</Typography>
+                  </Box>
+                  <Box>
+                    <Typography className={classes.helperListCardHeader} display="inline">
+                      {messages['registrationpage.helper.email']}
+                    </Typography>
+                    <Typography style={tagVolunteer.blur} display="inline">{tagVolunteer.email}</Typography>
+                  </Box>
+                  <Box>
+                    <Typography className={classes.helperListCardHeader} display="inline">
+                      {messages['registrationpage.helper.phone']}
+                    </Typography>
+                    <Typography style={tagVolunteer.blur} display="inline">{tagVolunteer.primaryPhoneNumber}</Typography>
+                  </Box>
+                  <Typography variant="h6" component="h2" className={classes.helperListCardDistance}>
                     {messages['helperslistpage.distance']}
                     <span className={classes.helperListCardItem}>
                       {parseInt(tagVolunteer.distance)}

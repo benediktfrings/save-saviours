@@ -14,20 +14,33 @@ const HelpersListPage = () => {
   const [auth, setAuth] = useState(false)
   const [vetted, setVetted] = useState(false)
   const [tagVolunteers, setTagVolunteers] = useState(false)
+  const [blurredTagVolunteers, setBlurredTagVolunteers] = useState(false)
   const [tags, setTags] = useState(false)
-  const [selectValue, setSelectValue] = useState(false)
+  const [selectValue, setSelectValue] = useState(messages['helperslistpage.experienceCallToAction'])
 
   const selectClickHandler = (event) => {
     setSelectValue(event.target.value)
   }
   const cardClickHandler = (volunteerId) => Get(`/institution/detail/${volunteerId}`)
     .then((response) => {
-      const volunteers = tagVolunteers.map((volunteer) => (volunteer.id === volunteerId ? {
+      const volunteers = blurredTagVolunteers.map((volunteer) => (volunteer.id === volunteerId ? {
         ...volunteer, name: response.name, email: response.email, primaryPhoneNumber: response.primaryPhoneNumber, blur: { padding: 10 },
       } : volunteer))
       setTagVolunteers(volunteers)
     })
     .catch((e) => new Error(e))
+
+  useEffect(() => {
+    if (window.localStorage.getItem('access-token')) {
+      Get('/user/info')
+        .then((response) => {
+          if (response.roles.institution || response.roles.administrator) setAuth(true)
+          if (response.roles.institution.vetted) setVetted(true)
+          else window.location = '/signin'
+        })
+        .catch((e) => new Error(e))
+    } else window.location = '/signin'
+  }, [])
 
   useEffect(() => {
     Get('/institution/tags')
@@ -69,22 +82,10 @@ const HelpersListPage = () => {
         return volunteers
       }).then((volunteers) => {
         setTagVolunteers(volunteers)
+        setBlurredTagVolunteers(volunteers)
       })
       .catch((e) => new Error(e))
   }, [selectValue])
-
-  useEffect(() => {
-    if (window.localStorage.getItem('access-token')) {
-      Get('/user/info')
-        .then((response) => {
-          if (response.roles.institution || response.roles.administrator) setAuth(true)
-          if (response.roles.institution.vetted) setVetted(true)
-          else window.location = '/signin'
-        })
-        .catch((e) => new Error(e))
-    } else window.location = '/signin'
-  }, [])
-
 
   return (
     <Grid container justify="center" className={classes.helperListContainer}>

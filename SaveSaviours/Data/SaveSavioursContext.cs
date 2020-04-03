@@ -50,7 +50,7 @@ namespace SaveSaviours.Data {
                 .Entity<Volunteer>(e => {
                     e.HasKey(t => t.UserId);
 
-                    e.HasOne(t => t.Zip);
+                    e.HasOne(t => t.Zip).WithMany(t => t.Volunteers);
                     e.HasMany(t => t.Experiences).WithOne(t => t.Volunteer);
                     e.HasMany(t => t.LinkedInstitutions).WithOne(t => t.Volunteer);
                 })
@@ -63,7 +63,7 @@ namespace SaveSaviours.Data {
                 .Entity<Institution>(e => {
                     e.HasKey(t => t.UserId);
 
-                    e.HasOne(t => t.Zip);
+                    e.HasOne(t => t.Zip).WithMany(t => t.Institutions);
                     e.HasMany(t => t.LinkedVolunteers).WithOne(t => t.Institution);
                 })
                 .Entity<Tag>(e => {

@@ -63,14 +63,17 @@ namespace SaveSaviours.Controllers {
                 .Include(v => v.LinkedInstitutions)
                 .Include(v => v.Experiences)
                 .Include(v => v.User)
-                .SingleOrDefaultAsync(v => v.UserId == id);
-            if (!volunteer.LinkedInstitutions.Any(i => i.VolunteerId == UserId)) {
+                .Include(v => v.Zip)
+                .SingleAsync(v => v.UserId == id);
+
+            if (!volunteer.LinkedInstitutions.Any(i => i.InstitutionId == UserId)) {
                 volunteer.LinkedInstitutions.Add(new VolunteerLink {
                     Volunteer = volunteer,
                     InstitutionId = UserId,
                 });
                 await Context.SaveChangesAsync();
             }
+
             return Ok(new VolunteerDetailsModel {
                 Id = volunteer.UserId,
                 Bio = volunteer.Bio,
@@ -80,6 +83,7 @@ namespace SaveSaviours.Controllers {
                 PrimaryPhoneNumber = volunteer.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = volunteer.SecondaryPhoneNumber,
                 ZipCode = volunteer.ZipCode.ToString("00000"),
+                Distance = volunteer.Zip.DistanceTo(user.Institution.Zip),
             });
         }
 

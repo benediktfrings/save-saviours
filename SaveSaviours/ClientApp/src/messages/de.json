@@ -95,6 +95,19 @@
   "helperslistpage.blurEmail": "Max@Mustermann.de",
   "helperslistpage.blurPhone": "0151-444 333 22",
   "helperslistpage.distance": "Entfernung",
+  "helperslistpage.contactData": "Kontakt Daten",
   "helperslistpage.experience": "Erfahrung",
-  "helperslistpage.experienceCallToAction": "Bitte gesuchte Erfahrung wählen..."
+  "helperslistpage.experienceCallToAction": "Bitte gesuchte Erfahrung wählen...",
+  "helperslistpage.explainer": "Bitte wählen Sie eine Erfahung, die Helfer für die vorgesehenen Aufgaben benötigen",
+
+  "helperProfile.header": "Hier kannst Du Dein Profil aktualisieren",
+  "helperProfile.updateButton": "Aktualisieren",
+  "helperProfile.subtitle": "Hier kannst Du Deine Erfahrungen aktualisieren",
+  "helperProfile.activeCheckbox": "Stehst Du zur Zeit grundsätzlich als Helfer zur Verfügung?",
+  "helperProfile.deleteButton": "Profil löschen",
+  "helperProfile.deleteConfirmationText": "Bitte bestätige das Löschen - dies ist nicht wieder rückgängig zu machen",
+  "helperProfile.deleteConfirmationButton": "Löschen bestätigen",
+  "helperProfile.deleteSubtitle": "Hier kannst Du Dein Profil löschen",
+  "helperProfile.deleteExplainer": "Wenn Du Dein Profil löscht, löschen wir alle Daten, die wir von Dir haben. Du kannst Dich dann nicht mehr einloggen, aber natürlich kannst Du Dich erneut registrieren, falls Du später Deine Meinung änderst.",
+  "helperProfile.deleteAlternative": "Falls Du nur vorübergehend nicht als Helfer zur Verfügung stehen willst, kannst Du auch statt Dein Profil zu löschen, bei der Checkbox 'Stehst Du zur Zeit grundsätzlich als Helfer zur Verfügung?' den Haken entfernen - dann kannst Du von Institutionen nicht als Helfer gefunden werden - und später kannst Du den Haken wieder setzen, wenn Du wieder als Helfer mithelfen möchtest."
 }

@@ -36,7 +36,7 @@
                 if (tags.TryGetValue(label, out int value)) {
                     experiences.Add(new VolunteerTag { VolunteerId = user.Id, TagValue = value });
                 } else {
-                    var tag = await Context.Tags.AddAsync(new Tag { Label = label });
+                    var tag = Context.Tags.Add(new Tag { Label = label });
                     experiences.Add(new VolunteerTag { VolunteerId = user.Id, Tag = tag.Entity });
                 }
             }
@@ -77,13 +77,15 @@
 
             var tags = await Context.Tags.ToDictionaryAsync(t => t.Label, t => t.Value);
             foreach (string label in model.Experiences) {
+                user!.Volunteer.Experiences.Clear();
                 if (tags.TryGetValue(label, out int value)) {
                     user!.Volunteer!.Experiences.Add(new VolunteerTag { VolunteerId = user.Id, TagValue = value });
                 } else {
-                    var tag = await Context.Tags.AddAsync(new Tag { Label = label });
+                    var tag = Context.Tags.Add(new Tag { Label = label });
                     user!.Volunteer!.Experiences.Add(new VolunteerTag { VolunteerId = user.Id, Tag = tag.Entity });
                 }
             }
+
             await Context.SaveChangesAsync();
 
             return Ok();

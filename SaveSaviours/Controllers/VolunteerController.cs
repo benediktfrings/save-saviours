@@ -75,9 +75,9 @@
             user!.Volunteer!.ZipCode = Int32.Parse(model.ZipCode);
             user!.Volunteer!.IsActive = model.IsActive;
 
+            user!.Volunteer.Experiences.Clear();
             var tags = await Context.Tags.ToDictionaryAsync(t => t.Label, t => t.Value);
             foreach (string label in model.Experiences) {
-                user!.Volunteer.Experiences.Clear();
                 if (tags.TryGetValue(label, out int value)) {
                     user!.Volunteer!.Experiences.Add(new VolunteerTag { VolunteerId = user.Id, TagValue = value });
                 } else {

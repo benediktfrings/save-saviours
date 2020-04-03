@@ -63,14 +63,14 @@ namespace SaveSaviours.Controllers {
                 .Include(v => v.LinkedInstitutions)
                 .Include(v => v.Experiences)
                 .Include(v => v.User)
-                .SingleOrDefaultAsync(v => v.UserId == id);
+                .Include(v => v.Zip)
+                .SingleAsync(v => v.UserId == id);
 
-            if (!volunteer.LinkedInstitutions.Any(i => i.VolunteerId == UserId)) {
+            if (!volunteer.LinkedInstitutions.Any(i => i.InstitutionId == UserId)) {
                 volunteer.LinkedInstitutions.Add(new VolunteerLink {
                     Volunteer = volunteer,
                     InstitutionId = UserId,
                 });
-                Context.Volunteers.Update(volunteer);
                 await Context.SaveChangesAsync();
             }
 
@@ -83,6 +83,7 @@ namespace SaveSaviours.Controllers {
                 PrimaryPhoneNumber = volunteer.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = volunteer.SecondaryPhoneNumber,
                 ZipCode = volunteer.ZipCode.ToString("00000"),
+                Distance = volunteer.Zip.DistanceTo(user.Institution.Zip),
             });
         }
 
@@ -101,7 +102,6 @@ namespace SaveSaviours.Controllers {
                 ZipCode = Int32.Parse(model.ZipCode),
             };
 
-            Context.Users.Update(user);
             await Context.SaveChangesAsync();
 
             string token = Settings.GenerateToken(user);
@@ -131,7 +131,6 @@ namespace SaveSaviours.Controllers {
             user!.Institution!.SecondaryPhoneNumber = model.SecondaryPhoneNumber;
             user!.Institution!.ZipCode = Int32.Parse(model.ZipCode);
 
-            Context.Users.Update(user);
             await Context.SaveChangesAsync();
             return Ok();
         }

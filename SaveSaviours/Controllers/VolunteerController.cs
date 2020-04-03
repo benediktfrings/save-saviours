@@ -36,7 +36,7 @@
                 if (tags.TryGetValue(label, out int value)) {
                     experiences.Add(new VolunteerTag { VolunteerId = user.Id, TagValue = value });
                 } else {
-                    var tag = await Context.Tags.AddAsync(new Tag { Label = label });
+                    var tag = Context.Tags.Add(new Tag { Label = label });
                     experiences.Add(new VolunteerTag { VolunteerId = user.Id, Tag = tag.Entity });
                 }
             }
@@ -52,7 +52,6 @@
                 IsActive = true,
             };
 
-            Context.Users.Update(user);
             await Context.SaveChangesAsync();
 
             string token = Settings.GenerateToken(user);
@@ -81,12 +80,11 @@
                 if (tags.TryGetValue(label, out int value)) {
                     user!.Volunteer!.Experiences.Add(new VolunteerTag { VolunteerId = user.Id, TagValue = value });
                 } else {
-                    var tag = await Context.Tags.AddAsync(new Tag { Label = label });
+                    var tag = Context.Tags.Add(new Tag { Label = label });
                     user!.Volunteer!.Experiences.Add(new VolunteerTag { VolunteerId = user.Id, Tag = tag.Entity });
                 }
             }
 
-            Context.Users.Update(user);
             await Context.SaveChangesAsync();
 
             return Ok();

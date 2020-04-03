@@ -11,8 +11,6 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 const UpdateProfile = ({
   name,
   setName,
-  email,
-  setEmail,
   error,
   phone,
   setPhone,
@@ -61,16 +59,6 @@ const UpdateProfile = ({
         value={zip}
         required
         error={error.zip}
-      />
-      <TextField
-        className={classes.registrationTextfield}
-        variant="outlined"
-        placeholder={messages['registrationpage.helper.email']}
-        label={messages['registrationpage.helper.email']}
-        onChange={(event) => setEmail(event.target.value)}
-        value={email}
-        required
-        error={error.email}
       />
       <Typography />
       <FormGroup>

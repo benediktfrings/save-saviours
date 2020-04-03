@@ -14,6 +14,7 @@ const HelpersListPage = () => {
   const [auth, setAuth] = useState(false)
   const [vetted, setVetted] = useState(false)
   const [tagVolunteers, setTagVolunteers] = useState(false)
+  const [blurredTagVolunteers, setBlurredTagVolunteers] = useState(false)
   const [tags, setTags] = useState(false)
   const [selectValue, setSelectValue] = useState(messages['helperslistpage.experienceCallToAction'])
 
@@ -22,7 +23,7 @@ const HelpersListPage = () => {
   }
   const cardClickHandler = (volunteerId) => Get(`/institution/detail/${volunteerId}`)
     .then((response) => {
-      const volunteers = tagVolunteers.map((volunteer) => (volunteer.id === volunteerId ? {
+      const volunteers = blurredTagVolunteers.map((volunteer) => (volunteer.id === volunteerId ? {
         ...volunteer, name: response.name, email: response.email, primaryPhoneNumber: response.primaryPhoneNumber, blur: { padding: 10 },
       } : volunteer))
       setTagVolunteers(volunteers)
@@ -81,6 +82,7 @@ const HelpersListPage = () => {
         return volunteers
       }).then((volunteers) => {
         setTagVolunteers(volunteers)
+        setBlurredTagVolunteers(volunteers)
       })
       .catch((e) => new Error(e))
   }, [selectValue])

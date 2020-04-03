@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   FormGroup,
+  Checkbox,
   Typography,
   Grid,
 } from '@material-ui/core'
@@ -12,8 +13,8 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox'
 
 const filter = createFilterOptions()
 
-const RegistrationExperience = ({
-  setChecked, tags, messageSubtitle,
+const UpdateExperience = ({
+  setChecked, checked, tags, messageSubtitle,
 }) => {
   const classes = styles()
 
@@ -22,6 +23,7 @@ const RegistrationExperience = ({
       <Typography
         variant="subtitle2"
         component="h2"
+        align="center"
         className={classes.registrationTaskText}
       >
         {messageSubtitle}
@@ -34,6 +36,7 @@ const RegistrationExperience = ({
         freeSolo
         filterSelectedOptions
         id="tags"
+        value={checked}
         options={tags}
         onChange={(event, newValue) => {
           if (typeof newValue === 'string') {
@@ -65,11 +68,17 @@ const RegistrationExperience = ({
           }
           return option
         }}
-        renderOption={(option, { inputValue }) => (
+        renderOption={(option, { selected, inputValue }) => (
           <>
             {!inputValue
             && (
             <>
+              {/* <Checkbox
+                icon={icon}
+                checkedIcon={checkedIcon}
+                style={{ marginRight: 8 }}
+                checked={selected}
+              /> */}
               {option}
             </>
             )}
@@ -97,4 +106,4 @@ const RegistrationExperience = ({
   )
 }
 
-export default RegistrationExperience
+export default UpdateExperience

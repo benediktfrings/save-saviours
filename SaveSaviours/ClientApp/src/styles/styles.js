@@ -194,6 +194,8 @@ export default () => {
     },
     helperListCard: {
       backgroundColor: '#fff',
+      width: '100%',
+      marginTop: 15,
     },
     helperListCardGrid: {
       width: '40%',
@@ -202,6 +204,12 @@ export default () => {
     },
     helperListCardGridItem: {
       padding: 0,
+    },
+    helperListCardHeader: {
+      fontWeight: 800,
+    },
+    helperListCardDistance: {
+      marginTop: 20,
     },
     helperListExplainerText: {
       marginBottom: 20,

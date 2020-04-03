@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import HelpersList from 'components/HelpersList/HelpersList'
 import Get from 'api/get'
 import {
   Grid, Box,
@@ -112,7 +111,7 @@ const HelperProfilePage = () => {
             window.location = '/helperprofile'
           } throw new Error('something went wrong durring registration from backend')
         })
-        .catch((e) => console.log(e))
+        .catch((e) => new Error(e))
     }
     if (deleteProfile) {
       Post('/user/remove-profile')
@@ -128,8 +127,6 @@ const HelperProfilePage = () => {
             <UpdateProfile
               name={name}
               setName={setName}
-              email={email}
-              setEmail={setEmail}
               phone={phone}
               setPhone={setPhone}
               zip={zip}

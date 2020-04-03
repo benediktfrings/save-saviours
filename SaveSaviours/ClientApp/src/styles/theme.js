@@ -1,23 +1,28 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
 export const theme = createMuiTheme({
- overrides: {
-  MuiFormControlLabel:{
-    label:{
-      textAlign:"left"
+  overrides: {
+    MuiFormControlLabel: {
+      label: {
+        textAlign: 'left',
+      },
+    },
+    MuiFormInputLabel: {
+      root: {
+        color: '#FA2B86',
       },
     },
   },
-  mixins:{
-    toolbar:{
-      minHeight:90,
-      [`@media (min-width: 0px) and (orientation:landscape)`]: {
+  mixins: {
+    toolbar: {
+      minHeight: 90,
+      '@media (min-width: 0px) and (orientation:landscape)': {
         minHeight: 90,
-       },
-      [`@media (min-width: 600px)`]: {
+      },
+      '@media (min-width: 600px)': {
         minHeight: 110,
-       },
-    }
+      },
+    },
   },
   palette: {
     primary: {
@@ -32,40 +37,40 @@ export const theme = createMuiTheme({
     },
     background: {
       default: '#fff',
-      paper: '#fff'
+      paper: '#fff',
     },
   },
   shape: {
     borderRadius: 8,
   },
-  typography:{
+  typography: {
     fontFamily: [
       '"Helvetica Neue"',
       'sans-serif',
       '"Open Sans"',
       'Helvetica',
-      'Roboto'
+      'Roboto',
     ],
-    fontSize:16,
-    h1:{
-      fontSize:'4rem',
+    fontSize: 16,
+    h1: {
+      fontSize: '4rem',
       '@media (max-width:600px)': {
         fontSize: '2.5rem',
       },
     },
-    h2:{
-      fontSize:'3rem',
+    h2: {
+      fontSize: '3rem',
       '@media (max-width:600px)': {
         fontSize: '2rem',
       },
     },
-    h3:{
-      fontSize:'2.5rem',
+    h3: {
+      fontSize: '2.5rem',
       '@media (max-width:600px)': {
         fontSize: '1.5rem',
       },
     },
-  }
-  
+  },
+
 })
 export default theme

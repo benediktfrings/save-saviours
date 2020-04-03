@@ -15,13 +15,13 @@ import Post from 'api/post'
 const RegistrationPage = () => {
   const classes = styles()
 
-  const [name, setName] = React.useState('')
-  const [email, setEmail] = React.useState('')
-  const [phone, setPhone] = React.useState('')
-  const [zip, setZip] = React.useState('')
-  const [datasecurity, setDatasecurity] = useState(false)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [zip, setZip] = useState('')
   const [password, setPassword] = useState('')
-  const [checked, setChecked] = React.useState([])
+  const [checked, setChecked] = useState([])
+  const [datasecurity, setDatasecurity] = useState(false)
 
   const [tags, setTags] = useState([
     messages['registrationpage.select'][0].text,
@@ -35,7 +35,7 @@ const RegistrationPage = () => {
     messages['registrationpage.select'][8].text,
     messages['registrationpage.select'][9].text,
   ])
-  const [error, setError] = React.useState({
+  const [error, setError] = useState({
     name: false,
     email: false,
     phone: false,

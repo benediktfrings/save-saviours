@@ -15,7 +15,7 @@ const HelpersListPage = () => {
   const [vetted, setVetted] = useState(false)
   const [tagVolunteers, setTagVolunteers] = useState(false)
   const [tags, setTags] = useState(false)
-  const [selectValue, setSelectValue] = useState(false)
+  const [selectValue, setSelectValue] = useState(messages['helperslistpage.experienceCallToAction'])
 
   const selectClickHandler = (event) => {
     setSelectValue(event.target.value)
@@ -28,6 +28,18 @@ const HelpersListPage = () => {
       setTagVolunteers(volunteers)
     })
     .catch((e) => new Error(e))
+
+  useEffect(() => {
+    if (window.localStorage.getItem('access-token')) {
+      Get('/user/info')
+        .then((response) => {
+          if (response.roles.institution || response.roles.administrator) setAuth(true)
+          if (response.roles.institution.vetted) setVetted(true)
+          else window.location = '/signin'
+        })
+        .catch((e) => new Error(e))
+    } else window.location = '/signin'
+  }, [])
 
   useEffect(() => {
     Get('/institution/tags')
@@ -72,19 +84,6 @@ const HelpersListPage = () => {
       })
       .catch((e) => new Error(e))
   }, [selectValue])
-
-  useEffect(() => {
-    if (window.localStorage.getItem('access-token')) {
-      Get('/user/info')
-        .then((response) => {
-          if (response.roles.institution || response.roles.administrator) setAuth(true)
-          if (response.roles.institution.vetted) setVetted(true)
-          else window.location = '/signin'
-        })
-        .catch((e) => new Error(e))
-    } else window.location = '/signin'
-  }, [])
-
 
   return (
     <Grid container justify="center" className={classes.helperListContainer}>

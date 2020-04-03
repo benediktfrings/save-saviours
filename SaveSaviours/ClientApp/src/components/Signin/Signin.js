@@ -39,7 +39,7 @@ const Signin = ({ messageRegistrationButton }) => {
           Get('/user/info')
             .then((info) => {
               if (info.roles.administrator) window.location = '/vetting'
-              if (info.roles.volunteer) window.location = '/'
+              if (info.roles.volunteer) window.location = '/helperprofile'
               if (info.roles.institution) window.location = '/helperslist'
             })
         })

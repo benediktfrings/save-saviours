@@ -52,6 +52,7 @@
                 IsActive = true,
             };
 
+            Context.Users.Update(user);
             await Context.SaveChangesAsync();
 
             string token = Settings.GenerateToken(user);
@@ -84,6 +85,8 @@
                     user!.Volunteer!.Experiences.Add(new VolunteerTag { VolunteerId = user.Id, Tag = tag.Entity });
                 }
             }
+
+            Context.Users.Update(user);
             await Context.SaveChangesAsync();
 
             return Ok();

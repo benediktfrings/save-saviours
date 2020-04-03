@@ -45,6 +45,7 @@ namespace SaveSaviours.Controllers {
         public async Task<ActionResult> ActionPostAccept([Required, FromBody]Guid id) {
             var institution = await Context.Institutions.SingleAsync(i => i.UserId == id);
             institution.Vetted = true;
+            Context.Institutions.Update(institution);
             await Context.SaveChangesAsync();
             return Ok();
         }

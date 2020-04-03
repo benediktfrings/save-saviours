@@ -21,9 +21,11 @@ namespace SaveSaviours.Controllers {
             Settings = options.Value;
             Context = context;
             UserManager = userManager;
+            _guid = new Lazy<Guid>(() => User.Identity.Name.ToGuid());
         }
 
-        protected Guid UserId => User.Identity.Name.ToGuid();
+        private readonly Lazy<Guid> _guid;
+        protected Guid UserId => _guid.Value;
         protected Task<User?> GetUserAsync() => UserManager.FindByIdAsync(User.Identity.Name)!;
 
         protected async Task<(User? user, IdentityResult result)>

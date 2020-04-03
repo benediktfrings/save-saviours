@@ -1,11 +1,10 @@
-import Vetting from 'components/Vetting/Vetting'
 import React, { useState, useEffect } from 'react'
+import Vetting from 'components/Vetting/Vetting'
 import {
   Grid,
 } from '@material-ui/core'
 
 import * as messages from 'messages/de.json'
-import styles from 'styles/styles'
 import RegistrationButton from 'components/Registration/RegistrationButton'
 import Get from 'api/get'
 import Post from 'api/post'
@@ -79,12 +78,14 @@ const VettingPage = () => {
               if (accepted) {
                 Promise.all(acceptedPayload.map((id) => Post('/vetting/verify', id)))
                   .then(() => fetchVetting())
+                  .catch((e) => console.log(e))
               }
             })
         }
         if (accepted) {
           return Promise.all(acceptedPayload.map((id) => Post('/vetting/verify', id)))
             .then(() => fetchVetting())
+            .catch((e) => console.log(e))
         }
       }
     }

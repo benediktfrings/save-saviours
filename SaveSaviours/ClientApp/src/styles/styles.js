@@ -75,9 +75,9 @@ export default () => {
       width: '100%',
       textAlign: 'left',
     },
-    registrationAccountCircle:{
-      cursor:'pointer',
-      marginRight:10
+    registrationAccountCircle: {
+      cursor: 'pointer',
+      marginRight: 10,
     },
     registrationTaskText: {
       marginTop: 20,
@@ -145,6 +145,92 @@ export default () => {
     registrationExperienceListBox: {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.common.white,
+    },
+    helperListPaper: {
+      marginBottom: 30,
+      backgroundColor: theme.palette.secondary.main,
+      color: theme.palette.common.white,
+      paddingTop: 50,
+      paddingBottom: 50,
+      paddingLeft: 30,
+      paddingRight: 30,
+      marginLeft: 0,
+      marginRigh: 0,
+      width: '100%',
+      '@media (max-width: 600px)': {
+        paddingTop: 15,
+        paddingLeft: 15,
+        paddingRight: 10,
+        paddingBottom: 10,
+        marginBottom: 20,
+        marginLeft: 0,
+        marginRigh: 0,
+      },
+    },
+    helperListContainer: {
+      marginBottom: 30,
+      width: 'initial',
+    },
+    helperListCardContainer: {
+      padding: 0,
+      margin: 0,
+      width: 'initial',
+    },
+    helperListBlur: {
+      '-webkit-filter': 'blur(3.7px)',
+      padding: 10,
+    },
+    helperListCardItem: {
+      padding: 10,
+    },
+    helperListSelect: {
+      padding: 10,
+      backgroundColor: '#fff',
+      width: '100%',
+      marginBottom: 20,
+      borderRadius: 8,
+      borderColor: theme.palette.primary.main,
+
+    },
+    helperListCard: {
+      backgroundColor: '#fff',
+    },
+    helperListCardGrid: {
+      width: '40%',
+      paddingBottom: 0,
+      paddingTop: 0,
+    },
+    helperListCardGridItem: {
+      padding: 0,
+    },
+    helperListExplainerText: {
+      marginBottom: 20,
+    },
+    helperProfileTextBox: {
+      marginBottom: 10,
+    },
+    helperProfileFormBox: {
+      paddingLeft: 20,
+      paddingRight: 20,
+    },
+    helperDeleteSubtitle: {
+      marginTop: 80,
+      paddingBottom: 20,
+      fontSize: '1.8rem',
+      '@media (max-width: 600px)': {
+        fontSize: '1.3rem',
+      },
+    },
+    helperDeleteButton: {
+      backgroundColor: theme.palette.error.main,
+      marginTop: 20,
+      color: theme.palette.common.white,
+      width: '100%',
+      maxWidth: 600,
+      '&:hover': {
+        backgroundColor: theme.palette.error.main,
+        opacity: 0.5,
+      },
     },
   })
   return useStyles()

@@ -36,7 +36,7 @@ Helfer und Institutionen würde uns helfen.
 
 ### Wer steckt hinter Hilf Helfern?
 Hilf Helfern ist ein bürgerschaftliches Engagement einer Gruppe von Gründern verschiedener Startups, die sich nach dem #WirvsVirus Hackathon der Bundesregierung 
-um Christoph Göller zusammengefunden haben. 
+um Christoph Göller von Coolar UG zusammengefunden haben. Die technische Entwicklung haben Benedikt Frings und Tom Lawson von LambdaQoppa Enterprise GmbH vorangetrieben und Opens Source zur Verfügung gestellt unter https://github.com/benediktfrings/save-saviours/.
 Mehr zum Hackathon unter wirvsvirushackathon.org und per Twitter unter @wirvsvirushack.
 
 `

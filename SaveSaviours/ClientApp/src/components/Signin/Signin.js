@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, Typography } from '@material-ui/core'
 import styles from 'styles/styles'
 import * as messages from 'messages/de.json'
 import { isValidEmail } from 'services'
@@ -11,11 +11,13 @@ const Signin = ({ messageRegistrationButton }) => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [error, setError] = React.useState('')
+  const [networkError, setNetworkError] = React.useState('')
+  const [networkErrorMessage, setNetworkErrorMessage] = React.useState('')
 
   const isValidForm = () => {
-    setError({ ...error, name: false, password: false })
+    setError({ ...error, email: false, password: false })
     if (!isValidEmail(email)) {
-      setError({ ...error, name: true })
+      setError({ ...error, email: true })
       return false
     }
     return true
@@ -32,6 +34,14 @@ const Signin = ({ messageRegistrationButton }) => {
         .then((response) => {
           if (response.ok) {
             return response.text()
+          } if (!response.ok) {
+            response.json()
+              .then(({ msg }) => {
+                setNetworkError(true)
+                if (msg === 'auth.error.user-or-pass-mismatch') {
+                  setNetworkErrorMessage(messages['signinpage.signinErrorMessage'])
+                }
+              })
           } throw new Error('something went wrong durring signin from backend')
         })
         .then((payload) => {
@@ -58,6 +68,7 @@ const Signin = ({ messageRegistrationButton }) => {
         onChange={(event) => setEmail(event.target.value)}
         value={email}
         required
+        error={error.email}
       />
       <TextField
         className={classes.registrationTextfield}
@@ -69,6 +80,8 @@ const Signin = ({ messageRegistrationButton }) => {
         required
         type="password"
       />
+      {networkError
+      && <Typography className={classes.signinErrorTypography}>{networkErrorMessage}</Typography>}
       <Button
         variant="outlined"
         type="submit"

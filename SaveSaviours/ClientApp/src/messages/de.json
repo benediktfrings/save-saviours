@@ -83,6 +83,7 @@
   "signinpage.name": "User E-Mail",
   "signinpage.password": "Passwort",
   "signinpage.button": "Anmelden",
+  "signinpage.signinErrorMessage": "Zu dieser E-Mail Adresse gibt es keinen Nutzer mit diesem Passwort. Bitte erneut versuchen.",
 
   "vettingpage.header": "Zu überprüfende Anmeldungen",
   "vettingpage.vettingButton": "Verifizieren!",

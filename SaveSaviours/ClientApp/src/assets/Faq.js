@@ -1,5 +1,17 @@
 
 const Faq = `# FAQ
+***Hilf Helfern*** ist für den Notfall gedacht - wie Covid-19. Wenn die medizinischen und sozialen Einrichtungen unter der Last zusammenzubrechen drohen.
+Dann fehlt es schnell mal an Menschen die mithelfen und aushelfen - echte Helfer in der Not eben.  
+Und das können wir alle sein. Jeder hat Erfahrungen, die er in so einer Krise einbringen kann, um den Betrieb dieser Einrichtungen aufrecht zu halten.
+Viele Menschen haben sogar konkrete Erfahrungen im Zivildienst, der Bundeswehr oder einem Freiwilligen Sozialen Jahr gesammelt.  
+
+***Hilf Helfern*** bringt Helfer und hilfesuchende Einrichtungen bundesweit aber lokal zusammen.  
+***Hilf Helfern*** ist keine Personalvermittlung oder Zeitarbeit.  
+***Hilf Helfern*** soll schnell Unterstützung mobilisieren - auf freiwilliger Basis oder wie auch immer die anfragende Einrichtung das anbieten kann.  
+
+Es ist wichtig, dass möglichst viele Helfer sich registrieren, damit im Bedarfsfall auch ein flächendeckendes Angebot besteht.
+**Daher wäre es super, wenn jeder der *Hilft Helfer* für eine gute Idee hält den Link mit möglichst vielen Freunden teilt! Danke schonmal dafür!**
+
 ## Hilf Helfern - In einfachen Worten
 1. Helfer registrieren sich mit Kontaktdaten und Erfahrungen. 
 2. Ärzte, Kliniken und soziale Einrichtungen mit Hilfebedarf registrieren sich (Einrichtungen). 

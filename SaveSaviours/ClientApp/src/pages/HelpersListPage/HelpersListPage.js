@@ -35,8 +35,8 @@ const HelpersListPage = () => {
       Get('/user/info')
         .then((response) => {
           if (response.roles.institution || response.roles.administrator) setAuth(true)
-          if (response.roles.institution.vetted) setVetted(true)
           else window.location = '/signin'
+          if (response.roles.institution.vetted) setVetted(true)
         })
         .catch((e) => new Error(e))
     } else window.location = '/signin'

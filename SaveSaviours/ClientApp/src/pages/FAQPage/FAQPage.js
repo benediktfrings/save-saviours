@@ -2,12 +2,12 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import styles from 'styles/styles'
 import ReactMarkdown from 'react-markdown'
-import Example from 'assets/Example'
+import Faq from 'assets/Faq'
 
 const FAQPage = () => {
   const classes = styles()
   // const input = '# This is a header\n\nAnd this is a paragraph'
-  const input = Example
+  const input = Faq
   return (
     <Grid container>
       <div className={classes.offset} />

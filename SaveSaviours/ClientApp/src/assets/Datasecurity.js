@@ -1,19 +1,37 @@
-import React from 'react'
 
 const Datasecurity = `# Datenschutzerklärung
+### Hilf Helfern - In einfachen Worten
+1. Helfer registrieren sich mit Kontaktdaten und Erfahrungen. 
+2. Ärzte, Kliniken und soziale Einrichtungen mit Hilfebedarf registrieren sich (Einrichtungen). 
+3. Wir checken die registrierten Einrichtungen, damit es sich auch wirklich um Ärzte, Kliniken und soziale Einrichtungen mit Hilfebedarf handelt. 
+4. Die gecheckten Einrichtungen können nach Helfern mit bestimmten Erfahrungen im 50km Umkreis suchen. 
+5. Nur Helfer mit diesen Erfahrungen und aus der Nähe der Einrichtung werden angezeigt. 
+6. Die Einrichtungen sehen erstmal keine Kontaktdaten. 
+7. Erst wenn die Einrichtungen auf einen bestimmten Helfer klicken, sehen sie die Kontaktdaten.
+8. Die Einrichtung sieht zu jedem Zeitpunkt nur die Kontaktdaten von jeweils einem Helfer. 
+8. Die Einrichtung kann dann direkt über Telefon oder E-Mail Kontakt mit dem Helfer aufnehmen. 
+9. Alles weitere bespricht die Einrichtung direkt mit dem Helfer. 
+11. Die Helfer- und die Einrichtungsdaten werden von uns geschützt. 
+    - Wir verschlüsseln die Übertragung und speichern alle Daten in Europa. 
+	- Wir versuchen nur die minmal notwendigen Daten zu speichern und anzuzeigen. 
+    - Wir passen auf, das keiner die Daten klaut.
+11. Wenn Helfer nicht mehr als Helfer gezeigt werden wollen, können Helfer in ihrem Profil die Verfügbarkeit pausieren. 
+12. Helfer und Einrichtungen können ihr Profil löschen. 
+
+
 ## Einleitung
 Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten“ bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten.
 Der Maßgebliche Zweck dieses von Bürgern für Bürger privat entwickelten und betriebenen Online Angebots, ist im Krisenfall freiwillige Helfer mit hilfesuchenden medizinischen und sozialen Institutionen zu vernetzen. Zu diesem Zweck registrieren sich Helfer mit Name, E-Mail, Telefonnummer, Postleitzahl und hilferelevanten Erfahrungen, und medizinische Institutionen mit Namen der Institution, Namen der Kontaktperson, Telefonnnummer, E-Mail und Postleitzahl. 
 Die registrierten Institutionen werden dann von einem Hilf-Helfern Moderator überprüft und ggf. freigeschaltet. Freigeschaltete Institutionen können nach Erfahrungen im Umkreis von 50km um die Postleitzahl der Institution suchen und bekommen anonymisierte Helferprofile ohne persönliche Daten angezeigt. 
 Die Insitution kann dann jeweils ein Helferprofil aufblättern, sich die Kontaktdaten ansehen und im Bedarfsfall ausserhalb des Online Angebots auf den Helfer zugehen und alles weitere konkret vereinbaren.  
 Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten, sowohl im Rahmen der Erbringung unserer Leistungen als auch insbesondere auf unseren Webseiten, in mobilen Applikationen sowie innerhalb externer Onlinepräsenzen, wie z.B. unserer Social-Media-Profile (nachfolgend zusammenfassend bezeichnet als "Onlineangebot“).  
-Die Entwicklung dieses Online Angebots erfolgt open source und kann unter https://github.com/benediktfrings/save-saviours/ eingesehen werden.
+Die Entwicklung dieses Online Angebots erfolgt Open Source und kann unter https://github.com/benediktfrings/save-saviours/ eingesehen werden.
 Die verwendeten Begriffe sind nicht geschlechtsspezifisch.  
 
 Stand: 4. April 2020  
 ## Inhaltsübersicht
 * Einleitung
-*	Verantwortlicher
+* Verantwortlicher
 *	Übersicht der Verarbeitungen
 *	Maßgebliche Rechtsgrundlagen
 *	Sicherheitsmaßnahmen
@@ -26,8 +44,11 @@ Stand: 4. April 2020
 *	Begriffsdefinitionen
 
 ## Verantwortlicher
-Christoph Göller Wolfener Str. 32-34, 12681 Berlin, Germany 
-E-Mail-Adresse: christoph@coolar.co
+Christoph Göller 
+Wolfener Str. 32-34 
+12681 Berlin 
+Germany 
+E-Mail-Adresse: christoph@coolar.co  
 ## Übersicht der Verarbeitungen
 Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer Verarbeitung zusammen und verweist auf die betroffenen Personen.
 ### Arten der verarbeiteten Daten
@@ -84,6 +105,7 @@ Ansonsten werden die Daten der Nutzer auf Grundlage unserer berechtigten Interes
 *	Rechtsgrundlagen: Einwilligung (Art. 6 Abs. 1 S. 1 lit. a DSGVO), Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b. DSGVO), Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f. DSGVO).
 ### Eingesetzte Dienste und Diensteanbieter:
 *	Microsoft Clouddienste: Cloud-Speicher-Dienste, Dienstanbieter: 
+Wir verwenden ausschliessliche europäische Azure Server für das Web-App Hosting und die SQL Datenbank!
 Microsoft Corporation, One Microsoft Way, Redmond, WA 98052-6399 USA, Website: https://microsoft.com/de-de, Datenschutzerklärung: https://privacy.microsoft.com/de-de/privacystatement, Sicherheitshinweise: https://www.microsoft.com/de-de/trustcenter, Privacy Shield (Gewährleistung Datenschutzniveau bei Verarbeitung von Daten in den USA): https://www.privacyshield.gov/participant?id=a2zt0000000KzNaAAK&status=Active.
 ### Löschung von Daten
 Die von uns verarbeiteten Daten werden nach Maßgabe der gesetzlichen Vorgaben gelöscht, sobald deren zur Verarbeitung erlaubten Einwilligungen widerrufen werden oder sonstige Erlaubnisse entfallen (z.B., wenn der Zweck der Verarbeitung dieser Daten entfallen ist oder sie für den Zweck nicht erforderlich sind).  

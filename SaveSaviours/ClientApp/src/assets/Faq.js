@@ -5,9 +5,9 @@ Dann fehlt es schnell mal an Menschen die mithelfen und aushelfen - echte Helfer
 Und das können wir alle sein. Jeder hat Erfahrungen, die er in so einer Krise einbringen kann, um den Betrieb dieser Einrichtungen aufrecht zu halten.
 Viele Menschen haben sogar konkrete Erfahrungen im Zivildienst, der Bundeswehr oder einem Freiwilligen Sozialen Jahr gesammelt.  
 
-***Hilf Helfern*** bringt Helfer und hilfesuchende Einrichtungen bundesweit aber lokal zusammen.  
+***Hilf Helfern*** bringt Helfer und hilfesuchende Einrichtungen bundesweit - aber lokal - zusammen.  
 ***Hilf Helfern*** ist keine Personalvermittlung oder Zeitarbeit.  
-***Hilf Helfern*** soll schnell Unterstützung mobilisieren - auf freiwilliger Basis oder wie auch immer die anfragende Einrichtung das anbieten kann.  
+***Hilf Helfern*** soll schnelle Unterstützung mobilisieren - auf freiwilliger Basis oder wie auch immer die anfragende Einrichtung das anbieten kann.  
 
 Es ist wichtig, dass möglichst viele Helfer sich registrieren, damit im Bedarfsfall auch ein flächendeckendes Angebot besteht.
 **Daher wäre es super, wenn jeder der *Hilft Helfer* für eine gute Idee hält den Link mit möglichst vielen Freunden teilt! Danke schonmal dafür!**
@@ -23,12 +23,9 @@ Es ist wichtig, dass möglichst viele Helfer sich registrieren, damit im Bedarfs
 8. Die Einrichtung sieht zu jedem Zeitpunkt nur die Kontaktdaten von jeweils einem Helfer. 
 8. Die Einrichtung kann dann direkt über Telefon oder E-Mail Kontakt mit dem Helfer aufnehmen. 
 9. Alles weitere bespricht die Einrichtung direkt mit dem Helfer. 
-11. Die Helfer- und die Einrichtungsdaten werden von uns geschützt. 
-    - Wir verschlüsseln die Übertragung und speichern alle Daten in Europa. 
-	- Wir versuchen nur die minmal notwendigen Daten zu speichern und anzuzeigen. 
-    - Wir passen auf, das keiner die Daten klaut.
-11. Wenn Helfer nicht mehr als Helfer gezeigt werden wollen, können Helfer in ihrem Profil die Verfügbarkeit pausieren. 
-12. Helfer und Einrichtungen können ihr Profil löschen. `
+10. Das medizinische und soziale Personal bekommt Unterstützung und kann sich auf die Bewältigung der Krise fokussieren.
+
+`
 
 
 export default Faq

@@ -9,7 +9,7 @@ const ImpressumPage = () => {
   // const input = '# This is a header\n\nAnd this is a paragraph'
   const input = Impressum
   return (
-    <Grid container>
+    <Grid container wrap="nowrap">
       <div className={classes.offset} />
       <Grid item>
         <ReactMarkdown source={input} />

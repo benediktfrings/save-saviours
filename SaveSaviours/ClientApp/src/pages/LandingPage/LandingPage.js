@@ -16,7 +16,7 @@ const LandingPage = () => {
         <Grid item className={classes.landingButtonGrid}>
           <ActionButton />
         </Grid>
-        {/* <Supporters /> */}
+        <Supporters />
       </Grid>
     </Grid>
   )

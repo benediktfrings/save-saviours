@@ -177,7 +177,7 @@ export default () => {
       },
     },
     landingSupporterImage: {
-      maxWidth: 200,
+      maxWidth: 500,
     },
     // REGISTRATION
     registrationGrid: {

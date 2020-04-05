@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Paper, Typography } from '@material-ui/core'
 import styles from 'styles/styles'
 import * as messages from 'messages/de.json'
-import twitterLogo from 'assets/twitter-logo.png'
+import twitterLogo from 'assets/images/twitter-logo.png'
 
 const FriendsInvite = () => {
   const classes = styles()

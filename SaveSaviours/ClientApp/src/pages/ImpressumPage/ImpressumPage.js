@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import styles from 'styles/styles'
 import ReactMarkdown from 'react-markdown'
-import Impressum from 'assets/Impressum'
+import Impressum from 'assets/markdowns/Impressum'
 
 const ImpressumPage = () => {
   const classes = styles()

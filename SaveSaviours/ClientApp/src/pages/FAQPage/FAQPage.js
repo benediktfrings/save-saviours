@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import styles from 'styles/styles'
 import ReactMarkdown from 'react-markdown'
-import Faq from 'assets/Faq'
+import Faq from 'assets/markdowns/Faq'
 
 const FAQPage = () => {
   const classes = styles()

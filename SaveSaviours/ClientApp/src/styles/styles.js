@@ -7,7 +7,8 @@ export default () => {
     offset: theme.mixins.toolbar,
     // APP
     appContainer: {
-      padding: 0,
+      paddingLeft: 10,
+      paddingRight: 10,
     },
     // CONFIRMATION
     confirmationFacebook: {
@@ -197,6 +198,16 @@ export default () => {
         maxWidth: 300,
       },
     },
+    landingSupporterHeader: {
+      paddingTop: 10,
+      paddingBottom: 20,
+      paddingLeft: 15,
+      margin: 0,
+      '@media (max-width: 600px)': {
+        fontSize: '1.1rem',
+        paddingLeft: 5,
+      },
+    },
     // REGISTRATION
     registrationGrid: {
       textAlign: 'center',
@@ -263,16 +274,6 @@ export default () => {
     // SIGNIN
     signinErrorTypography: {
       color: theme.palette.error.main,
-    },
-    supporterHeader: {
-      paddingTop: 10,
-      paddingBottom: 20,
-      paddingLeft: 15,
-      margin: 0,
-      '@media (max-width: 600px)': {
-        fontSize: '1.1rem',
-        paddingLeft: 10,
-      },
     },
   })
   return useStyles()

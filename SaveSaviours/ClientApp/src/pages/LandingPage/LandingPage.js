@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
+import { Grid, Box } from '@material-ui/core'
 import styles from 'styles/styles'
 import Welcome from 'components/Welcome/Welcome'
 import ActionButton from 'components/ActionButton/ActionButton'
@@ -10,12 +10,12 @@ const LandingPage = () => {
   const classes = styles()
 
   return (
-    <Grid container className={classes.landingHeader}>
+    <Grid container>
       <Grid item>
         <Welcome />
-        <Grid item className={classes.landingButtonGrid}>
+        <Box className={classes.landingButtonGrid}>
           <ActionButton />
-        </Grid>
+        </Box>
         <Supporters />
       </Grid>
     </Grid>

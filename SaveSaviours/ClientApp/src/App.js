@@ -49,7 +49,7 @@ const App = () => {
         <CssBaseline />
         <TopAppBar />
         <div className={classes.offset} />
-        <Container maxWidth="lg" className={classes.landingHeader}>
+        <Container maxWidth="lg">
           <Switch>
             {routes.map(({ path, component }) => (
               <Route exact path={path} key={path} component={component} />

@@ -189,6 +189,9 @@ export default () => {
     },
     landingSupporterImage: {
       maxWidth: 500,
+      '@media (max-width: 600px)': {
+        maxWidth: 300,
+      },
     },
     // REGISTRATION
     registrationGrid: {
@@ -262,6 +265,10 @@ export default () => {
       paddingBottom: 20,
       paddingLeft: 15,
       margin: 0,
+      '@media (max-width: 600px)': {
+        fontSize: '1.3rem',
+        paddingLeft: 5,
+      },
     },
   })
   return useStyles()

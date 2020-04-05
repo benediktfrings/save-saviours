@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
   link: {
     paddingLeft: 15,
     paddingRight: 15,
+    '@media (max-width: 600px)': {
+      fontSize: '0.8rem',
+    },
   },
 }))
 export default function BottomAppBar() {

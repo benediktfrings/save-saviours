@@ -10,7 +10,7 @@ const LandingPage = () => {
   const classes = styles()
 
   return (
-    <Grid container>
+    <Grid container className={classes.landingHeader}>
       <Grid item>
         <Welcome />
         <Grid item className={classes.landingButtonGrid}>

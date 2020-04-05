@@ -38,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     right: 20,
     [`@media (max-width: ${theme.breakpoints.values.sm}px)`]: {
-      right: -10,
+      right: 0,
+      top: 10,
     },
   },
   appBar: {
@@ -53,8 +54,8 @@ export default function TopAppBar() {
   const scrollStyle = `${classes.appBar}`
 
   const handleLogOut = () => {
-      window.localStorage.clear()
-      window.location='/signin'
+    window.localStorage.clear()
+    window.location = '/signin'
   }
   return (
     <AppBar
@@ -66,15 +67,15 @@ export default function TopAppBar() {
       <Toolbar>
         <div className={classes.wrapperWrapper}>
           <div className={classes.wrapper}>
-              <span onClick={()=>handleLogOut()}>
-                <IconButton
-                  className={classes.icon}
-                  color="inherit"
-                >
-                  <AccountCircle fontSize="large" />
-                </IconButton>
-              </span>
-            
+            <span onClick={() => handleLogOut()}>
+              <IconButton
+                className={classes.icon}
+                color="inherit"
+              >
+                <AccountCircle fontSize="large" />
+              </IconButton>
+            </span>
+
             <Link href="/">
               <img src={image} alt="logo" className={classes.logo} />
             </Link>

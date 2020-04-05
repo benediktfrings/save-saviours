@@ -159,6 +159,17 @@ export default () => {
     landingHeader: {
       paddingTop: 10,
       paddingBottom: 20,
+      margin: 0,
+      '@media (max-width: 600px)': {
+        paddingTop: 5,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingBottom: 10,
+      },
+    },
+    landingContainer: {
+      marginLeft: 0,
+      width: '100%',
     },
     landingText: {
       paddingTop: 5,
@@ -245,6 +256,12 @@ export default () => {
     // SIGNIN
     signinErrorTypography: {
       color: theme.palette.error.main,
+    },
+    supporterHeader: {
+      paddingTop: 10,
+      paddingBottom: 20,
+      paddingLeft: 15,
+      margin: 0,
     },
   })
   return useStyles()

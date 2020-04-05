@@ -8,7 +8,7 @@ const Supporters = () => {
   const classes = styles()
   return (
     <>
-      <Typography variant="h6" component="h3" className={classes.landingHeader}>
+      <Typography variant="h6" component="h3" className={classes.supporterHeader}>
         {messages['landingpage.support']}
       </Typography>
       <Grid container>

@@ -12,5 +12,6 @@
   "institutionconfirmation": "/institutionconfirmation",
   "registration": "/registration",
   "vetting": "/vetting",
-  "helperprofile": "/helperprofile"
+  "helperprofile": "/helperprofile",
+  "intitutionprofile": "/institutionprofile"
 }

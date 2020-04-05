@@ -5,10 +5,9 @@ import {
 } from '@material-ui/core'
 import * as messages from 'messages/de.json'
 import styles from 'styles/styles'
-import Header from 'components/HelperProfile/Header'
-import DeleteUser from 'components/HelperProfile/DeleteUser'
-import UpdateProfile from 'components/HelperProfile/UpdateProfile'
-import UpdateExperience from 'components/HelperProfile/UpdateExperience'
+import Header from 'components/InstitutionProfile/Header'
+import DeleteUser from 'components/InstitutionProfile/DeleteUser'
+import UpdateProfile from 'components/InstitutionProfile/UpdateProfile'
 import Post from 'api/post'
 import {
   isValidEmail, isValidPhoneNumber, isValidZip,
@@ -17,51 +16,37 @@ import {
 import UpdateButton from 'components/Registration/RegistrationButton'
 
 
-const HelperProfilePage = () => {
+const InstitutionProfilePage = () => {
   const classes = styles()
 
   const [auth, setAuth] = useState(false)
   const [user, setUser] = useState(false)
-  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [contactName, setContactName] = useState('')
   const [phone, setPhone] = useState('')
   const [zip, setZip] = useState('')
-  const [isActive, setIsActive] = useState(false)
-  const [checked, setChecked] = useState(false)
+  const [vetted, setVetted] = useState(false)
   const [deleteProfile, setDeleteProfile] = useState(false)
-
-  const [tags, setTags] = useState([
-    messages['registrationpage.select'][0].text,
-    messages['registrationpage.select'][1].text,
-    messages['registrationpage.select'][2].text,
-    messages['registrationpage.select'][3].text,
-    messages['registrationpage.select'][4].text,
-    messages['registrationpage.select'][5].text,
-    messages['registrationpage.select'][6].text,
-    messages['registrationpage.select'][7].text,
-    messages['registrationpage.select'][8].text,
-    messages['registrationpage.select'][9].text,
-  ])
 
   useEffect(() => {
     if (window.localStorage.getItem('access-token')) {
       Get('/user/info')
         .then((response) => {
-          if (response.roles.volunteer) {
+          if (response.roles.institution) {
             setAuth(true)
             setUser(response)
             setEmail(response.email)
-            setName(response.roles.volunteer.name)
-            setPhone(response.roles.volunteer.primaryPhoneNumber)
-            setZip(response.roles.volunteer.zipCode)
-            setIsActive(response.roles.volunteer.isActive)
-            setChecked(response.roles.volunteer.experiences)
+            setName(response.roles.institution.name)
+            setContactName(response.roles.institution.contactName)
+            setPhone(response.roles.institution.primaryPhoneNumber)
+            setZip(response.roles.institution.zipCode)
+            setVetted(response.roles.institution.vetted)
           } else window.location = '/signin'
         })
         .catch((e) => new Error(e))
     } else window.location = '/signin'
   }, [])
-
 
   const [error, setError] = useState({
     name: false,
@@ -89,12 +74,11 @@ const HelperProfilePage = () => {
     const payload = {
       email,
       name,
+      contactName,
       zipCode: zip,
       primaryPhoneNumber: phone,
       secondaryPhoneNumber: '',
-      bio: '',
-      experiences: checked,
-      isActive,
+      vetted,
     }
     if (isValidForm(payload)) {
       Post('/volunteer/update', payload)
@@ -119,19 +103,14 @@ const HelperProfilePage = () => {
             <UpdateProfile
               name={name}
               setName={setName}
+              contactName={contactName}
+              setContactName={setContactName}
               phone={phone}
               setPhone={setPhone}
               zip={zip}
               setZip={setZip}
               error={error}
-              isActive={isActive}
-              setIsActive={setIsActive}
-            />
-            <UpdateExperience
-              setChecked={setChecked}
-              checked={checked}
-              tags={tags}
-              messageSubtitle={messages['helperProfile.subtitle']}
+              vetted={vetted}
             />
             <Box align="center">
               <UpdateButton
@@ -142,7 +121,6 @@ const HelperProfilePage = () => {
 
           </form>
         </Box>
-
         <Box alignContent="left">
           <DeleteUser />
         </Box>
@@ -154,4 +132,4 @@ const HelperProfilePage = () => {
   )
 }
 
-export default HelperProfilePage
+export default InstitutionProfilePage

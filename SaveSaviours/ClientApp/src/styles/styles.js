@@ -5,6 +5,10 @@ export default () => {
   const useStyles = makeStyles({
     // ADJUSTMENT TOP BAR
     offset: theme.mixins.toolbar,
+    // APP
+    appContainer: {
+      padding: 0,
+    },
     // CONFIRMATION
     confirmationFacebook: {
       backgroundColor: '#4267b2',
@@ -266,8 +270,8 @@ export default () => {
       paddingLeft: 15,
       margin: 0,
       '@media (max-width: 600px)': {
-        fontSize: '1.3rem',
-        paddingLeft: 5,
+        fontSize: '1.1rem',
+        paddingLeft: 10,
       },
     },
   })

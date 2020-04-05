@@ -31,12 +31,14 @@ const useStyles = makeStyles((theme) => ({
     opacity: 1,
     marginTop: 5,
     [`@media (max-width: ${theme.breakpoints.values.sm}px)`]: {
-      maxHeight: 80,
+      maxHeight: 65,
     },
   },
   icon: {
     position: 'absolute',
     right: 20,
+    color: theme.palette.primary.dark,
+    opacity: 0.9,
     [`@media (max-width: ${theme.breakpoints.values.sm}px)`]: {
       right: 0,
       top: 10,

@@ -31,6 +31,7 @@
   "registrationpage.select": [
     { "name": "laboratory", "text": "Medizinisches Labor" },
     { "name": "care", "text": "Pflege" },
+    { "name": "hygene", "text": "Hygiene, Desinfektion und Reinigung" },
     { "name": "ambulance", "text": "Ambulanz" },
     { "name": "coordination", "text": "Leitung und Koordination von Gruppen" },
     { "name": "car", "text": "Führerschein und Auto" },

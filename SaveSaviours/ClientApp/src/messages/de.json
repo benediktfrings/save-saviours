@@ -1,5 +1,5 @@
 {
-  "landingpage.title": "Rettet Retter",
+  "landingpage.title": "Hilf Helfern",
   "landingpage.explainerHeader": "Corona! - aber Du weißt nicht, wie Du helfen kannst?",
   "landingpage.explainerBody": "In den Kliniken wird im Ernstfall jede Hand gebraucht. Registriere dich jetzt und hilf im Notfall mit Krankenhaus Personal zu entlasten.",
   "landingpage.helptextTitle": "Wie kann ich im Ernstfall helfen?",
@@ -15,7 +15,7 @@
     "etc."
   ],
   "landingpage.callToAction": "Registriere Dich jetzt!",
-  "landingpage.url": "https://rette-retter.de",
+  "landingpage.url": "https://hilf-helfern.de",
   "landingpage.support": "Ein Ergebnis des 'Hackathon der Bundesregierung, 20.-22. März 2020'",
 
   "registrationpage.callToAction": "Registriere Dich jetzt und helfe mit dem Kollaps entgegen zu wirken!",
@@ -61,7 +61,7 @@
 
   "confirmationpage.headertextTitle": "Vielen Dank für Deine Registrierung!",
   "confirmationpage.headertextBody": "Sollten die derzeitigen Maßnahmen nicht dazu führen, dass die Fallzahlen unter der Kapazität der Gesundheitsversorgung in deiner Region bleiben, wirst Du von medizinischen Institutionen in Deiner Nähe kontaktiert, um die Fachkräfte und Ärzte zu unterstützen und entlasten.",
-  "confirmationpage.actionButton": "Motiviere Deine Freunde, bei 'Rette Retter' mit zu machen",
+  "confirmationpage.actionButton": "Motiviere Deine Freunde, bei 'Hilf Helfern' mit zu machen",
   "confirmationpage.friendstextBody": "Vielleicht kennst Du noch weitere Personen, die im Notfall mithelfen können...",
   "confirmationpage.friendsFacebook": "Teilen",
   "confirmationpage.friendsTwitter": "Tweeten",

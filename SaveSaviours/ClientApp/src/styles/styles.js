@@ -176,6 +176,11 @@ export default () => {
       marginLeft: 0,
       width: '100%',
     },
+    landingBox: {
+      marginBottom: 20,
+      borderColor:theme.palette.primary.main,
+      borderWidth:1
+    },
     landingText: {
       paddingTop: 5,
       paddingBottom: 5,
@@ -183,6 +188,10 @@ export default () => {
     landingButtonGrid: {
       textAlign: 'center',
       padding: 20,
+      marginBottom:20
+    },
+    landingSupporterBox:{
+      marginTop:60
     },
     landingButton: {
       backgroundColor: theme.palette.primary.main,
@@ -244,6 +253,7 @@ export default () => {
       marginTop: 20,
       paddingBottom: 20,
       fontSize: '1.8rem',
+      fontStyle:'italic',
       '@media (max-width: 600px)': {
         fontSize: '1.3rem',
       },
@@ -270,6 +280,10 @@ export default () => {
     registrationExperienceListBox: {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.common.white,
+    },
+    registrationFormBox: {
+      paddingLeft:20,
+      paddingRight:20,
     },
     // SIGNIN
     signinErrorTypography: {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Grid, Divider } from '@material-ui/core'
+import { Grid, Divider, Box } from '@material-ui/core'
 import styles from 'styles/styles'
 import {
   isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword,
@@ -23,18 +23,20 @@ const RegistrationPage = () => {
   const [checked, setChecked] = useState([])
   const [datasecurity, setDatasecurity] = useState(false)
 
-  const [tags, setTags] = useState([
-    messages['registrationpage.select'][0].text,
-    messages['registrationpage.select'][1].text,
-    messages['registrationpage.select'][2].text,
-    messages['registrationpage.select'][3].text,
-    messages['registrationpage.select'][4].text,
-    messages['registrationpage.select'][5].text,
-    messages['registrationpage.select'][6].text,
-    messages['registrationpage.select'][7].text,
-    messages['registrationpage.select'][8].text,
-    messages['registrationpage.select'][9].text,
-  ])
+  // const [tags, setTags] = useState([
+  //   messages['registrationpage.select'][0].text,
+  //   messages['registrationpage.select'][1].text,
+  //   messages['registrationpage.select'][2].text,
+  //   messages['registrationpage.select'][3].text,
+  //   messages['registrationpage.select'][4].text,
+  //   messages['registrationpage.select'][5].text,
+  //   messages['registrationpage.select'][6].text,
+  //   messages['registrationpage.select'][7].text,
+  //   messages['registrationpage.select'][8].text,
+  //   messages['registrationpage.select'][9].text,
+  //   messages['registrationpage.select'][10].text,
+  // ])
+  const [tags, setTags] = useState(messages['registrationpage.select'].map((item)=>item.text))
   const [error, setError] = useState({
     name: false,
     email: false,
@@ -95,6 +97,7 @@ const RegistrationPage = () => {
     <Grid container>
       <Grid item className={classes.registrationGrid}>
         <RegistrationCallToAction messageAction={messages['registrationpage.callToAction']} />
+        <Box className={classes.registrationFormBox}>
         <form onSubmit={(event) => handleRegistration(event)}>
           <RegistrationTextField
             name={name}
@@ -121,6 +124,8 @@ const RegistrationPage = () => {
             messageRegistrationButton={messages['registrationpage.helper.registrationButton']}
           />
         </form>
+        </Box>
+        
       </Grid>
     </Grid>
   )

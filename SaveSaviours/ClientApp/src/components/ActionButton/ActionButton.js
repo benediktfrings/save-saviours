@@ -6,7 +6,7 @@ import * as messages from 'messages/de.json'
 const ActionButton = () => {
   const classes = styles()
   const onClick = () => {
-    window.location = '/registration'
+    window.location = '/institutions'
   }
   return (
     <Button

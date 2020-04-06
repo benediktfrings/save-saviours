@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField } from '@material-ui/core'
+import { TextField, Typography } from '@material-ui/core'
 import styles from 'styles/styles'
 import * as messages from 'messages/de.json'
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -58,8 +58,15 @@ const RegistrationTextField = ({
         onChange={(event) => setPhone(event.target.value)}
         value={phone}
         required
+        type="number"
         error={error.phone}
       />
+      {error.phone
+      && (
+      <Typography className={classes.errorTypography}>
+        {messages['error.phone']}
+      </Typography>
+      )}
       <TextField
         className={classes.registrationTextfield}
         variant="outlined"
@@ -68,8 +75,15 @@ const RegistrationTextField = ({
         onChange={(event) => setZip(event.target.value)}
         value={zip}
         required
+        type="number"
         error={error.zip}
       />
+      {error.zip
+      && (
+      <Typography className={classes.errorTypography}>
+        {messages['error.zip']}
+      </Typography>
+      )}
       <TextField
         className={classes.registrationTextfield}
         variant="outlined"
@@ -80,6 +94,12 @@ const RegistrationTextField = ({
         required
         error={error.email}
       />
+      {error.email
+      && (
+      <Typography className={classes.errorTypography}>
+        {messages['error.email']}
+      </Typography>
+      )}
       <TextField
         className={classes.registrationTextfield}
         variant="outlined"
@@ -102,6 +122,12 @@ const RegistrationTextField = ({
           ),
         }}
       />
+      {error.password
+      && (
+      <Typography className={classes.errorTypography}>
+        {messages['error.password']}
+      </Typography>
+      )}
     </>
   )
 }

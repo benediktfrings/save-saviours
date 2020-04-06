@@ -28,6 +28,12 @@
   "registrationpage.helper.registrationButton": "Ja, ich helfe im Notfall mit!",
   "registrationpage.helper.institutionRegistrationButton": "Ich repräsentiere eine medizinische Einrichtung",
 
+  "error.email": "Bitte überprüfen Sie die E-Mail Adresse",
+  "error.phone": "Bitte überprüfen Sie die Telefonnummer - sie muss mit 0 anfangen und zwischen 8 und 18 Zahlen beinhalten",
+  "error.zip": "Bitte überprüfen Sie die Postleitzahl - sie muss 5 Zahlen beinhalten und wirklich existieren",
+  "error.password": "Bitte überprüfen Sie das Passwort - es muss mindestens 6 Zeichen lang sein und mindestens 3 verschiedene Zeichen beinhalten",
+  "error.form": "Bitte überprüfen Sie Ihre Eingaben in den rot markierten Feldern",
+
   "registrationpage.select": [
     { "name": "ambulance", "text": "Ambulanz" },
     { "name": "office", "text": "Büroadministration" },

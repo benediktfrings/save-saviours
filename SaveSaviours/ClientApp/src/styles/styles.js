@@ -47,6 +47,11 @@ export default () => {
       paddingLeft: 10,
       verticalAlign: 'middle',
     },
+    // ERROR
+    errorTypography: {
+      color: theme.palette.error.main,
+      fontSize: '0.9rem',
+    },
     // HELPERLIST
     helperListPaper: {
       marginBottom: 30,
@@ -178,8 +183,8 @@ export default () => {
     },
     landingBox: {
       marginBottom: 20,
-      borderColor:theme.palette.primary.main,
-      borderWidth:1
+      borderColor: theme.palette.primary.main,
+      borderWidth: 1,
     },
     landingText: {
       paddingTop: 5,
@@ -188,10 +193,10 @@ export default () => {
     landingButtonGrid: {
       textAlign: 'center',
       padding: 20,
-      marginBottom:20
+      marginBottom: 20,
     },
-    landingSupporterBox:{
-      marginTop:60
+    landingSupporterBox: {
+      marginTop: 60,
     },
     landingButton: {
       backgroundColor: theme.palette.primary.main,
@@ -253,7 +258,7 @@ export default () => {
       marginTop: 20,
       paddingBottom: 20,
       fontSize: '1.8rem',
-      fontStyle:'italic',
+      fontStyle: 'italic',
       '@media (max-width: 600px)': {
         fontSize: '1.3rem',
       },
@@ -282,8 +287,8 @@ export default () => {
       color: theme.palette.common.white,
     },
     registrationFormBox: {
-      paddingLeft:20,
-      paddingRight:20,
+      paddingLeft: 20,
+      paddingRight: 20,
     },
     // SIGNIN
     signinErrorTypography: {

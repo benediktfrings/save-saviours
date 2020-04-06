@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Grid, Divider } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Grid, Divider, Typography } from '@material-ui/core'
 import styles from 'styles/styles'
 import {
   isValidEmail, isValidPhoneNumber, isValidZip, isValidPassword,
@@ -24,30 +24,35 @@ const InstitutionRegistrationPage = () => {
   const [password, setPassword] = useState('')
 
   const [error, setError] = useState({
-    name: false,
     email: false,
     phone: false,
     zip: false,
     password: false,
+    form: false,
   })
   const isValidForm = () => {
-    setError({
-      ...error, phone: false, zip: false,
-    })
     if (!isValidEmail(email)) {
-      setError({ ...error, email: true })
+      setError({
+        phone: false, zip: false, password: false, email: true, form: true,
+      })
       return false
     }
     if (!isValidPhoneNumber(phone)) {
-      setError({ ...phone, phone: true })
+      setError({
+        phone: true, zip: false, password: false, email: false, form: true,
+      })
       return false
     }
     if (!isValidZip(zip)) {
-      setError({ ...error, zip: true })
+      setError({
+        phone: false, zip: true, password: false, email: false, form: true,
+      })
       return false
     }
     if (!isValidPassword(password)) {
-      setError({ ...error, password: true })
+      setError({
+        phone: false, zip: false, password: true, email: false, form: true,
+      })
       return false
     }
     return true
@@ -100,6 +105,12 @@ const InstitutionRegistrationPage = () => {
           />
           <Divider className={classes.registrationDivider} />
           <RegistrationOptIn datasecurity={datasecurity} setDatasecurity={setDatasecurity} />
+          {error.form
+            && (
+            <Typography className={classes.errorTypography}>
+              {messages['error.form']}
+            </Typography>
+            )}
           <RegistrationButton
             handleRegistration={handleRegistration}
             messageRegistrationButton={

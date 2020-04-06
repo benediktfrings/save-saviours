@@ -3,7 +3,7 @@
   "landingpage.explainerHeader": "Corona! - aber Du weißt nicht, wie Du helfen kannst?",
   "landingpage.explainerBody": "In den Kliniken wird im Ernstfall jede Hand gebraucht. Registriere dich jetzt und hilf im Notfall mit Krankenhaus Personal zu entlasten.",
   "landingpage.helptextTitle": "Wie kann ich im Ernstfall helfen?",
-  "landingpage.helptextBody1": "Sollten die derzeitigen Maßnahmen nicht dazu führen, dass die Fallzahlen über der Kapazität der Gesundheitsversorgung in deiner Region liegen, wirst du eingebunden um die Fachkräfte und Ärzte zu entlasten.",
+  "landingpage.helptextBody1": "Sollten die derzeitigen Maßnahmen nicht dazu führen, dass die Fallzahlen über der Kapazität der Gesundheitsversorgung in deiner Region liegen, wirst du eingebunden, um die Fachkräfte und Ärzte zu entlasten.",
   "landingpage.helptextBody2": "Hierbei handelt es sich vor allem um die folgenden Tätigkeiten:",
   "landingpage.helptextTasks": [
     "Botengänge",
@@ -14,11 +14,11 @@
     "Koordinationsaufgaben",
     "etc."
   ],
-  "landingpage.callToAction": "Registriere Dich jetzt!",
+  "landingpage.callToAction": "Hilfesuchende Einrichtung? Hier klicken!",
   "landingpage.url": "https://hilf-helfern.de",
   "landingpage.support": "Ein Ergebnis des 'Hackathon der Bundesregierung, 20.-22. März 2020'",
 
-  "registrationpage.callToAction": "Registriere Dich jetzt und helfe mit dem Kollaps entgegen zu wirken!",
+  "registrationpage.callToAction": "Registriere Dich jetzt und hilf mit dem Kollaps entgegen zu wirken!",
   "registrationpage.helper.name": "Name",
   "registrationpage.helper.email": "E-Mail",
   "registrationpage.helper.phone": "Handynummer oder Festnetz",
@@ -29,25 +29,23 @@
   "registrationpage.helper.institutionRegistrationButton": "Ich repräsentiere eine medizinische Einrichtung",
 
   "registrationpage.select": [
+    { "name": "ambulance", "text": "Ambulanz" },
+    { "name": "office", "text": "Büroadministration" },
+    { "name": "car", "text": "Führerschein und Auto" },
+    { "name": "service", "text": "Hotel, Gastro und Service" },
+    { "name": "hygene", "text": "Hygiene, Desinfektion und Reinigung" },
+    { "name": "logistics", "text": "Lager, Logistik und Beschaffung" },
+    { "name": "coordination", "text": "Leitung und Koordination von Gruppen" },
     { "name": "laboratory", "text": "Medizinisches Labor" },
     { "name": "care", "text": "Pflege" },
-    { "name": "hygene", "text": "Hygiene, Desinfektion und Reinigung" },
-    { "name": "ambulance", "text": "Ambulanz" },
-    { "name": "coordination", "text": "Leitung und Koordination von Gruppen" },
-    { "name": "car", "text": "Führerschein und Auto" },
-    { "name": "office", "text": "Büroadministration" },
     { "name": "projectmanagement", "text": "Projekt Management" },
-    { "name": "logistics", "text": "Lager und Logistik" },
-    { "name": "service", "text": "Hotel und Service" },
-    {
-      "name": "none",
-      "text": "Keine Erfahrung im medizinischem Umfeld"
-    }
+    { "name": "psychology", "text": "Psychologische Unterstützung" },
+    { "name": "none", "text": "Keine Erfahrung im medizinischem Umfeld" }
   ],
   "registrationpage.datasecurity": [
     {
       "name": "datasecurity",
-      "text": "Ich stimme den Datenschutz- und Nutzungsbedingungen zu"
+      "text": "Ich stimme der Datenschutzerklärung zu"
     }
   ],
 

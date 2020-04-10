@@ -95,7 +95,7 @@ const VettingPage = () => {
       {auth
         ? (
           <>
-            <Grid item>
+            <Grid xs={12} item>
               {unvettetInstitutions && vetted
                 && (
                 <Vetting

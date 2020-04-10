@@ -89,6 +89,12 @@ namespace SaveSaviours.Controllers {
 
         [HttpPost, Route("register"), AllowAnonymous]
         public async Task<ActionResult> PostRegistration(RegisterInstitutionModel model) {
+            int code = Int32.Parse(model.ZipCode);
+            if (!Context.Zip.Any(z => z.Code == code)) {
+                ModelState.AddModelError(nameof(model.ZipCode), "error.not-found");
+                return BadRequest(ModelState);
+            }
+
             string password = model.Password ?? GeneratePassword();
             var (user, result) = await CreateUserAsync(model.Email, password, Role.Institution);
             if (!result.Succeeded) return BadRequest(result.Errors.Select(e => new { e.Code, e.Description }));
@@ -99,7 +105,7 @@ namespace SaveSaviours.Controllers {
                 ContactName = model.ContactName,
                 PrimaryPhoneNumber = model.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = model.SecondaryPhoneNumber,
-                ZipCode = Int32.Parse(model.ZipCode),
+                ZipCode = code,
             };
 
             await Context.SaveChangesAsync();

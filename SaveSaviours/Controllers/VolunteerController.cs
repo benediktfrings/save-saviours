@@ -25,6 +25,12 @@
 
         [HttpPost, Route("register"), AllowAnonymous]
         public async Task<ActionResult> PostRegistration(RegisterVolunteerModel model) {
+            int code = Int32.Parse(model.ZipCode);
+            if (!Context.Zip.Any(z => z.Code == code)) {
+                ModelState.AddModelError(nameof(model.ZipCode), "error.not-found");
+                return BadRequest(ModelState);
+            }
+
             string password = model.Password ?? GeneratePassword();
             var (user, result) = await CreateUserAsync(model.Email, password, Role.Volunteer);
             if (!result.Succeeded || user == null)
@@ -48,7 +54,7 @@
                 Experiences = experiences,
                 PrimaryPhoneNumber = model.PrimaryPhoneNumber,
                 SecondaryPhoneNumber = model.SecondaryPhoneNumber,
-                ZipCode = Int32.Parse(model.ZipCode),
+                ZipCode = code,
                 IsActive = true,
             };
 

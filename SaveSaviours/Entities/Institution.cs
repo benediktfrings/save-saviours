@@ -16,7 +16,7 @@ namespace SaveSaviours.Entities {
 
         public string? SecondaryPhoneNumber { get; set; }
 
-        [Required]
+        [Required, RegularExpression(@"\d{5}")]
         public int ZipCode { get; set; }
 
         public bool Vetted { get; set; }

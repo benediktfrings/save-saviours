@@ -16,6 +16,7 @@ namespace SaveSaviours.Data {
         public DbSet<Volunteer> Volunteers { get; private set; } = null!;
         public DbSet<Institution> Institutions { get; set; } = null!;
         public DbSet<Tag> Tags { get; set; } = null!;
+        public DbSet<Zip> Zip { get; set; } = null!;
 
         public IQueryable<ZipDistance> ZipCodesInDistance(int code) =>
             Set<ZipDistance>().FromSqlRaw("SELECT * FROM ZipCodesInDistance({0}, {1})", code, _settings.ZipDistance);

@@ -53,7 +53,7 @@ const Signin = ({ messageRegistrationButton }) => {
               if (info.roles.institution) window.location = '/helperslist'
             })
         })
-        .catch((e) => console.log(e))
+        .catch((e) => new Error(e))
     }
   }
 

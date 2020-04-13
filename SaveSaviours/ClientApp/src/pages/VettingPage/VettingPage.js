@@ -19,7 +19,7 @@ const VettingPage = () => {
           if (response.roles.administrator) setAuth(true)
           else window.location = '/signin'
         })
-        .catch((e) => console.log(e))
+        .catch((e) => new Error(e))
     } else window.location = '/signin'
   }, [])
 
@@ -29,23 +29,25 @@ const VettingPage = () => {
   // get list of indeterminate institution registrations from backend
   const fetchVetting = () => Get('/vetting')
     .then((payload) => setUnvettetInstitutions(payload))
-    .catch((e) => console.log(e))
+    .catch((e) => new Error(e))
 
 
-  const clearVetted = () => {
-    setVetted(() => {
-      let institutionEmail = {}
-      if (unvettetInstitutions) {
-        unvettetInstitutions.map((institution) => {
-          institutionEmail = { ...institutionEmail, [institution.email]: { verified: false, indeterminate: true } }
-        })
-        return institutionEmail
-      }
-    })
-  }
   useEffect(() => {
+    const clearVetted = () => {
+      setVetted(() => {
+        let institutionEmail = {}
+        if (unvettetInstitutions) {
+          unvettetInstitutions.forEach((institution) => {
+            institutionEmail = { ...institutionEmail, [institution.email]: { verified: false, indeterminate: true } }
+          })
+          return institutionEmail
+        }
+        return institutionEmail
+      })
+    }
     clearVetted()
   }, [unvettetInstitutions])
+
   useEffect(() => {
     fetchVetting()
   }, [])
@@ -57,7 +59,7 @@ const VettingPage = () => {
     const accepted = []
     const acceptedPayload = []
     if (vetted !== false) {
-      Object.entries(vetted).map(([email, { verified, indeterminate }]) => {
+      Object.entries(vetted).forEach(([email, { verified, indeterminate }]) => {
         if (indeterminate === false && verified === false) {
           rejected.push(email)
         }
@@ -65,10 +67,10 @@ const VettingPage = () => {
           accepted.push(email)
         }
       })
-      rejected.map((email) => {
-        unvettetInstitutions.map((value) => (value.email === email ? rejectedPayload.push(value.id) : null))
+      rejected.forEach((email) => {
+        unvettetInstitutions.forEach((value) => (value.email === email ? rejectedPayload.push(value.id) : null))
       })
-      accepted.map((email) => {
+      accepted.forEach((email) => {
         unvettetInstitutions.map((value) => (value.email === email ? acceptedPayload.push(value.id) : null))
       })
       if (rejected || accepted) {
@@ -78,17 +80,18 @@ const VettingPage = () => {
               if (accepted) {
                 Promise.all(acceptedPayload.map((id) => Post('/vetting/verify', id)))
                   .then(() => fetchVetting())
-                  .catch((e) => console.log(e))
+                  .catch((e) => new Error(e))
               }
             })
         }
         if (accepted) {
           return Promise.all(acceptedPayload.map((id) => Post('/vetting/verify', id)))
             .then(() => fetchVetting())
-            .catch((e) => console.log(e))
+            .catch((e) => new Error(e))
         }
       }
     }
+    return null
   }
   return (
     <Grid container justify="center">
@@ -104,10 +107,12 @@ const VettingPage = () => {
                   unvettetInstitutions={unvettetInstitutions}
                 />
                 )}
-
             </Grid>
             <Grid>
-              <RegistrationButton messageRegistrationButton={messages['vettingpage.vettingButton']} handleRegistration={handleButtonClick} />
+              <RegistrationButton
+                messageRegistrationButton={messages['vettingpage.vettingButton']}
+                handleRegistration={handleButtonClick}
+              />
             </Grid>
           </>
         )

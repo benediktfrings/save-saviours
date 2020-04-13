@@ -294,6 +294,11 @@ export default () => {
     signinErrorTypography: {
       color: theme.palette.error.main,
     },
+    // VETTING
+    vettingTypography: {
+      textAlign: 'center',
+      marginTop: 20,
+    },
   })
   return useStyles()
 }

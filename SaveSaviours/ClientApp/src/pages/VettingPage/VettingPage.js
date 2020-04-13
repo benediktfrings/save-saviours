@@ -46,6 +46,7 @@ const VettingPage = () => {
       })
     }
     clearVetted()
+    console.log(unvettetInstitutions)
   }, [unvettetInstitutions])
 
   useEffect(() => {

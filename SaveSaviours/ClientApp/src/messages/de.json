@@ -94,6 +94,7 @@
   "vettingpage.vettingButton": "Verifizieren!",
   "vettingpage.institution.timestamp": "Registrierung",
   "vettingpage.institution.vetted": "Verifiziert",
+  "vettingpage.institution.none": "Momentan gibt es keine Einrichtungen zu verifizieren.",
 
   "helperslistpage.header": "Hier ist eine Liste mit Helfern in Ihrer Nähe",
   "helperslistpage.notVetted": "Wir sind derzeit noch im Prozess Ihren Account durch einen Menschen zu überprüfen und freizuschalten - bitte haben Sie noch ein wenig Geduld, dies sollte in den nächsten Stunden erfolgen.",

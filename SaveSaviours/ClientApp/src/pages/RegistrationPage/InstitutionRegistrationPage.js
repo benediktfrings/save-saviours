@@ -78,7 +78,8 @@ const InstitutionRegistrationPage = () => {
         .then((response) => {
           window.localStorage.setItem('access-token', response)
           window.location = '/institutionconfirmation'
-        }).catch((e) => console.log(e))
+        })
+        .catch((e) => new Error(e))
     }
   }
   return (

@@ -10,7 +10,7 @@ import DeleteUser from 'components/InstitutionProfile/DeleteUser'
 import UpdateProfile from 'components/InstitutionProfile/UpdateProfile'
 import Post from 'api/post'
 import {
-  isValidEmail, isValidPhoneNumber, isValidZip,
+  isValidPhoneNumber, isValidZip,
 } from 'services'
 
 import UpdateButton from 'components/Registration/RegistrationButton'

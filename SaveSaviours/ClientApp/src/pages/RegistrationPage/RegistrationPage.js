@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Grid, Divider, Box, Typography,
 } from '@material-ui/core'
@@ -84,7 +84,7 @@ const RegistrationPage = () => {
           window.localStorage.setItem('access-token', response)
           window.location = '/confirmation'
         })
-        .catch((e) => console.log(e))
+        .catch((e) => new Error(e))
     }
   }
   return (

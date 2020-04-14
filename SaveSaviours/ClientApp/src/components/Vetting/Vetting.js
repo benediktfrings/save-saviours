@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Paper, Typography, Checkbox,
+  Paper, Typography, Checkbox, Box,
 } from '@material-ui/core'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -60,9 +60,19 @@ const Vetting = ({ vetted, setVetted, unvettetInstitutions }) => {
                 </TableRow>
                 )
             ))}
+
           </TableBody>
         </Table>
       </TableContainer>
+      {unvettetInstitutions && unvettetInstitutions.length === 0
+            && (
+            <Box className={classes.vettingTypography}>
+              <Typography>
+                {messages['vettingpage.institution.none']}
+              </Typography>
+            </Box>
+
+            )}
     </Paper>
   )
 }

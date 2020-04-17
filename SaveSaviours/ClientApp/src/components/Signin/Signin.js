@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TextField, Button, Typography } from '@material-ui/core'
 import styles from 'styles/styles'
 import * as messages from 'messages/de.json'
@@ -8,11 +8,11 @@ import Get from 'api/get'
 
 const Signin = ({ messageRegistrationButton }) => {
   const classes = styles()
-  const [email, setEmail] = React.useState('')
-  const [password, setPassword] = React.useState('')
-  const [error, setError] = React.useState('')
-  const [networkError, setNetworkError] = React.useState('')
-  const [networkErrorMessage, setNetworkErrorMessage] = React.useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [networkError, setNetworkError] = useState(false)
+  const [networkErrorMessage, setNetworkErrorMessage] = useState()
 
   const isValidForm = () => {
     setError({ ...error, email: false, password: false })

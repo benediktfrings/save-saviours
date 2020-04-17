@@ -32,8 +32,13 @@ const RegistrationPage = () => {
     password: false,
     form: false,
   })
+  const [networkError, setNetworkError] = useState(false)
+  const [networkErrorMessage, setNetworkErrorMessage] = useState()
 
   const isValidForm = () => {
+    setError({
+      phone: false, zip: false, password: false, email: false, form: false,
+    })
     if (!isValidEmail(email)) {
       setError({
         phone: false, zip: false, password: false, email: true, form: true,
@@ -78,13 +83,25 @@ const RegistrationPage = () => {
         .then((response) => {
           if (response.ok) {
             return response.text()
-          } throw new Error('something went wrong durring registration from backend')
+          }
+          setNetworkError(true)
+          response.json()
+            .then((responseJson) => {
+              if (Array.isArray(responseJson) && responseJson[0].code && responseJson[0].code === 'DuplicateUserName') {
+                setNetworkErrorMessage(messages['registrationpage.error.duplicateEmail'])
+              }
+              if (responseJson.ZipCode && responseJson.ZipCode[0] === 'error.not-found') {
+                setNetworkErrorMessage(messages['registrationpage.error.falseZip'])
+              }
+            })
+            .catch((e) => console.log(new Error(e)))
+          throw new Error('something went wrong durring signin from backend')
         })
         .then((response) => {
           window.localStorage.setItem('access-token', response)
           window.location = '/confirmation'
         })
-        .catch((e) => new Error(e))
+        .catch((e) => console.log(new Error(e)))
     }
   }
   return (
@@ -119,6 +136,8 @@ const RegistrationPage = () => {
               {messages['error.form']}
             </Typography>
             )}
+            {networkError
+            && <Typography className={classes.signinErrorTypography}>{networkErrorMessage}</Typography>}
             <RegistrationButton
               handleRegistration={handleRegistration}
               messageRegistrationButton={messages['registrationpage.helper.registrationButton']}

@@ -1,10 +1,10 @@
 
 const Datasecurity = `# Datenschutzerklärung
-### ***Hilf Helfern*** - Unser Datenschutz in einfachen Worten
+### ***Voluntero*** - Unser Datenschutz in einfachen Worten
 1. Die Helfer- und die Einrichtungsdaten werden von uns geschützt. 
     - Wir verschlüsseln die Übertragung und speichern alle Daten in Europa. 
 	- Wir versuchen nur die minmal notwendigen Daten zu speichern und anzuzeigen. 
-	- Wir handeln nicht mit Daten und geben sie auch sonst nicht über den Zweck von *Hilf Helfern* hinaus weiter.
+	- Wir handeln nicht mit Daten und geben sie auch sonst nicht über den Zweck von *Voluntero* hinaus weiter.
     - Wir passen auf, das keiner die Daten klaut. 
 1. Helfer und Einrichtungen können ihr Profil jederzeit löschen - dann löschen wir alle Daten des Nutzers. 
 
@@ -19,7 +19,7 @@ freiwillige Helfer mit hilfesuchenden medizinischen und sozialen Institutionen z
 Zu diesem Zweck registrieren sich Helfer mit Name, E-Mail, Telefonnummer, Postleitzahl und hilferelevanten Erfahrungen,
 und medizinische Institutionen mit Namen der Institution, Namen der Kontaktperson,
 Telefonnnummer, E-Mail und Postleitzahl. 
-Die registrierten Institutionen werden dann von einem Hilf-Helfern Moderator überprüft und ggf. freigeschaltet.  
+Die registrierten Institutionen werden dann von einem Voluntero Moderator überprüft und ggf. freigeschaltet.  
 
 Freigeschaltete Institutionen können nach Erfahrungen im Umkreis von 50km um die Postleitzahl der Institution
 suchen und bekommen anonymisierte Helferprofile ohne persönliche Daten angezeigt. 
